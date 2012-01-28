@@ -5,15 +5,6 @@
 
 using namespace std;
 
-static bool IsXP (void) 
-{
-    DWORD Version = GetVersion();
-    DWORD Major = (DWORD) (LOBYTE(LOWORD(Version)));
-    DWORD Minor = (DWORD) (HIBYTE(LOWORD(Version)));
-
-    return (Major == 5) && (Minor == 1);
-}
-
 static void PrintMACaddress(unsigned char MACData[], string IpAddress)
 {
 	printf("MAC Address: %02X-%02X-%02X-%02X-%02X-%02X\n", 
@@ -35,8 +26,21 @@ static void GetMACaddress(void)
 
 	PIP_ADAPTER_INFO pAdapterInfo = AdapterInfo;// Contains pointer to current adapter info
 	do {
-		PrintMACaddress(pAdapterInfo->Address, pAdapterInfo->IpAddressList.IpAddress.String);	// Print MAC address
-		pAdapterInfo = pAdapterInfo->Next;		// Progress through linked list
+		if(!IsXP()) {
+			// Check if LAN card
+			if(pAdapterInfo->Type == MIB_IF_TYPE_ETHERNET || pAdapterInfo->Type == IF_TYPE_IEEE80211) 
+			{
+				PrintMACaddress(pAdapterInfo->Address, pAdapterInfo->IpAddressList.IpAddress.String);	// Print MAC address
+				pAdapterInfo = pAdapterInfo->Next;		// Progress through linked list
+			}
+		} else {
+			// Check if LAN or WIFI card (Since you can't filter properly on XP)
+			if(pAdapterInfo->Type == MIB_IF_TYPE_ETHERNET) 
+			{
+				PrintMACaddress(pAdapterInfo->Address, pAdapterInfo->IpAddressList.IpAddress.String);	// Print MAC address
+				pAdapterInfo = pAdapterInfo->Next;		// Progress through linked list
+			}
+		}
 	}
 	while(pAdapterInfo);						// Terminate if last adapter
 }     

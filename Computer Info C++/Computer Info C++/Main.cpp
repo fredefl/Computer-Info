@@ -1,6 +1,7 @@
 #include <Windows.h>
 #include <iostream>
 #include <sstream>
+#include "Helpers.h"
 #include "GetMACAddress.h"
 
 using namespace std;
