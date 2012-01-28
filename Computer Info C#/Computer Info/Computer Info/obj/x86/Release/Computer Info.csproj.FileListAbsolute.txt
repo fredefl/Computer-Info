@@ -21,3 +21,4 @@ S:\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Release\Com
 S:\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Release\Computer_Info.Tokens.resources
 S:\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Release\ResGen.read.1.tlog
 S:\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Release\ResGen.write.1.tlog
+S:\Computer Info\Computer Info C#\Computer Info\Computer Info\obj\x86\Release\ComputerInfo.exe
