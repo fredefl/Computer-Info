@@ -1,0 +1,44 @@
+C:\Users\Bo\SVN\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Bo\SVN\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\Computer_Info.Properties.Resources.resources
+C:\Users\Bo\SVN\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Bo\SVN\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Bo\SVN\Illution SVN\Computer Info C#\Computer Info\Computer Info\bin\Debug\Computer Info.exe.config
+C:\Users\Bo\SVN\Illution SVN\Computer Info C#\Computer Info\Computer Info\bin\Debug\Computer Info.exe
+C:\Users\Bo\SVN\Illution SVN\Computer Info C#\Computer Info\Computer Info\bin\Debug\Computer Info.pdb
+C:\Users\Bo\SVN\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\Computer Info.exe
+C:\Users\Bo\SVN\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\Computer Info.pdb
+C:\Users\Bo\SVN\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\Computer_Info.AboutBox.resources
+C:\Users\Bo\SVN\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\Computer_Info.Main.resources
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\Computer_Info.AboutBox.resources
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\Computer_Info.Main.resources
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\Computer_Info.Properties.Resources.resources
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\Computer_Info.Tokens.resources
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\Computer_Info.Qr.resources
+C:\Users\Bo\SVN\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\Computer_Info.Qr.resources
+C:\Users\Bo\SVN\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\Computer_Info.Tokens.resources
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\ResGen.read.1.tlog
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\ResGen.write.1.tlog
+C:\Users\Bo\SVN\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\ResGen.read.1.tlog
+C:\Users\Bo\SVN\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\ResGen.write.1.tlog
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C#\Computer Info\Computer Info\bin\Debug\ComputerInfo.exe.config
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C#\Computer Info\Computer Info\bin\Debug\ComputerInfo.exe
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C#\Computer Info\Computer Info\bin\Debug\ComputerInfo.pdb
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\ComputerInfo.exe
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\ComputerInfo.pdb
+S:\Illution SVN\Computer Info C#\Computer Info\Computer Info\bin\Debug\ComputerInfo.exe
+S:\Illution SVN\Computer Info C#\Computer Info\Computer Info\bin\Debug\ComputerInfo.pdb
+S:\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\ResolveAssemblyReference.cache
+S:\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\Computer_Info.AboutBox.resources
+S:\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\Computer_Info.Main.resources
+S:\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\Computer_Info.Properties.Resources.resources
+S:\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\Computer_Info.Qr.resources
+S:\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\Computer_Info.Tokens.resources
+S:\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\GenerateResource.read.1.tlog
+S:\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\ResGen.read.1.tlog
+S:\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\GenerateResource.write.1.tlog
+S:\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\ResGen.write.1.tlog
+S:\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\ComputerInfo.exe
+S:\Illution SVN\Computer Info C#\Computer Info\Computer Info\obj\x86\Debug\ComputerInfo.pdb

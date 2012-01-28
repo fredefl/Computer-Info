@@ -1,0 +1,7 @@
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C# Updater\Computer Info Updater\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C# Updater\Computer Info Updater\bin\Release\ComputerInfoUpdater.exe
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C# Updater\Computer Info Updater\bin\Release\ComputerInfoUpdater.pdb
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C# Updater\Computer Info Updater\obj\x86\Release\ComputerInfoUpdater.exe
+C:\Users\Frederik\Desktop\Illution SVN\Computer Info C# Updater\Computer Info Updater\obj\x86\Release\ComputerInfoUpdater.pdb
+S:\Illution SVN\Computer Info C# Updater\Computer Info Updater\obj\x86\Release\ComputerInfoUpdater.exe
+S:\Illution SVN\Computer Info C# Updater\Computer Info Updater\obj\x86\Release\ComputerInfoUpdater.pdb
