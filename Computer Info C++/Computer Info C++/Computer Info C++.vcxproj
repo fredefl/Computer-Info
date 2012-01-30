@@ -63,6 +63,7 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ComputerName.h" />
     <ClInclude Include="GetMACAddress.h" />
     <ClInclude Include="Helpers.h" />
     <ClInclude Include="IpAddress.h" />

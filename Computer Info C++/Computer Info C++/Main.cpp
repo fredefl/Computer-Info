@@ -4,7 +4,8 @@
 #include "Helpers.h"
 //#include "GetMACAddress.h"
 //#include "ScreenInfo.h";
-#include "IpAddress.h";
+//#include "IpAddress.h";
+#include "ComputerName.h";
 
 using namespace std;
 #pragma comment(lib, "iphlpapi.lib")
@@ -14,7 +15,8 @@ int main(int argc, char *argv[])
 {
 	//cout << GetMACAddress();
 	//cout << GetScreenHeight();
-	cout << GetIpAddress();
+	//cout << GetIpAddress();
+	cout << GetComputerName();
 	// Make the console stay
 	char test;
 	cin >> test;
