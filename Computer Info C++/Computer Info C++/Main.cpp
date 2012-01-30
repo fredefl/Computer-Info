@@ -6,7 +6,7 @@
 //#include "ScreenInfo.h"
 //#include "IpAddress.h"
 //#include "ComputerName.h"
-#include "TotalDiskSpace.h"
+//#include "TotalDiskSpace.h"
 
 using namespace std;
 #pragma comment(lib, "iphlpapi.lib")
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	//cout << GetScreenHeight();
 	//cout << GetIpAddress();
 	//cout << GetComputerName();
-	cout << GetTotalDiskSpace();
+	cout << GetUnixTimestamp;
 	// Make the console stay
 	char test;
 	cin >> test;
