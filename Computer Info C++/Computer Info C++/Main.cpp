@@ -3,15 +3,16 @@
 #include <sstream>
 #include "Helpers.h"
 #include "GetMACAddress.h"
+#include "ScreenInfo.h";
 
 using namespace std;
 #pragma comment(lib, "iphlpapi.lib")
 
 int main(int argc, char *argv[])
 {
-	cout << GetMACAddress();// Obtain MAC address of adapters
-	//printf("MAC Address: %02X-%02X-%02X-%02X-%02X-%02X\n", 
-		//MAC[0], MAC[1], MAC[2], MAC[3], MAC[4], MAC[5]);
+	//cout << GetMACAddress();
+	cout << GetScreenHeight();
+	// Make the console stay
 	char test;
 	cin >> test;
 	return 0;

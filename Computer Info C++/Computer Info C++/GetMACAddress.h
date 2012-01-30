@@ -2,17 +2,23 @@
 #include <Assert.h>
 #include <iostream>
 #include <sstream>
-#include <cstring>
-#include "Iphlpapi.h"
-
 using namespace std;
 
 static string FormatMACAddress(unsigned char MAC[])
 {
 	char buffer[50];
-	sprintf(buffer, "%02X-%02X-%02X-%02X-%02X-%02X", 
+	sprintf_s(buffer, "%02X-%02X-%02X-%02X-%02X-%02X", 
 		MAC[0], MAC[1], MAC[2], MAC[3], MAC[4], MAC[5]);
 	return buffer;
+}
+
+static bool IsLanIp (string IpAddress) {
+	size_t found;
+	found = IpAddress.find("10.87.45.");
+	if (found!=string::npos) 
+		return true;
+	else
+		return false;
 }
 
 // Fetches the MAC address and prints it
@@ -47,15 +53,21 @@ static string GetMACAddress (bool All = false)
 			// Check if LAN or WIFI card (Since you can't filter properly on XP)
 			if(pAdapterInfo->Type == MIB_IF_TYPE_ETHERNET) 
 			{
-				// ADD CODE!!!
+				if(IsLanIp(pAdapterInfo->CurrentIpAddress->IpAddress.String)) {
+					Output += FormatMACAddress(pAdapterInfo->Address);
+					Output += "|";
+					Success = true; 
+				}
 				pAdapterInfo = pAdapterInfo->Next;
+				if(!All) break;
 			}
 		}
 	}
-	while(pAdapterInfo);						// Terminate if last adapter
+	while(pAdapterInfo);
 	if(Success) {
 		Output.erase(Output.end()-1,Output.end());
 		return Output;
+	} else {
+		return "NULL";
 	}
-	
-}     
+}
