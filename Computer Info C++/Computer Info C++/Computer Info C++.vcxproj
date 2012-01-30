@@ -68,6 +68,7 @@
     <ClInclude Include="Helpers.h" />
     <ClInclude Include="IpAddress.h" />
     <ClInclude Include="ScreenInfo.h" />
+    <ClInclude Include="TotalDiskSpace.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
