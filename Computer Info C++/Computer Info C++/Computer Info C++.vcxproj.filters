@@ -29,5 +29,8 @@
     <ClInclude Include="ScreenInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IpAddress.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
