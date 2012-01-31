@@ -1,5 +1,6 @@
 #include <time.h>
 #include <sstream>
+#include <ctime>
 using namespace std;
 
 static string IntToString (int Input) {
@@ -21,4 +22,10 @@ static bool IsXP ()
     DWORD Minor = (DWORD) (HIBYTE(LOWORD(Version)));
 
     return (Major == 5) && (Minor == 1);
-};
+}
+
+static string GetUnixTimestamp () {
+    std::time_t t = std::time(0);  // t is an integer type
+    return IntToString(t);
+}
+

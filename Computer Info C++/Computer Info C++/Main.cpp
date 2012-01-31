@@ -12,13 +12,13 @@ using namespace std;
 #pragma comment(lib, "iphlpapi.lib")
 #pragma comment(lib, "wsock32.lib")
 
-int main(int argc, char *argv[])
+int main()
 {
 	//cout << GetMACAddress();
 	//cout << GetScreenHeight();
 	//cout << GetIpAddress();
 	//cout << GetComputerName();
-	cout << GetUnixTimestamp;
+	cout << GetUnixTimestamp();
 	// Make the console stay
 	char test;
 	cin >> test;
