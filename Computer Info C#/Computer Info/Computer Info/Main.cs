@@ -28,7 +28,7 @@ namespace Computer_Info
             // Set Last Used Location
             LocationBox.Text = Settings.IniReadValue("Settings", "Location");
             // Initialize WMIC
-            ComputerInfoInstance.GetComputerModel();
+            //ComputerInfoInstance.GetComputerModel();
             // Get and Set LanMac
             string MacAddress = ComputerInfoInstance.GetLanMacAddress(false);
             MacAddressBox.Text = MacAddress;
@@ -56,7 +56,7 @@ namespace Computer_Info
                 GetModelType(Token1, Token2);
             }
             // Check For Updates
-            UpdateChecker();
+            //UpdateChecker();
             // Delete Updater Application
             if (File.Exists("ComputerInfoUpdater.exe"))
                 File.Delete("ComputerInfoUpdater.exe");
@@ -92,11 +92,14 @@ namespace Computer_Info
                 Http.DownloadStringAsync(new Uri(Url));
                 Http.DownloadStringCompleted += new DownloadStringCompletedEventHandler(GetModelTypeResponse);
             }
-            catch (WebException ex)
+            catch (WebException)
             {
                 Log("Error getting model type");
             }
-
+            catch (Exception)
+            {
+                Log("Error getting model type");
+            }
         }
         // Gets the model type response (as it is async)
         public void GetModelTypeResponse(Object sender, DownloadStringCompletedEventArgs e)
@@ -104,12 +107,18 @@ namespace Computer_Info
             var webException = e.Error as WebException;
             if (webException != null && webException.Status == WebExceptionStatus.NameResolutionFailure)
                 return;
+            try
+            {
+                string Response = (string)e.Result;
+                if (Response == "0")
+                    StationarySelector.Checked = true;
+                if (Response == "1")
+                    LaptopSelector.Checked = true;
+            }
+            catch (Exception)
+            {
 
-            string Response = (string)e.Result;
-            if (Response == "0")
-                StationarySelector.Checked = true;
-            if (Response == "1")
-                LaptopSelector.Checked = true;
+            }
         }
         #endregion
         #region Updater & Update Checker
@@ -173,7 +182,6 @@ namespace Computer_Info
         {
             AboutBox AboutboxForm = new AboutBox();
             AboutboxForm.Show();
-            this.Hide();
         }
 
         // When the tokens menu item is clicked, open the tokens form

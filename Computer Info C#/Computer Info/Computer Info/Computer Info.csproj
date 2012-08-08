@@ -69,7 +69,8 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Computer Info Signing Key.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Computer_Info.Program</StartupObject>
@@ -138,7 +139,6 @@
     <EmbeddedResource Include="Tokens.resx">
       <DependentUpon>Tokens.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Computer Info Signing Key.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

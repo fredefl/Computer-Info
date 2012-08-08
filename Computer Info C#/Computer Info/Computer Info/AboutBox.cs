@@ -105,34 +105,29 @@ namespace Computer_Info
         }
         #endregion
 
-        private void labelCompanyName_Click(object sender, EventArgs e)
+        private void CloseForm()
         {
-
+            this.Hide();
         }
 
         private void AboutBox_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Main MainForm = new Main();
-            MainForm.Show();
-            this.Hide();
+            CloseForm();
         }
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            Main MainForm = new Main();
-            MainForm.Show();
-            this.Hide();
+            CloseForm();
         }
 
         private void AboutBox_Load(object sender, EventArgs e)
         {
-            
+            VersionLabel.Text = AssemblyVersion;
         }
 
-        private void AboutBox_Shown(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            WBrowser.Navigate(new Uri("http://illution.dk/About/IE/?page=CI&Version=" + String.Format(AssemblyVersion) + "&Title=" + String.Format(AssemblyTitle) + "&Product=" + AssemblyProduct + "&Copyright=" + AssemblyCopyright + "&Company=" + AssemblyCompany + "&Description=" + AssemblyDescription + ""));
+            CloseForm();
         }
-
     }
 }
