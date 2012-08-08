@@ -1,7 +1,0 @@
-SignTool=C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin\signtool.exe
-PFX=C:\ComputerInfo.pfx
-Password=vkGE43uq
-TimeStamp=http://timestamp.comodoca.com/authenticode
-ProgramTitle=ComputerInfo
-ProgramURL=http://illution.dk
-File1=C:\Users\Frederik\Desktop\ComputerInfo.exe
