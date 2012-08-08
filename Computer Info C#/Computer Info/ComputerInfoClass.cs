@@ -471,15 +471,6 @@ namespace ComputerInfoClass
             Debug.Write(Url);
             return true;
         }
-        // Send With Qr Code, Return Qr Code Ur
-        /// <summary>
-        /// Get the URL for the QR Code
-        /// </summary>
-        /// <returns>The QR Code URL</returns>
-        public string SendWithQr()
-        {
-            return "http://chart.apis.google.com/chart?cht=qr&chs=512x512&chl=http://illution.dk/Computerinfo/Qr.php?Data="+GetUrlData(true);
-        }
         #endregion
     }
 }
