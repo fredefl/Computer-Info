@@ -67,9 +67,9 @@ namespace Computer_Info
             this.DisclaimerLabel.AutoSize = true;
             this.DisclaimerLabel.Location = new System.Drawing.Point(18, 53);
             this.DisclaimerLabel.Name = "DisclaimerLabel";
-            this.DisclaimerLabel.Size = new System.Drawing.Size(317, 13);
+            this.DisclaimerLabel.Size = new System.Drawing.Size(329, 13);
             this.DisclaimerLabel.TabIndex = 9;
-            this.DisclaimerLabel.Text = "Vi er på ingen på ansvarlige for skader dette program må forvolde.";
+            this.DisclaimerLabel.Text = "Vi er på ingen på ansvarlige for skader dette program måtte forvolde.";
             // 
             // VersionStatusImage
             // 
