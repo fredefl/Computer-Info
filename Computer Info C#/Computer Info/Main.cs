@@ -132,7 +132,7 @@ namespace Computer_Info
                 Http.DownloadStringAsync(new Uri(Url));
                 Http.DownloadStringCompleted += new DownloadStringCompletedEventHandler(UpdateCheckerResponse);
             }
-            catch (WebException ex)
+            catch
             {
                 Log("Error getting update information");
             }
@@ -163,7 +163,7 @@ namespace Computer_Info
                 UpdaterProcess.Start();
                 Application.Exit();
             }
-            catch (WebException ex)
+            catch
             {
                 Log("Error downloading update");
             }

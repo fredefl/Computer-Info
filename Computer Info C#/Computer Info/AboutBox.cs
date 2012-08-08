@@ -129,5 +129,15 @@ namespace Computer_Info
         {
             CloseForm();
         }
+
+        private void GitHubLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/fredefl/Computer-Info");
+        }
+
+        private void WebsiteLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://illution.dk");
+        }
     }
 }

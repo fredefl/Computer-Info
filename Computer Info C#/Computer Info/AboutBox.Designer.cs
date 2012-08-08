@@ -100,6 +100,7 @@ namespace Computer_Info
             this.WebsiteLinkLabel.TabStop = true;
             this.WebsiteLinkLabel.Text = "Illution.";
             this.WebsiteLinkLabel.VisitedLinkColor = System.Drawing.SystemColors.Highlight;
+            this.WebsiteLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.WebsiteLinkLabel_LinkClicked);
             // 
             // GitHubLinkLabel
             // 
@@ -112,6 +113,7 @@ namespace Computer_Info
             this.GitHubLinkLabel.TabStop = true;
             this.GitHubLinkLabel.Text = "GitHub.";
             this.GitHubLinkLabel.VisitedLinkColor = System.Drawing.SystemColors.Highlight;
+            this.GitHubLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GitHubLinkLabel_LinkClicked);
             // 
             // OpenSourceInfoLabel
             // 
