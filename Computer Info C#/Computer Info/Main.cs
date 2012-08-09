@@ -14,7 +14,9 @@ namespace Computer_Info
 {
     public partial class Main : Form
     {
-        public class Location
+
+        #region Location List
+        public class LocationObject
         {
             public int id { get; set; }
             public string name { get; set; }
@@ -22,24 +24,26 @@ namespace Computer_Info
             public string organization { get; set; }
         }
 
-        public class RootObject
+        public class LocationRootObject
         {
-            public List<Location> Locations { get; set; }
+            public List<LocationObject> Locations { get; set; }
             public int count { get; set; }
             public object error_message { get; set; }
             public object error_code { get; set; }
             public string script_excecution_time { get; set; }
             public int server_time { get; set; }
         }
-        
-        public void GetRoomList()
+
+        public void GetLocationList()
         {
             try
             {
-                string Url = "http://127.0.0.1/ci/options/location/?organization=1&format=json&dev=true";
+                string Url = 
+                    Properties.Settings.Default.BaseUrl + 
+                    "options/location/?organization=1&format=json&dev=true";
                 WebClient Http = new WebClient();
                 Http.DownloadStringAsync(new Uri(Url));
-                Http.DownloadStringCompleted += new DownloadStringCompletedEventHandler(GetRoomListResponse);
+                Http.DownloadStringCompleted += new DownloadStringCompletedEventHandler(GetLocationListResponse);
             }
             catch (WebException)
             {
@@ -50,8 +54,9 @@ namespace Computer_Info
                 Log("Error getting room list");
             }
         }
+
         // Gets the model type response (as it is async)
-        public void GetRoomListResponse(Object sender, DownloadStringCompletedEventArgs e)
+        public void GetLocationListResponse(Object sender, DownloadStringCompletedEventArgs e)
         {
             var webException = e.Error as WebException;
             if (webException != null && webException.Status == WebExceptionStatus.NameResolutionFailure)
@@ -59,17 +64,94 @@ namespace Computer_Info
             try
             {
                 string Response = (string)e.Result;
-                RootObject Object = JsonConvert.DeserializeObject<RootObject>(Response);
-                foreach (Location CurrentLocation in Object.Locations)
+                LocationRootObject Object = JsonConvert.DeserializeObject<LocationRootObject>(Response);
+                foreach (LocationObject Location in Object.Locations)
                 {
-                    LocationComboBox.Items.Add(CurrentLocation.name);
+                    LocationBox.Items.Add(Location.name);
                 }
             }
             catch (Exception)
             {
-
+                Log("Error getting room list");
             }
         }
+        #endregion
+
+        #region OrganizationList
+        public class OrganizationEmployeesObject
+        {
+            public int id { get; set; }
+            public List<string> organizations { get; set; }
+            public string email { get; set; }
+            public string name { get; set; }
+        }
+
+        public class OrganizationObject
+        {
+            public int id { get; set; }
+            public string name { get; set; }
+            public OrganizationEmployeesObject employees { get; set; }
+        }
+
+        public class OrganizationUserObject
+        {
+            public int id { get; set; }
+            public List<OrganizationObject> organizations { get; set; }
+            public string email { get; set; }
+            public string name { get; set; }
+        }
+
+        public class OrganizationRootObject
+        {
+            public OrganizationUserObject User { get; set; }
+            public int count { get; set; }
+            public object error_message { get; set; }
+            public object error_code { get; set; }
+            public string script_excecution_time { get; set; }
+            public int server_time { get; set; }
+        }
+
+        public void GetOrganizationList()
+        {
+            try
+            {
+                string Url =
+                    Properties.Settings.Default.BaseUrl +
+                    "user/me?format=json&dev=true";
+                WebClient Http = new WebClient();
+                Http.DownloadStringAsync(new Uri(Url));
+                Http.DownloadStringCompleted += new DownloadStringCompletedEventHandler(GetOrganizationListResponse);
+            }
+            catch (WebException)
+            {
+                Log("Error getting organization list");
+            }
+            catch (Exception)
+            {
+                Log("Error getting organization list");
+            }
+        }
+
+        public void GetOrganizationListResponse(Object sender, DownloadStringCompletedEventArgs e)
+        {
+            var webException = e.Error as WebException;
+            if (webException != null && webException.Status == WebExceptionStatus.NameResolutionFailure)
+                return;
+            try
+            {
+                string Response = (string)e.Result;
+                OrganizationRootObject Object = JsonConvert.DeserializeObject<OrganizationRootObject>(Response);
+                foreach (OrganizationObject Organization in Object.User.organizations)
+                {
+                    OrganizationBox.Items.Add(Organization.name);
+                }
+            }
+            catch (Exception)
+            {
+                Log("Error getting organization list");
+            }
+        }
+        #endregion
 
         IniFile Settings = new IniFile(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Replace("file:///", "")) + "/Settings.ini");
         ComputerInfo ComputerInfoInstance;
@@ -84,16 +166,18 @@ namespace Computer_Info
         {
             // Initialize
             InitializeComponent();
-            // Get the room list
-            GetRoomList();
+            // Get the organization list
+            GetOrganizationList();
+            // Get the location list
+            GetLocationList();
             // Create Computer Info Instance
             ComputerInfoInstance = new ComputerInfo();
             // Remove Dot
             BUFUUFSelector.SelectedIndex = 0;
             // Set Last Used School
-            SchoolBox.Text = Settings.IniReadValue("Settings", "School");
+            OrganizationBox.Text = Settings.IniReadValue("Settings", "School");
             // Set Last Used Location
-            LocationComboBox.Text = Settings.IniReadValue("Settings", "Location");
+            LocationBox.Text = Settings.IniReadValue("Settings", "Location");
             // Initialize WMIC
             //ComputerInfoInstance.GetComputerModel();
             // Get and Set LanMac
@@ -131,7 +215,7 @@ namespace Computer_Info
         {
             bool SBB;
             if (LaptopSelector.Checked) SBB = true; else SBB = false;
-            ComputerInfoInstance.SetVariables(BUFUUFSelector.Text, NumberBox.Text, LocationComboBox.Text, ComputerInfoInstance.BoolToString(SBB), ComputerInfoInstance.BoolToString(SmartboardSelector.Checked), SchoolBox.Text);
+            ComputerInfoInstance.SetVariables(BUFUUFSelector.Text, NumberBox.Text, LocationBox.Text, ComputerInfoInstance.BoolToString(SBB), ComputerInfoInstance.BoolToString(SmartboardSelector.Checked), OrganizationBox.Text);
 
             if (Settings.IniReadValue("Settings", "Token").Length > 0) {
                 ComputerInfoInstance.SendWithTokens(Settings.IniReadValue("Settings", "Token"));
@@ -141,8 +225,8 @@ namespace Computer_Info
             {
                 MessageBox.Show("Tokens er ikke indtastet");
             }
-            Settings.IniWriteValue("Settings", "School", SchoolBox.Text);
-            Settings.IniWriteValue("Settings", "Location", LocationComboBox.Text);
+            Settings.IniWriteValue("Settings", "Organization", OrganizationBox.Text);
+            Settings.IniWriteValue("Settings", "Location", LocationBox.Text);
         }
 
         #region ModelType

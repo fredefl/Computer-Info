@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            this.SchoolBox = new System.Windows.Forms.TextBox();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
-            this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.UpdateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LoginMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UpdateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SchoolLabel = new System.Windows.Forms.Label();
             this.LocationLabel = new System.Windows.Forms.Label();
             this.NumberBox = new System.Windows.Forms.TextBox();
@@ -45,18 +44,10 @@
             this.SmartboardSelector = new System.Windows.Forms.CheckBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.MacAddressBox = new System.Windows.Forms.TextBox();
-            this.LocationComboBox = new System.Windows.Forms.ComboBox();
+            this.LocationBox = new System.Windows.Forms.ComboBox();
+            this.OrganizationBox = new System.Windows.Forms.ComboBox();
             this.MainMenu.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // SchoolBox
-            // 
-            this.SchoolBox.AccessibleDescription = "Skole";
-            this.SchoolBox.AccessibleName = "Skole";
-            this.SchoolBox.Location = new System.Drawing.Point(12, 49);
-            this.SchoolBox.Name = "SchoolBox";
-            this.SchoolBox.Size = new System.Drawing.Size(190, 20);
-            this.SchoolBox.TabIndex = 1;
             // 
             // MainMenu
             // 
@@ -71,12 +62,12 @@
             this.MainMenu.TabIndex = 2;
             this.MainMenu.Text = "MainMenu";
             // 
-            // AboutMenuItem
+            // LoginMenuItem
             // 
-            this.AboutMenuItem.Name = "AboutMenuItem";
-            this.AboutMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.AboutMenuItem.Text = "Om";
-            this.AboutMenuItem.Click += new System.EventHandler(this.omToolStripMenuItem_Click);
+            this.LoginMenuItem.Name = "LoginMenuItem";
+            this.LoginMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.LoginMenuItem.Text = "Log ind";
+            this.LoginMenuItem.Click += new System.EventHandler(this.LoginMenuItem_Click);
             // 
             // UpdateMenuItem
             // 
@@ -85,12 +76,12 @@
             this.UpdateMenuItem.Text = "Opdater";
             this.UpdateMenuItem.Click += new System.EventHandler(this.NewUpdate_Click);
             // 
-            // LoginMenuItem
+            // AboutMenuItem
             // 
-            this.LoginMenuItem.Name = "LoginMenuItem";
-            this.LoginMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.LoginMenuItem.Text = "Log ind";
-            this.LoginMenuItem.Click += new System.EventHandler(this.LoginMenuItem_Click);
+            this.AboutMenuItem.Name = "AboutMenuItem";
+            this.AboutMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.AboutMenuItem.Text = "Om";
+            this.AboutMenuItem.Click += new System.EventHandler(this.omToolStripMenuItem_Click);
             // 
             // SchoolLabel
             // 
@@ -220,16 +211,25 @@
             this.MacAddressBox.Size = new System.Drawing.Size(190, 20);
             this.MacAddressBox.TabIndex = 14;
             // 
-            // LocationComboBox
+            // LocationBox
             // 
-            this.LocationComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.LocationComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.LocationComboBox.FormattingEnabled = true;
-            this.LocationComboBox.Location = new System.Drawing.Point(12, 91);
-            this.LocationComboBox.Name = "LocationComboBox";
-            this.LocationComboBox.Size = new System.Drawing.Size(190, 21);
-            this.LocationComboBox.Sorted = true;
-            this.LocationComboBox.TabIndex = 16;
+            this.LocationBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.LocationBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.LocationBox.FormattingEnabled = true;
+            this.LocationBox.Location = new System.Drawing.Point(12, 91);
+            this.LocationBox.Name = "LocationBox";
+            this.LocationBox.Size = new System.Drawing.Size(190, 21);
+            this.LocationBox.Sorted = true;
+            this.LocationBox.TabIndex = 16;
+            // 
+            // OrganizationBox
+            // 
+            this.OrganizationBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.OrganizationBox.FormattingEnabled = true;
+            this.OrganizationBox.Location = new System.Drawing.Point(12, 49);
+            this.OrganizationBox.Name = "OrganizationBox";
+            this.OrganizationBox.Size = new System.Drawing.Size(190, 21);
+            this.OrganizationBox.TabIndex = 17;
             // 
             // Main
             // 
@@ -240,7 +240,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(211, 336);
-            this.Controls.Add(this.LocationComboBox);
+            this.Controls.Add(this.OrganizationBox);
+            this.Controls.Add(this.LocationBox);
             this.Controls.Add(this.MacAddressBox);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.SmartboardSelector);
@@ -252,7 +253,6 @@
             this.Controls.Add(this.NumberBox);
             this.Controls.Add(this.LocationLabel);
             this.Controls.Add(this.SchoolLabel);
-            this.Controls.Add(this.SchoolBox);
             this.Controls.Add(this.MainMenu);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -273,7 +273,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox SchoolBox;
         private System.Windows.Forms.MenuStrip MainMenu;
         private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
         private System.Windows.Forms.Label SchoolLabel;
@@ -288,8 +287,9 @@
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.TextBox MacAddressBox;
         private System.Windows.Forms.ToolStripMenuItem UpdateMenuItem;
-        private System.Windows.Forms.ComboBox LocationComboBox;
+        private System.Windows.Forms.ComboBox LocationBox;
         private System.Windows.Forms.ToolStripMenuItem LoginMenuItem;
+        private System.Windows.Forms.ComboBox OrganizationBox;
 
     }
 }

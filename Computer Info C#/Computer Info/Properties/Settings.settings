@@ -1,5 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Computer_Info.Properties" GeneratedClassName="Settings">
   <Profiles />
-  <Settings />
+  <Settings>
+    <Setting Name="BaseUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://127.0.0.1/ci/</Value>
+    </Setting>
+    <Setting Name="UpdateUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://crap.crap</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
