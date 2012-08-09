@@ -34,7 +34,6 @@
             this.omToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tokensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NewUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.LocationBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.NumberBox = new System.Windows.Forms.TextBox();
@@ -45,8 +44,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.SmartboardSelector = new System.Windows.Forms.CheckBox();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.LogBox = new System.Windows.Forms.TextBox();
             this.MacAddressBox = new System.Windows.Forms.TextBox();
+            this.LocationComboBox = new System.Windows.Forms.ComboBox();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,9 +54,9 @@
             // 
             this.SchoolBox.AccessibleDescription = "Skole";
             this.SchoolBox.AccessibleName = "Skole";
-            this.SchoolBox.Location = new System.Drawing.Point(12, 48);
+            this.SchoolBox.Location = new System.Drawing.Point(12, 49);
             this.SchoolBox.Name = "SchoolBox";
-            this.SchoolBox.Size = new System.Drawing.Size(196, 20);
+            this.SchoolBox.Size = new System.Drawing.Size(208, 20);
             this.SchoolBox.TabIndex = 1;
             // 
             // MainMenu
@@ -65,10 +65,11 @@
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.omToolStripMenuItem,
             this.tokensToolStripMenuItem,
-            this.NewUpdate});
+            this.NewUpdate,
+            this.toolStripMenuItem1});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
-            this.MainMenu.Size = new System.Drawing.Size(220, 24);
+            this.MainMenu.Size = new System.Drawing.Size(231, 24);
             this.MainMenu.TabIndex = 2;
             this.MainMenu.Text = "MainMenu";
             // 
@@ -92,13 +93,6 @@
             this.NewUpdate.Size = new System.Drawing.Size(65, 20);
             this.NewUpdate.Text = "Opdater";
             this.NewUpdate.Click += new System.EventHandler(this.NewUpdate_Click);
-            // 
-            // LocationBox
-            // 
-            this.LocationBox.Location = new System.Drawing.Point(12, 90);
-            this.LocationBox.Name = "LocationBox";
-            this.LocationBox.Size = new System.Drawing.Size(196, 20);
-            this.LocationBox.TabIndex = 3;
             // 
             // label1
             // 
@@ -127,9 +121,9 @@
             // 
             // NumberBox
             // 
-            this.NumberBox.Location = new System.Drawing.Point(83, 130);
+            this.NumberBox.Location = new System.Drawing.Point(83, 138);
             this.NumberBox.Name = "NumberBox";
-            this.NumberBox.Size = new System.Drawing.Size(125, 20);
+            this.NumberBox.Size = new System.Drawing.Size(137, 20);
             this.NumberBox.TabIndex = 8;
             // 
             // BUFUUFSelector
@@ -139,7 +133,7 @@
             this.BUFUUFSelector.Items.AddRange(new object[] {
             "BUF",
             "UUF"});
-            this.BUFUUFSelector.Location = new System.Drawing.Point(12, 129);
+            this.BUFUUFSelector.Location = new System.Drawing.Point(12, 138);
             this.BUFUUFSelector.Name = "BUFUUFSelector";
             this.BUFUUFSelector.Size = new System.Drawing.Size(65, 21);
             this.BUFUUFSelector.TabIndex = 7;
@@ -150,7 +144,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(9, 113);
+            this.label3.Location = new System.Drawing.Point(9, 118);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(122, 16);
             this.label3.TabIndex = 9;
@@ -162,7 +156,7 @@
             this.StationarySelector.BackColor = System.Drawing.Color.Transparent;
             this.StationarySelector.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StationarySelector.ForeColor = System.Drawing.Color.Black;
-            this.StationarySelector.Location = new System.Drawing.Point(12, 173);
+            this.StationarySelector.Location = new System.Drawing.Point(12, 181);
             this.StationarySelector.Name = "StationarySelector";
             this.StationarySelector.Size = new System.Drawing.Size(88, 20);
             this.StationarySelector.TabIndex = 10;
@@ -177,7 +171,7 @@
             this.LaptopSelector.BackColor = System.Drawing.Color.Transparent;
             this.LaptopSelector.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LaptopSelector.ForeColor = System.Drawing.Color.Black;
-            this.LaptopSelector.Location = new System.Drawing.Point(12, 196);
+            this.LaptopSelector.Location = new System.Drawing.Point(12, 204);
             this.LaptopSelector.Name = "LaptopSelector";
             this.LaptopSelector.Size = new System.Drawing.Size(73, 20);
             this.LaptopSelector.TabIndex = 11;
@@ -192,7 +186,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(9, 154);
+            this.label4.Location = new System.Drawing.Point(9, 162);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 16);
             this.label4.TabIndex = 12;
@@ -204,7 +198,7 @@
             this.SmartboardSelector.BackColor = System.Drawing.Color.Transparent;
             this.SmartboardSelector.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SmartboardSelector.ForeColor = System.Drawing.Color.Black;
-            this.SmartboardSelector.Location = new System.Drawing.Point(12, 219);
+            this.SmartboardSelector.Location = new System.Drawing.Point(12, 229);
             this.SmartboardSelector.Name = "SmartboardSelector";
             this.SmartboardSelector.Size = new System.Drawing.Size(190, 20);
             this.SmartboardSelector.TabIndex = 12;
@@ -213,29 +207,37 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(12, 245);
+            this.SaveButton.Location = new System.Drawing.Point(12, 255);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(196, 42);
+            this.SaveButton.Size = new System.Drawing.Size(208, 42);
             this.SaveButton.TabIndex = 13;
             this.SaveButton.Text = "Gem";
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.Save_Click);
             // 
-            // LogBox
-            // 
-            this.LogBox.Location = new System.Drawing.Point(229, 27);
-            this.LogBox.Multiline = true;
-            this.LogBox.Name = "LogBox";
-            this.LogBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.LogBox.Size = new System.Drawing.Size(599, 253);
-            this.LogBox.TabIndex = 15;
-            // 
             // MacAddressBox
             // 
-            this.MacAddressBox.Location = new System.Drawing.Point(12, 293);
+            this.MacAddressBox.Location = new System.Drawing.Point(12, 303);
             this.MacAddressBox.Name = "MacAddressBox";
-            this.MacAddressBox.Size = new System.Drawing.Size(196, 20);
+            this.MacAddressBox.Size = new System.Drawing.Size(208, 20);
             this.MacAddressBox.TabIndex = 14;
+            // 
+            // LocationComboBox
+            // 
+            this.LocationComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.LocationComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.LocationComboBox.FormattingEnabled = true;
+            this.LocationComboBox.Location = new System.Drawing.Point(12, 91);
+            this.LocationComboBox.Name = "LocationComboBox";
+            this.LocationComboBox.Size = new System.Drawing.Size(208, 21);
+            this.LocationComboBox.Sorted = true;
+            this.LocationComboBox.TabIndex = 16;
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(59, 20);
+            this.toolStripMenuItem1.Text = "Log ind";
             // 
             // Main
             // 
@@ -245,9 +247,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(220, 323);
+            this.ClientSize = new System.Drawing.Size(231, 336);
+            this.Controls.Add(this.LocationComboBox);
             this.Controls.Add(this.MacAddressBox);
-            this.Controls.Add(this.LogBox);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.SmartboardSelector);
             this.Controls.Add(this.label4);
@@ -258,7 +260,6 @@
             this.Controls.Add(this.NumberBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.LocationBox);
             this.Controls.Add(this.SchoolBox);
             this.Controls.Add(this.MainMenu);
             this.DoubleBuffered = true;
@@ -284,7 +285,6 @@
         private System.Windows.Forms.MenuStrip MainMenu;
         private System.Windows.Forms.ToolStripMenuItem omToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tokensToolStripMenuItem;
-        private System.Windows.Forms.TextBox LocationBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox NumberBox;
@@ -295,9 +295,10 @@
         private System.Windows.Forms.ComboBox BUFUUFSelector;
         private System.Windows.Forms.CheckBox SmartboardSelector;
         private System.Windows.Forms.Button SaveButton;
-        private System.Windows.Forms.TextBox LogBox;
         private System.Windows.Forms.TextBox MacAddressBox;
         private System.Windows.Forms.ToolStripMenuItem NewUpdate;
+        private System.Windows.Forms.ComboBox LocationComboBox;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
 
     }
 }

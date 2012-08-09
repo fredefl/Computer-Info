@@ -6,19 +6,81 @@ using System.Net;
 using System.Reflection;
 using Ini;
 using System.IO;
+using System.Web;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Computer_Info
 {
     public partial class Main : Form
     {
+        public class Location
+        {
+            public int id { get; set; }
+            public string name { get; set; }
+            public string room_number { get; set; }
+            public string organization { get; set; }
+        }
+
+        public class RootObject
+        {
+            public List<Location> Locations { get; set; }
+            public int count { get; set; }
+            public object error_message { get; set; }
+            public object error_code { get; set; }
+            public string script_excecution_time { get; set; }
+            public int server_time { get; set; }
+        }
+        
+        public void GetRoomList()
+        {
+            try
+            {
+                string Url = "http://127.0.0.1/ci/options/location/?organization=1&format=json&dev=true";
+                WebClient Http = new WebClient();
+                Http.DownloadStringAsync(new Uri(Url));
+                Http.DownloadStringCompleted += new DownloadStringCompletedEventHandler(GetRoomListResponse);
+            }
+            catch (WebException)
+            {
+                Log("Error getting room list");
+            }
+            catch (Exception)
+            {
+                Log("Error getting room list");
+            }
+        }
+        // Gets the model type response (as it is async)
+        public void GetRoomListResponse(Object sender, DownloadStringCompletedEventArgs e)
+        {
+            var webException = e.Error as WebException;
+            if (webException != null && webException.Status == WebExceptionStatus.NameResolutionFailure)
+                return;
+            try
+            {
+                string Response = (string)e.Result;
+                RootObject Object = JsonConvert.DeserializeObject<RootObject>(Response);
+                foreach (Location CurrentLocation in Object.Locations)
+                {
+                    LocationComboBox.Items.Add(CurrentLocation.name);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         IniFile Settings = new IniFile(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Replace("file:///", "")) + "/Settings.ini");
         ComputerInfo ComputerInfoInstance;
         string LogString = "Logging Started\r\n";
 
         public Main()
-        {   
+        {
             // Initialize
             InitializeComponent();
+            GetRoomList();
+
             // Create Computer Info Instance
             ComputerInfoInstance = new ComputerInfo();
             // Remove Dot
@@ -26,7 +88,7 @@ namespace Computer_Info
             // Set Last Used School
             SchoolBox.Text = Settings.IniReadValue("Settings", "School");
             // Set Last Used Location
-            LocationBox.Text = Settings.IniReadValue("Settings", "Location");
+            LocationComboBox.Text = Settings.IniReadValue("Settings", "Location");
             // Initialize WMIC
             //ComputerInfoInstance.GetComputerModel();
             // Get and Set LanMac
@@ -66,7 +128,7 @@ namespace Computer_Info
         {
             bool SBB;
             if (LaptopSelector.Checked) SBB = true; else SBB = false;
-            ComputerInfoInstance.SetVariables(BUFUUFSelector.Text, NumberBox.Text, LocationBox.Text, ComputerInfoInstance.BoolToString(SBB), ComputerInfoInstance.BoolToString(SmartboardSelector.Checked), SchoolBox.Text);
+            ComputerInfoInstance.SetVariables(BUFUUFSelector.Text, NumberBox.Text, LocationComboBox.Text, ComputerInfoInstance.BoolToString(SBB), ComputerInfoInstance.BoolToString(SmartboardSelector.Checked), SchoolBox.Text);
 
             if (ComputerInfoInstance.StringToBool(Settings.IniReadValue("Settings", "UseTokens")))
             {
@@ -78,7 +140,7 @@ namespace Computer_Info
                 MessageBox.Show("Tokens er ikke indtastet");
             }
             Settings.IniWriteValue("Settings", "School", SchoolBox.Text);
-            Settings.IniWriteValue("Settings", "Location", LocationBox.Text);
+            Settings.IniWriteValue("Settings", "Location", LocationComboBox.Text);
         }
 
         #region ModelType

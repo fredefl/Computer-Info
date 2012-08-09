@@ -41,8 +41,10 @@ namespace Computer_Info
             this.SeperatorPanel = new System.Windows.Forms.Panel();
             this.ApplicationNameLabel = new System.Windows.Forms.Label();
             this.VersionLabel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VersionStatusImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -174,8 +176,18 @@ namespace Computer_Info
             this.VersionLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VersionLabel.Location = new System.Drawing.Point(14, 55);
             this.VersionLabel.Name = "VersionLabel";
-            this.VersionLabel.Size = new System.Drawing.Size(0, 15);
+            this.VersionLabel.Size = new System.Drawing.Size(48, 15);
             this.VersionLabel.TabIndex = 2;
+            this.VersionLabel.Text = "Version";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(200, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(353, 335);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // AboutBox
             // 
@@ -187,6 +199,7 @@ namespace Computer_Info
             this.Controls.Add(this.VersionLabel);
             this.Controls.Add(this.ApplicationNameLabel);
             this.Controls.Add(this.BottomPanel);
+            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -200,6 +213,7 @@ namespace Computer_Info
             this.BottomPanel.ResumeLayout(false);
             this.BottomPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VersionStatusImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,6 +233,7 @@ namespace Computer_Info
         private PictureBox VersionStatusImage;
         private Label VersionFeedbackLabel;
         private Label DisclaimerLabel;
+        private PictureBox pictureBox1;
 
 
 
