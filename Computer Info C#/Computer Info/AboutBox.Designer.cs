@@ -30,6 +30,7 @@ namespace Computer_Info
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutBox));
             this.BottomPanel = new System.Windows.Forms.Panel();
+            this.SeperatorPanel = new System.Windows.Forms.Panel();
             this.DisclaimerLabel = new System.Windows.Forms.Label();
             this.VersionStatusImage = new System.Windows.Forms.PictureBox();
             this.VersionFeedbackLabel = new System.Windows.Forms.Label();
@@ -38,7 +39,6 @@ namespace Computer_Info
             this.OpenSourceInfoLabel = new System.Windows.Forms.Label();
             this.CopyrightLabel = new System.Windows.Forms.Label();
             this.OkButton = new System.Windows.Forms.Button();
-            this.SeperatorPanel = new System.Windows.Forms.Panel();
             this.ApplicationNameLabel = new System.Windows.Forms.Label();
             this.VersionLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -50,6 +50,7 @@ namespace Computer_Info
             // BottomPanel
             // 
             this.BottomPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.BottomPanel.Controls.Add(this.SeperatorPanel);
             this.BottomPanel.Controls.Add(this.DisclaimerLabel);
             this.BottomPanel.Controls.Add(this.VersionStatusImage);
             this.BottomPanel.Controls.Add(this.VersionFeedbackLabel);
@@ -58,11 +59,19 @@ namespace Computer_Info
             this.BottomPanel.Controls.Add(this.OpenSourceInfoLabel);
             this.BottomPanel.Controls.Add(this.CopyrightLabel);
             this.BottomPanel.Controls.Add(this.OkButton);
-            this.BottomPanel.Controls.Add(this.SeperatorPanel);
             this.BottomPanel.Location = new System.Drawing.Point(-9, 134);
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(388, 120);
             this.BottomPanel.TabIndex = 0;
+            // 
+            // SeperatorPanel
+            // 
+            this.SeperatorPanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.SeperatorPanel.Location = new System.Drawing.Point(0, 0);
+            this.SeperatorPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.SeperatorPanel.Name = "SeperatorPanel";
+            this.SeperatorPanel.Size = new System.Drawing.Size(412, 2);
+            this.SeperatorPanel.TabIndex = 1;
             // 
             // DisclaimerLabel
             // 
@@ -150,15 +159,6 @@ namespace Computer_Info
             this.OkButton.Text = "OK";
             this.OkButton.UseVisualStyleBackColor = true;
             this.OkButton.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // SeperatorPanel
-            // 
-            this.SeperatorPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.SeperatorPanel.Location = new System.Drawing.Point(0, 0);
-            this.SeperatorPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.SeperatorPanel.Name = "SeperatorPanel";
-            this.SeperatorPanel.Size = new System.Drawing.Size(412, 2);
-            this.SeperatorPanel.TabIndex = 1;
             // 
             // ApplicationNameLabel
             // 

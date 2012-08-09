@@ -34,6 +34,7 @@
             this.omToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tokensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NewUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.NumberBox = new System.Windows.Forms.TextBox();
@@ -46,7 +47,6 @@
             this.SaveButton = new System.Windows.Forms.Button();
             this.MacAddressBox = new System.Windows.Forms.TextBox();
             this.LocationComboBox = new System.Windows.Forms.ComboBox();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,6 +93,12 @@
             this.NewUpdate.Size = new System.Drawing.Size(65, 20);
             this.NewUpdate.Text = "Opdater";
             this.NewUpdate.Click += new System.EventHandler(this.NewUpdate_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(59, 20);
+            this.toolStripMenuItem1.Text = "Log ind";
             // 
             // label1
             // 
@@ -232,12 +238,6 @@
             this.LocationComboBox.Size = new System.Drawing.Size(208, 21);
             this.LocationComboBox.Sorted = true;
             this.LocationComboBox.TabIndex = 16;
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(59, 20);
-            this.toolStripMenuItem1.Text = "Log ind";
             // 
             // Main
             // 
