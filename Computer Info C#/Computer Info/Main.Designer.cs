@@ -54,7 +54,7 @@
             // 
             this.SchoolBox.AccessibleDescription = "Skole";
             this.SchoolBox.AccessibleName = "Skole";
-            this.SchoolBox.Location = new System.Drawing.Point(12, 43);
+            this.SchoolBox.Location = new System.Drawing.Point(12, 48);
             this.SchoolBox.Name = "SchoolBox";
             this.SchoolBox.Size = new System.Drawing.Size(196, 20);
             this.SchoolBox.TabIndex = 1;
@@ -95,7 +95,7 @@
             // 
             // LocationBox
             // 
-            this.LocationBox.Location = new System.Drawing.Point(12, 85);
+            this.LocationBox.Location = new System.Drawing.Point(12, 90);
             this.LocationBox.Name = "LocationBox";
             this.LocationBox.Size = new System.Drawing.Size(196, 20);
             this.LocationBox.TabIndex = 3;
@@ -106,7 +106,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(9, 24);
+            this.label1.Location = new System.Drawing.Point(9, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 16);
             this.label1.TabIndex = 4;
@@ -119,7 +119,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(9, 66);
+            this.label2.Location = new System.Drawing.Point(9, 71);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 16);
             this.label2.TabIndex = 5;
@@ -127,7 +127,7 @@
             // 
             // NumberBox
             // 
-            this.NumberBox.Location = new System.Drawing.Point(83, 125);
+            this.NumberBox.Location = new System.Drawing.Point(83, 130);
             this.NumberBox.Name = "NumberBox";
             this.NumberBox.Size = new System.Drawing.Size(125, 20);
             this.NumberBox.TabIndex = 8;
@@ -139,7 +139,7 @@
             this.BUFUUFSelector.Items.AddRange(new object[] {
             "BUF",
             "UUF"});
-            this.BUFUUFSelector.Location = new System.Drawing.Point(12, 124);
+            this.BUFUUFSelector.Location = new System.Drawing.Point(12, 129);
             this.BUFUUFSelector.Name = "BUFUUFSelector";
             this.BUFUUFSelector.Size = new System.Drawing.Size(65, 21);
             this.BUFUUFSelector.TabIndex = 7;
@@ -150,7 +150,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(9, 108);
+            this.label3.Location = new System.Drawing.Point(9, 113);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(122, 16);
             this.label3.TabIndex = 9;
@@ -162,7 +162,7 @@
             this.StationarySelector.BackColor = System.Drawing.Color.Transparent;
             this.StationarySelector.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StationarySelector.ForeColor = System.Drawing.Color.Black;
-            this.StationarySelector.Location = new System.Drawing.Point(12, 168);
+            this.StationarySelector.Location = new System.Drawing.Point(12, 173);
             this.StationarySelector.Name = "StationarySelector";
             this.StationarySelector.Size = new System.Drawing.Size(88, 20);
             this.StationarySelector.TabIndex = 10;
@@ -177,7 +177,7 @@
             this.LaptopSelector.BackColor = System.Drawing.Color.Transparent;
             this.LaptopSelector.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LaptopSelector.ForeColor = System.Drawing.Color.Black;
-            this.LaptopSelector.Location = new System.Drawing.Point(12, 191);
+            this.LaptopSelector.Location = new System.Drawing.Point(12, 196);
             this.LaptopSelector.Name = "LaptopSelector";
             this.LaptopSelector.Size = new System.Drawing.Size(73, 20);
             this.LaptopSelector.TabIndex = 11;
@@ -192,7 +192,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(9, 149);
+            this.label4.Location = new System.Drawing.Point(9, 154);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 16);
             this.label4.TabIndex = 12;
@@ -204,7 +204,7 @@
             this.SmartboardSelector.BackColor = System.Drawing.Color.Transparent;
             this.SmartboardSelector.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SmartboardSelector.ForeColor = System.Drawing.Color.Black;
-            this.SmartboardSelector.Location = new System.Drawing.Point(12, 214);
+            this.SmartboardSelector.Location = new System.Drawing.Point(12, 219);
             this.SmartboardSelector.Name = "SmartboardSelector";
             this.SmartboardSelector.Size = new System.Drawing.Size(190, 20);
             this.SmartboardSelector.TabIndex = 12;
@@ -213,7 +213,7 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(12, 238);
+            this.SaveButton.Location = new System.Drawing.Point(12, 245);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(196, 42);
             this.SaveButton.TabIndex = 13;
@@ -232,7 +232,7 @@
             // 
             // MacAddressBox
             // 
-            this.MacAddressBox.Location = new System.Drawing.Point(12, 288);
+            this.MacAddressBox.Location = new System.Drawing.Point(12, 293);
             this.MacAddressBox.Name = "MacAddressBox";
             this.MacAddressBox.Size = new System.Drawing.Size(196, 20);
             this.MacAddressBox.TabIndex = 14;
@@ -245,7 +245,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(220, 320);
+            this.ClientSize = new System.Drawing.Size(220, 323);
             this.Controls.Add(this.MacAddressBox);
             this.Controls.Add(this.LogBox);
             this.Controls.Add(this.SaveButton);

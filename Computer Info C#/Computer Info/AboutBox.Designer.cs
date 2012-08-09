@@ -57,24 +57,25 @@ namespace Computer_Info
             this.BottomPanel.Controls.Add(this.CopyrightLabel);
             this.BottomPanel.Controls.Add(this.OkButton);
             this.BottomPanel.Controls.Add(this.SeperatorPanel);
-            this.BottomPanel.Location = new System.Drawing.Point(-6, 134);
+            this.BottomPanel.Location = new System.Drawing.Point(-9, 134);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(378, 109);
+            this.BottomPanel.Size = new System.Drawing.Size(388, 120);
             this.BottomPanel.TabIndex = 0;
             // 
             // DisclaimerLabel
             // 
             this.DisclaimerLabel.AutoSize = true;
-            this.DisclaimerLabel.Location = new System.Drawing.Point(18, 53);
+            this.DisclaimerLabel.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.DisclaimerLabel.Location = new System.Drawing.Point(23, 54);
             this.DisclaimerLabel.Name = "DisclaimerLabel";
-            this.DisclaimerLabel.Size = new System.Drawing.Size(329, 13);
+            this.DisclaimerLabel.Size = new System.Drawing.Size(340, 14);
             this.DisclaimerLabel.TabIndex = 9;
             this.DisclaimerLabel.Text = "Vi er på ingen på ansvarlige for skader dette program måtte forvolde.";
             // 
             // VersionStatusImage
             // 
             this.VersionStatusImage.Image = ((System.Drawing.Image)(resources.GetObject("VersionStatusImage.Image")));
-            this.VersionStatusImage.Location = new System.Drawing.Point(21, 77);
+            this.VersionStatusImage.Location = new System.Drawing.Point(26, 78);
             this.VersionStatusImage.Name = "VersionStatusImage";
             this.VersionStatusImage.Size = new System.Drawing.Size(16, 16);
             this.VersionStatusImage.TabIndex = 8;
@@ -83,19 +84,21 @@ namespace Computer_Info
             // VersionFeedbackLabel
             // 
             this.VersionFeedbackLabel.AutoSize = true;
-            this.VersionFeedbackLabel.Location = new System.Drawing.Point(41, 78);
+            this.VersionFeedbackLabel.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.VersionFeedbackLabel.Location = new System.Drawing.Point(46, 79);
             this.VersionFeedbackLabel.Name = "VersionFeedbackLabel";
-            this.VersionFeedbackLabel.Size = new System.Drawing.Size(140, 13);
+            this.VersionFeedbackLabel.Size = new System.Drawing.Size(144, 14);
             this.VersionFeedbackLabel.TabIndex = 7;
             this.VersionFeedbackLabel.Text = "Du kører den nyeste version";
             // 
             // WebsiteLinkLabel
             // 
             this.WebsiteLinkLabel.AutoSize = true;
+            this.WebsiteLinkLabel.Font = new System.Drawing.Font("Arial", 8.25F);
             this.WebsiteLinkLabel.LinkColor = System.Drawing.SystemColors.Highlight;
-            this.WebsiteLinkLabel.Location = new System.Drawing.Point(105, 17);
+            this.WebsiteLinkLabel.Location = new System.Drawing.Point(110, 18);
             this.WebsiteLinkLabel.Name = "WebsiteLinkLabel";
-            this.WebsiteLinkLabel.Size = new System.Drawing.Size(40, 13);
+            this.WebsiteLinkLabel.Size = new System.Drawing.Size(39, 14);
             this.WebsiteLinkLabel.TabIndex = 6;
             this.WebsiteLinkLabel.TabStop = true;
             this.WebsiteLinkLabel.Text = "Illution.";
@@ -105,10 +108,11 @@ namespace Computer_Info
             // GitHubLinkLabel
             // 
             this.GitHubLinkLabel.AutoSize = true;
+            this.GitHubLinkLabel.Font = new System.Drawing.Font("Arial", 8.25F);
             this.GitHubLinkLabel.LinkColor = System.Drawing.SystemColors.Highlight;
-            this.GitHubLinkLabel.Location = new System.Drawing.Point(258, 34);
+            this.GitHubLinkLabel.Location = new System.Drawing.Point(263, 35);
             this.GitHubLinkLabel.Name = "GitHubLinkLabel";
-            this.GitHubLinkLabel.Size = new System.Drawing.Size(43, 13);
+            this.GitHubLinkLabel.Size = new System.Drawing.Size(42, 14);
             this.GitHubLinkLabel.TabIndex = 5;
             this.GitHubLinkLabel.TabStop = true;
             this.GitHubLinkLabel.Text = "GitHub.";
@@ -118,17 +122,18 @@ namespace Computer_Info
             // OpenSourceInfoLabel
             // 
             this.OpenSourceInfoLabel.AutoSize = true;
-            this.OpenSourceInfoLabel.Location = new System.Drawing.Point(18, 34);
+            this.OpenSourceInfoLabel.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.OpenSourceInfoLabel.Location = new System.Drawing.Point(23, 35);
             this.OpenSourceInfoLabel.Name = "OpenSourceInfoLabel";
-            this.OpenSourceInfoLabel.Size = new System.Drawing.Size(244, 13);
+            this.OpenSourceInfoLabel.Size = new System.Drawing.Size(245, 14);
             this.OpenSourceInfoLabel.TabIndex = 4;
             this.OpenSourceInfoLabel.Text = "Denne klient er open source, koden kan findes på";
             // 
             // CopyrightLabel
             // 
             this.CopyrightLabel.AutoSize = true;
-            this.CopyrightLabel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CopyrightLabel.Location = new System.Drawing.Point(18, 16);
+            this.CopyrightLabel.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.CopyrightLabel.Location = new System.Drawing.Point(23, 17);
             this.CopyrightLabel.Name = "CopyrightLabel";
             this.CopyrightLabel.Size = new System.Drawing.Size(91, 14);
             this.CopyrightLabel.TabIndex = 3;
@@ -136,7 +141,7 @@ namespace Computer_Info
             // 
             // OkButton
             // 
-            this.OkButton.Location = new System.Drawing.Point(292, 74);
+            this.OkButton.Location = new System.Drawing.Point(294, 74);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 23);
             this.OkButton.TabIndex = 2;
