@@ -31,18 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.SchoolBox = new System.Windows.Forms.TextBox();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
-            this.omToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tokensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.NewUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UpdateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoginMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SchoolLabel = new System.Windows.Forms.Label();
+            this.LocationLabel = new System.Windows.Forms.Label();
             this.NumberBox = new System.Windows.Forms.TextBox();
             this.BUFUUFSelector = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.BUFUFFLabel = new System.Windows.Forms.Label();
             this.StationarySelector = new System.Windows.Forms.RadioButton();
             this.LaptopSelector = new System.Windows.Forms.RadioButton();
-            this.label4 = new System.Windows.Forms.Label();
+            this.ComputerTypeLabel = new System.Windows.Forms.Label();
             this.SmartboardSelector = new System.Windows.Forms.CheckBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.MacAddressBox = new System.Windows.Forms.TextBox();
@@ -56,80 +55,73 @@
             this.SchoolBox.AccessibleName = "Skole";
             this.SchoolBox.Location = new System.Drawing.Point(12, 49);
             this.SchoolBox.Name = "SchoolBox";
-            this.SchoolBox.Size = new System.Drawing.Size(208, 20);
+            this.SchoolBox.Size = new System.Drawing.Size(190, 20);
             this.SchoolBox.TabIndex = 1;
             // 
             // MainMenu
             // 
             this.MainMenu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.omToolStripMenuItem,
-            this.tokensToolStripMenuItem,
-            this.NewUpdate,
-            this.toolStripMenuItem1});
+            this.LoginMenuItem,
+            this.UpdateMenuItem,
+            this.AboutMenuItem});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
-            this.MainMenu.Size = new System.Drawing.Size(231, 24);
+            this.MainMenu.Size = new System.Drawing.Size(211, 24);
             this.MainMenu.TabIndex = 2;
             this.MainMenu.Text = "MainMenu";
             // 
-            // omToolStripMenuItem
+            // AboutMenuItem
             // 
-            this.omToolStripMenuItem.Name = "omToolStripMenuItem";
-            this.omToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.omToolStripMenuItem.Text = "Om";
-            this.omToolStripMenuItem.Click += new System.EventHandler(this.omToolStripMenuItem_Click);
+            this.AboutMenuItem.Name = "AboutMenuItem";
+            this.AboutMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.AboutMenuItem.Text = "Om";
+            this.AboutMenuItem.Click += new System.EventHandler(this.omToolStripMenuItem_Click);
             // 
-            // tokensToolStripMenuItem
+            // UpdateMenuItem
             // 
-            this.tokensToolStripMenuItem.Name = "tokensToolStripMenuItem";
-            this.tokensToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.tokensToolStripMenuItem.Text = "Tokens";
-            this.tokensToolStripMenuItem.Click += new System.EventHandler(this.tokensToolStripMenuItem_Click);
+            this.UpdateMenuItem.Name = "UpdateMenuItem";
+            this.UpdateMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.UpdateMenuItem.Text = "Opdater";
+            this.UpdateMenuItem.Click += new System.EventHandler(this.NewUpdate_Click);
             // 
-            // NewUpdate
+            // LoginMenuItem
             // 
-            this.NewUpdate.Name = "NewUpdate";
-            this.NewUpdate.Size = new System.Drawing.Size(65, 20);
-            this.NewUpdate.Text = "Opdater";
-            this.NewUpdate.Click += new System.EventHandler(this.NewUpdate_Click);
+            this.LoginMenuItem.Name = "LoginMenuItem";
+            this.LoginMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.LoginMenuItem.Text = "Log ind";
+            this.LoginMenuItem.Click += new System.EventHandler(this.LoginMenuItem_Click);
             // 
-            // toolStripMenuItem1
+            // SchoolLabel
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(59, 20);
-            this.toolStripMenuItem1.Text = "Log ind";
+            this.SchoolLabel.AutoSize = true;
+            this.SchoolLabel.BackColor = System.Drawing.Color.Transparent;
+            this.SchoolLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SchoolLabel.ForeColor = System.Drawing.Color.Black;
+            this.SchoolLabel.Location = new System.Drawing.Point(9, 29);
+            this.SchoolLabel.Name = "SchoolLabel";
+            this.SchoolLabel.Size = new System.Drawing.Size(44, 16);
+            this.SchoolLabel.TabIndex = 4;
+            this.SchoolLabel.Text = "Skole";
+            this.SchoolLabel.UseMnemonic = false;
             // 
-            // label1
+            // LocationLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(9, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 16);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Skole";
-            this.label1.UseMnemonic = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(9, 71);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 16);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Lokation";
+            this.LocationLabel.AutoSize = true;
+            this.LocationLabel.BackColor = System.Drawing.Color.Transparent;
+            this.LocationLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LocationLabel.ForeColor = System.Drawing.Color.Black;
+            this.LocationLabel.Location = new System.Drawing.Point(9, 71);
+            this.LocationLabel.Name = "LocationLabel";
+            this.LocationLabel.Size = new System.Drawing.Size(63, 16);
+            this.LocationLabel.TabIndex = 5;
+            this.LocationLabel.Text = "Lokation";
             // 
             // NumberBox
             // 
             this.NumberBox.Location = new System.Drawing.Point(83, 138);
             this.NumberBox.Name = "NumberBox";
-            this.NumberBox.Size = new System.Drawing.Size(137, 20);
+            this.NumberBox.Size = new System.Drawing.Size(119, 20);
             this.NumberBox.TabIndex = 8;
             // 
             // BUFUUFSelector
@@ -144,17 +136,17 @@
             this.BUFUUFSelector.Size = new System.Drawing.Size(65, 21);
             this.BUFUUFSelector.TabIndex = 7;
             // 
-            // label3
+            // BUFUFFLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(9, 118);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(122, 16);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "BUF/UUF Nummer";
+            this.BUFUFFLabel.AutoSize = true;
+            this.BUFUFFLabel.BackColor = System.Drawing.Color.Transparent;
+            this.BUFUFFLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BUFUFFLabel.ForeColor = System.Drawing.Color.Black;
+            this.BUFUFFLabel.Location = new System.Drawing.Point(9, 118);
+            this.BUFUFFLabel.Name = "BUFUFFLabel";
+            this.BUFUFFLabel.Size = new System.Drawing.Size(122, 16);
+            this.BUFUFFLabel.TabIndex = 9;
+            this.BUFUFFLabel.Text = "BUF/UUF Nummer";
             // 
             // StationarySelector
             // 
@@ -186,17 +178,17 @@
             this.LaptopSelector.UseVisualStyleBackColor = false;
             this.LaptopSelector.CheckedChanged += new System.EventHandler(this.Laptop_CheckedChanged);
             // 
-            // label4
+            // ComputerTypeLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(9, 162);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 16);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Computer Type";
+            this.ComputerTypeLabel.AutoSize = true;
+            this.ComputerTypeLabel.BackColor = System.Drawing.Color.Transparent;
+            this.ComputerTypeLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComputerTypeLabel.ForeColor = System.Drawing.Color.Black;
+            this.ComputerTypeLabel.Location = new System.Drawing.Point(9, 162);
+            this.ComputerTypeLabel.Name = "ComputerTypeLabel";
+            this.ComputerTypeLabel.Size = new System.Drawing.Size(104, 16);
+            this.ComputerTypeLabel.TabIndex = 12;
+            this.ComputerTypeLabel.Text = "Computer Type";
             // 
             // SmartboardSelector
             // 
@@ -215,7 +207,7 @@
             // 
             this.SaveButton.Location = new System.Drawing.Point(12, 255);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(208, 42);
+            this.SaveButton.Size = new System.Drawing.Size(190, 42);
             this.SaveButton.TabIndex = 13;
             this.SaveButton.Text = "Gem";
             this.SaveButton.UseVisualStyleBackColor = true;
@@ -225,7 +217,7 @@
             // 
             this.MacAddressBox.Location = new System.Drawing.Point(12, 303);
             this.MacAddressBox.Name = "MacAddressBox";
-            this.MacAddressBox.Size = new System.Drawing.Size(208, 20);
+            this.MacAddressBox.Size = new System.Drawing.Size(190, 20);
             this.MacAddressBox.TabIndex = 14;
             // 
             // LocationComboBox
@@ -235,7 +227,7 @@
             this.LocationComboBox.FormattingEnabled = true;
             this.LocationComboBox.Location = new System.Drawing.Point(12, 91);
             this.LocationComboBox.Name = "LocationComboBox";
-            this.LocationComboBox.Size = new System.Drawing.Size(208, 21);
+            this.LocationComboBox.Size = new System.Drawing.Size(190, 21);
             this.LocationComboBox.Sorted = true;
             this.LocationComboBox.TabIndex = 16;
             // 
@@ -247,19 +239,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(231, 336);
+            this.ClientSize = new System.Drawing.Size(211, 336);
             this.Controls.Add(this.LocationComboBox);
             this.Controls.Add(this.MacAddressBox);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.SmartboardSelector);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.ComputerTypeLabel);
             this.Controls.Add(this.LaptopSelector);
             this.Controls.Add(this.StationarySelector);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.BUFUFFLabel);
             this.Controls.Add(this.BUFUUFSelector);
             this.Controls.Add(this.NumberBox);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LocationLabel);
+            this.Controls.Add(this.SchoolLabel);
             this.Controls.Add(this.SchoolBox);
             this.Controls.Add(this.MainMenu);
             this.DoubleBuffered = true;
@@ -283,22 +275,21 @@
 
         private System.Windows.Forms.TextBox SchoolBox;
         private System.Windows.Forms.MenuStrip MainMenu;
-        private System.Windows.Forms.ToolStripMenuItem omToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tokensToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
+        private System.Windows.Forms.Label SchoolLabel;
+        private System.Windows.Forms.Label LocationLabel;
         private System.Windows.Forms.TextBox NumberBox;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label BUFUFFLabel;
         private System.Windows.Forms.RadioButton StationarySelector;
         private System.Windows.Forms.RadioButton LaptopSelector;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label ComputerTypeLabel;
         private System.Windows.Forms.ComboBox BUFUUFSelector;
         private System.Windows.Forms.CheckBox SmartboardSelector;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.TextBox MacAddressBox;
-        private System.Windows.Forms.ToolStripMenuItem NewUpdate;
+        private System.Windows.Forms.ToolStripMenuItem UpdateMenuItem;
         private System.Windows.Forms.ComboBox LocationComboBox;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem LoginMenuItem;
 
     }
 }

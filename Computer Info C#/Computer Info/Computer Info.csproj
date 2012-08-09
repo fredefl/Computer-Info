@@ -101,6 +101,12 @@
     </Compile>
     <Compile Include="ComputerInfoClass.cs" />
     <Compile Include="Ini.cs" />
+    <Compile Include="LoginBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginBox.Designer.cs">
+      <DependentUpon>LoginBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,14 +115,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tokens.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tokens.Designer.cs">
-      <DependentUpon>Tokens.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginBox.resx">
+      <DependentUpon>LoginBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -131,9 +134,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Tokens.resx">
-      <DependentUpon>Tokens.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

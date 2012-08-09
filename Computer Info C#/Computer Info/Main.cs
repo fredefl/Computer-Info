@@ -75,12 +75,17 @@ namespace Computer_Info
         ComputerInfo ComputerInfoInstance;
         string LogString = "Logging Started\r\n";
 
+        public void SetToken (string Token)
+        {
+            Settings.IniWriteValue("Settings", "Token", Token);
+        }
+
         public Main()
         {
             // Initialize
             InitializeComponent();
+            // Get the room list
             GetRoomList();
-
             // Create Computer Info Instance
             ComputerInfoInstance = new ComputerInfo();
             // Remove Dot
@@ -105,17 +110,15 @@ namespace Computer_Info
                 this.BackgroundImage = Computer_Info.Properties.Resources.RedBar;
             }
             // Get Tokens
-            string Token1 = "";
-            string Token2 = "";
+            string Token = "";
             if (ComputerInfoInstance.StringToBool(Settings.IniReadValue("Settings", "UseTokens")))
              {
-                Token1 = Settings.IniReadValue("Settings", "Token1");
-                Token2 = Settings.IniReadValue("Settings", "Token2");
+                Token = Settings.IniReadValue("Settings", "Token");
              }
             // Guess ComputerType (SBB)
-            if(Token1 != "" && Token2 != "")
+            if(Token != "")
             {
-                GetModelType(Token1, Token2);
+                //GetModelType(Token);
             }
             // Check For Updates
             //UpdateChecker();
@@ -130,9 +133,8 @@ namespace Computer_Info
             if (LaptopSelector.Checked) SBB = true; else SBB = false;
             ComputerInfoInstance.SetVariables(BUFUUFSelector.Text, NumberBox.Text, LocationComboBox.Text, ComputerInfoInstance.BoolToString(SBB), ComputerInfoInstance.BoolToString(SmartboardSelector.Checked), SchoolBox.Text);
 
-            if (ComputerInfoInstance.StringToBool(Settings.IniReadValue("Settings", "UseTokens")))
-            {
-                ComputerInfoInstance.SendWithTokens(Settings.IniReadValue("Settings", "Token1"), Settings.IniReadValue("Settings", "Token2"));
+            if (Settings.IniReadValue("Settings", "Token").Length > 0) {
+                ComputerInfoInstance.SendWithTokens(Settings.IniReadValue("Settings", "Token"));
                 Application.Exit();
             }
             else
@@ -209,9 +211,9 @@ namespace Computer_Info
 
             string Response = (string)e.Result;
             if (Response == Assembly.GetExecutingAssembly().GetName().Version.ToString())
-                NewUpdate.Visible = false;
+                UpdateMenuItem.Visible = false;
             else
-                NewUpdate.Visible = true;
+                UpdateMenuItem.Visible = true;
         }
         // Update the application
         public void UpdateFromServer()
@@ -245,14 +247,6 @@ namespace Computer_Info
             AboutBox AboutboxForm = new AboutBox();
             AboutboxForm.Show();
         }
-
-        // When the tokens menu item is clicked, open the tokens form
-        private void tokensToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Tokens TokensForm = new Tokens();
-            TokensForm.Show();
-        }
-
         // When the form is closeing (not hidden), terminate the application
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -281,6 +275,12 @@ namespace Computer_Info
         private void NewUpdate_Click(object sender, EventArgs e)
         {
             UpdateFromServer();
+        }
+
+        private void LoginMenuItem_Click(object sender, EventArgs e)
+        {
+            LoginBox LoginBoxForm = new LoginBox(this);
+            LoginBoxForm.Show();
         }
     
     }

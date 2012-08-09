@@ -458,9 +458,9 @@ namespace ComputerInfoClass
         /// <param name="Token1">The first Token</param>
         /// <param name="Token2">The second Token</param>
         /// <returns>True</returns>
-        public bool SendWithTokens(string Token1, string Token2)
+        public bool SendWithTokens(string Token)
         {
-            string Url = "http://illution.dk/Computerinfo/Tokens.php?Data=" + Convert.ToBase64String(System.Text.UTF8Encoding.UTF8.GetBytes(GetUrlData(false)+"&UseTokens=1&Token1="+Token1+"&Token2="+Token2));
+            string Url = "";
             WebClient Http = new WebClient();
             string Response = Http.DownloadString(Url);
             if (Response != "200")
