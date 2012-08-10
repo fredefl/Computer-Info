@@ -155,6 +155,7 @@ namespace Computer_Info
 
         IniFile Settings;
         ComputerInfoClass ComputerInfoInstance;
+        string WorkingDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Replace("file:///", "")) + @"\";
         string LogString = "Logging Started\r\n";
 
         public void SetToken (string Token)
@@ -180,11 +181,11 @@ namespace Computer_Info
         {
             // Initialize
             InitializeComponent();
-            if (!File.Exists("Settings.ini"))
+            if (!File.Exists(WorkingDirectory + "Settings.ini"))
             {
-                File.WriteAllText(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Replace("file:///", "")) + "/Settings.ini",Computer_Info.Properties.Resources.Settings);
+                File.WriteAllText(WorkingDirectory + "Settings.ini", Computer_Info.Properties.Resources.Settings);
             }
-            Settings = new IniFile(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Replace("file:///", "")) + "/Settings.ini");
+            Settings = new IniFile(WorkingDirectory + "Settings.ini");
             // Get the organization list
             GetOrganizationList();
             // Get the location list
