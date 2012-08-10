@@ -155,6 +155,7 @@ namespace ComputerInfoClass
             public GraphicsCardModelObject model { get; set; }
             public string driver_version { get; set; }
             public string driver_date { get; set; }
+            public string ram_size { get; set; }
             public GraphicsCardScreenSizeObject screen_size { get; set; }
         }
 
@@ -170,6 +171,7 @@ namespace ComputerInfoClass
                 {
                     GraphicsCard.driver_version = mo["DriverVersion"].ToString();
                     GraphicsCard.driver_date = mo["DriverDate"].ToString();
+                    GraphicsCard.ram_size = Math.Round(Convert.ToDouble(mo["AdapterRAM"]) / 1048576).ToString();
                 } 
                 catch { }
 
