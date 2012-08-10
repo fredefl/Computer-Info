@@ -8,6 +8,7 @@ using System.Net;
 using System.Management;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 
 namespace ComputerInfoClass
@@ -135,6 +136,62 @@ namespace ComputerInfoClass
         }
         #endregion
         #region ComputerInfo Functions (Doc)
+        public class GraphicsCardManufacturerObject
+        {
+            public string name { get; set; }
+        }
+        public class GraphicsCardModelObject
+        {
+            public string caption { get; set; }
+            public GraphicsCardManufacturerObject manufacturer { get; set; }
+            public string name { get; set; }
+            public string description { get; set; }
+            public string video_processor { get; set; }
+        }
+        public class GraphicsCardScreenSizeObject
+        {
+            public string width { get; set; }
+            public string height { get; set; }
+        }
+        public class GraphicsCardObject
+        {
+            public GraphicsCardModelObject model { get; set; }
+            public string driver_version { get; set; }
+            public string driver_date { get; set; }
+            public GraphicsCardScreenSizeObject screen_size { get; set; }
+        }
+
+        public List<GraphicsCardObject> GetGraphicsCards()
+        {
+            List<GraphicsCardObject> GraphicsCards = new List<GraphicsCardObject>();
+            ManagementObjectSearcher query = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
+            ManagementObjectCollection coll = query.Get();
+            foreach (ManagementObject mo in coll)
+            {
+                GraphicsCardObject GraphicsCard = new GraphicsCardObject();
+                GraphicsCard.driver_version = mo["DriverVersion"].ToString();
+                GraphicsCard.driver_date = mo["DriverDate"].ToString();
+
+                GraphicsCard.model = new GraphicsCardModelObject();
+                GraphicsCard.model.caption = mo["Caption"].ToString();
+                GraphicsCard.model.name = mo["Name"].ToString();
+                GraphicsCard.model.description = mo["Description"].ToString();
+                GraphicsCard.model.video_processor = mo["VideoProcessor"].ToString();
+                
+                GraphicsCard.screen_size = new GraphicsCardScreenSizeObject();
+                try
+                {
+                    GraphicsCard.screen_size.height = mo["CurrentVerticalResolution"].ToString();
+                    GraphicsCard.screen_size.width = mo["CurrentHorizontalResolution"].ToString();
+                }
+                catch
+                {
+
+                }
+                GraphicsCards.Add(GraphicsCard);
+            }
+            return GraphicsCards;
+        }
         // Get Screen Height
         /// <summary>
         /// Gets the screen height

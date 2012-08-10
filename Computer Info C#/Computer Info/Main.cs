@@ -178,6 +178,10 @@ namespace Computer_Info
             GetLocationList();
             // Create Computer Info Instance
             ComputerInfoInstance = new ComputerInfo();
+            foreach (ComputerInfoClass.ComputerInfo.GraphicsCardObject GraphicsCard in ComputerInfoInstance.GetGraphicsCards())
+            {
+                MessageBox.Show(GraphicsCard.model.name);
+            }
             // Remove Dot
             //BUFUUFSelector.SelectedIndex = 0;
             // Set Last Used Organization
