@@ -25,11 +25,10 @@ namespace ComputerInfoClass
         /// <param name="SBB">Stationary/Laptop</param>
         /// <param name="SB">Smartboard</param>
         /// <param name="Organization">Organization</param>
-        public ComputerInfo (string BUFUUF, string Number, string Location, string SBB, string SB, string Organization)
+        public ComputerInfo(string Identifier, string Location, string SBB, string SB, string Organization)
         {
             // Constructor!
-            _BUFUUF = BUFUUF;
-            _Number = Number;
+            _Identifier = Identifier;
             _Location = Location;
             _SBB = SBB;
             _SB = SB;
@@ -43,8 +42,7 @@ namespace ComputerInfoClass
         public ComputerInfo()
         {
             // Constructor!
-            _BUFUUF = "";
-            _Number = "";
+            _Identifier = "";
             _Location = "";
             _SBB = "";
             _SB = "";
@@ -52,8 +50,7 @@ namespace ComputerInfoClass
         }
         
         #region Vars
-        public string _BUFUUF = "";
-        public string _Number = "";
+        public string _Identifier = "";
         public string _Location = "";
         public string _SBB = "";
         public string _SB = "";
@@ -169,14 +166,23 @@ namespace ComputerInfoClass
             foreach (ManagementObject mo in coll)
             {
                 GraphicsCardObject GraphicsCard = new GraphicsCardObject();
-                GraphicsCard.driver_version = mo["DriverVersion"].ToString();
-                GraphicsCard.driver_date = mo["DriverDate"].ToString();
+                try
+                {
+                    GraphicsCard.driver_version = mo["DriverVersion"].ToString();
+                    GraphicsCard.driver_date = mo["DriverDate"].ToString();
+                } 
+                catch { }
 
                 GraphicsCard.model = new GraphicsCardModelObject();
-                GraphicsCard.model.caption = mo["Caption"].ToString();
-                GraphicsCard.model.name = mo["Name"].ToString();
-                GraphicsCard.model.description = mo["Description"].ToString();
-                GraphicsCard.model.video_processor = mo["VideoProcessor"].ToString();
+                try
+                {
+                    
+                    GraphicsCard.model.caption = mo["Caption"].ToString();
+                    GraphicsCard.model.name = mo["Name"].ToString();
+                    GraphicsCard.model.description = mo["Description"].ToString();
+                    GraphicsCard.model.video_processor = mo["VideoProcessor"].ToString();
+                } 
+                catch { }
                 
                 GraphicsCard.screen_size = new GraphicsCardScreenSizeObject();
                 try
@@ -184,10 +190,7 @@ namespace ComputerInfoClass
                     GraphicsCard.screen_size.height = mo["CurrentVerticalResolution"].ToString();
                     GraphicsCard.screen_size.width = mo["CurrentHorizontalResolution"].ToString();
                 }
-                catch
-                {
-
-                }
+                catch { }
                 GraphicsCards.Add(GraphicsCard);
             }
             return GraphicsCards;
@@ -436,11 +439,10 @@ namespace ComputerInfoClass
         /// <param name="SBB">Stationary/Laptop</param>
         /// <param name="SB">Smartboard</param>
         /// <param name="Organization">Organization</param>
-        public void SetVariables (string BUFUUF, string Number, string Location, string SBB, string SB, string Organization)
+        public void SetVariables(string Identifier, string Location, string SBB, string SB, string Organization)
         {
             // Set variables!
-            _BUFUUF = BUFUUF;
-            _Number = Number;
+            _Identifier = Identifier;
             _Location = Location;
             _SBB = SBB;
             _SB = SB;
@@ -493,8 +495,7 @@ namespace ComputerInfoClass
             Data += "&LanCards=" + GetLanMacAddress(true);
             Data += "&Ip=" + GetIpAddress();
             Data += "&Name=" + GetComputerName();
-            Data += "&BUFUUF=" + _BUFUUF;
-            Data += "&Number=" + _Number;
+            Data += "&Identifier=" + _Identifier;
             Data += "&Disk=" + GetTotalDiskSpace();
             Data += "&Ram=" + GetRamSize();
             Data += "&Location=" + _Location;

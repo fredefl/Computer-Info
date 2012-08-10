@@ -37,8 +37,7 @@
             this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OrganizationLabel = new System.Windows.Forms.Label();
             this.LocationLabel = new System.Windows.Forms.Label();
-            this.NumberBox = new System.Windows.Forms.TextBox();
-            this.BUFUUFSelector = new System.Windows.Forms.ComboBox();
+            this.IdentifierBox = new System.Windows.Forms.TextBox();
             this.BUFUFFLabel = new System.Windows.Forms.Label();
             this.StationarySelector = new System.Windows.Forms.RadioButton();
             this.LaptopSelector = new System.Windows.Forms.RadioButton();
@@ -83,14 +82,14 @@
             // programToolStripMenuItem
             // 
             this.programToolStripMenuItem.Name = "programToolStripMenuItem";
-            this.programToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.programToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.programToolStripMenuItem.Text = "Program";
             this.programToolStripMenuItem.Click += new System.EventHandler(this.programToolStripMenuItem_Click);
             // 
             // cacheToolStripMenuItem
             // 
             this.cacheToolStripMenuItem.Name = "cacheToolStripMenuItem";
-            this.cacheToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cacheToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.cacheToolStripMenuItem.Text = "Cache";
             this.cacheToolStripMenuItem.Click += new System.EventHandler(this.cacheToolStripMenuItem_Click);
             // 
@@ -109,7 +108,7 @@
             this.OrganizationLabel.ForeColor = System.Drawing.Color.Black;
             this.OrganizationLabel.Location = new System.Drawing.Point(9, 29);
             this.OrganizationLabel.Name = "OrganizationLabel";
-            this.OrganizationLabel.Size = new System.Drawing.Size(44, 16);
+            this.OrganizationLabel.Size = new System.Drawing.Size(89, 16);
             this.OrganizationLabel.TabIndex = 4;
             this.OrganizationLabel.Text = "Organisation";
             this.OrganizationLabel.UseMnemonic = false;
@@ -126,24 +125,12 @@
             this.LocationLabel.TabIndex = 5;
             this.LocationLabel.Text = "Lokation";
             // 
-            // NumberBox
+            // IdentifierBox
             // 
-            this.NumberBox.Location = new System.Drawing.Point(83, 138);
-            this.NumberBox.Name = "NumberBox";
-            this.NumberBox.Size = new System.Drawing.Size(119, 20);
-            this.NumberBox.TabIndex = 8;
-            // 
-            // BUFUUFSelector
-            // 
-            this.BUFUUFSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.BUFUUFSelector.FormattingEnabled = true;
-            this.BUFUUFSelector.Items.AddRange(new object[] {
-            "BUF",
-            "UUF"});
-            this.BUFUUFSelector.Location = new System.Drawing.Point(12, 138);
-            this.BUFUUFSelector.Name = "BUFUUFSelector";
-            this.BUFUUFSelector.Size = new System.Drawing.Size(65, 21);
-            this.BUFUUFSelector.TabIndex = 7;
+            this.IdentifierBox.Location = new System.Drawing.Point(12, 138);
+            this.IdentifierBox.Name = "IdentifierBox";
+            this.IdentifierBox.Size = new System.Drawing.Size(190, 20);
+            this.IdentifierBox.TabIndex = 8;
             // 
             // BUFUFFLabel
             // 
@@ -153,9 +140,9 @@
             this.BUFUFFLabel.ForeColor = System.Drawing.Color.Black;
             this.BUFUFFLabel.Location = new System.Drawing.Point(9, 118);
             this.BUFUFFLabel.Name = "BUFUFFLabel";
-            this.BUFUFFLabel.Size = new System.Drawing.Size(122, 16);
+            this.BUFUFFLabel.Size = new System.Drawing.Size(84, 16);
             this.BUFUFFLabel.TabIndex = 9;
-            this.BUFUFFLabel.Text = "BUF/UUF Nummer";
+            this.BUFUFFLabel.Text = "Identifikator";
             // 
             // StationarySelector
             // 
@@ -267,8 +254,7 @@
             this.Controls.Add(this.LaptopSelector);
             this.Controls.Add(this.StationarySelector);
             this.Controls.Add(this.BUFUFFLabel);
-            this.Controls.Add(this.BUFUUFSelector);
-            this.Controls.Add(this.NumberBox);
+            this.Controls.Add(this.IdentifierBox);
             this.Controls.Add(this.LocationLabel);
             this.Controls.Add(this.OrganizationLabel);
             this.Controls.Add(this.MainMenu);
@@ -295,12 +281,11 @@
         private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
         private System.Windows.Forms.Label OrganizationLabel;
         private System.Windows.Forms.Label LocationLabel;
-        private System.Windows.Forms.TextBox NumberBox;
+        private System.Windows.Forms.TextBox IdentifierBox;
         private System.Windows.Forms.Label BUFUFFLabel;
         private System.Windows.Forms.RadioButton StationarySelector;
         private System.Windows.Forms.RadioButton LaptopSelector;
         private System.Windows.Forms.Label ComputerTypeLabel;
-        private System.Windows.Forms.ComboBox BUFUUFSelector;
         private System.Windows.Forms.CheckBox SmartboardSelector;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.TextBox MacAddressBox;

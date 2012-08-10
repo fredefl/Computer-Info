@@ -225,7 +225,7 @@ namespace Computer_Info
         {
             bool SBB;
             if (LaptopSelector.Checked) SBB = true; else SBB = false;
-            ComputerInfoInstance.SetVariables(BUFUUFSelector.Text, NumberBox.Text, LocationBox.Text, ComputerInfoInstance.BoolToString(SBB), ComputerInfoInstance.BoolToString(SmartboardSelector.Checked), OrganizationBox.Text);
+            ComputerInfoInstance.SetVariables(IdentifierBox.Text, LocationBox.Text, ComputerInfoInstance.BoolToString(SBB), ComputerInfoInstance.BoolToString(SmartboardSelector.Checked), OrganizationBox.Text);
 
             if (Settings.IniReadValue("Settings", "Token").Length > 0) {
                 ComputerInfoInstance.SendWithTokens(Settings.IniReadValue("Settings", "Token"));
