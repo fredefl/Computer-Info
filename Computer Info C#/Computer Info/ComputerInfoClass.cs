@@ -73,6 +73,7 @@ namespace ComputerInfo
             public List<GraphicsCardObject> graphics_cards;
             public List<ProcessorObject> processors;
             public List<PrinterObject> printers;
+            public MemoryObject memory;
             public string model;
         }
         public class ComputerInfoObject 
@@ -120,10 +121,24 @@ namespace ComputerInfo
             public ProcessorManufacturerObject manufacturer { get; set; }
         }
         #endregion
+        #region Printer
         public class PrinterObject
         {
             public string name;
         }
+        #endregion
+        #region Memory
+        public class MemoryObject
+        {
+            public string total_physical_memory;
+            public List<MemorySlotObject> slots;
+        }
+        public class MemorySlotObject
+        {
+            public string capacity;
+            public bool empty;
+        }
+        #endregion
         #endregion
         #region Functions (Doc)
         #region Helper Functions (Doc)
@@ -193,6 +208,51 @@ namespace ComputerInfo
         }
         #endregion
         #region ComputerInfo Functions (Doc)
+        public MemoryObject GetMemory()
+        {
+            MemoryObject Memory = new MemoryObject();    
+            List<MemorySlotObject> MemorySlots = new List<MemorySlotObject>();
+            Memory.slots = MemorySlots;
+            // Get used memory slots
+            ManagementObjectSearcher Query = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMemory");
+            ManagementObjectCollection Collection = Query.Get();
+            foreach (ManagementObject MO in Collection)
+            {
+                MemorySlotObject MemorySlot = new MemorySlotObject();
+                MemorySlot.capacity = Math.Round(Convert.ToDouble(MO["Capacity"].ToString()) / 1048576).ToString();
+                MemorySlot.empty = false;
+                MemorySlots.Add(MemorySlot);
+            }
+            // Get empty memory slots
+            Query = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMemoryArray");
+            Collection = Query.Get();
+            int TotalMemorySlots = 0;
+            foreach (ManagementObject MO in Collection)
+            {
+                TotalMemorySlots += Convert.ToInt32(MO["MemoryDevices"].ToString());
+            }
+            int EmptyMemorySlots = TotalMemorySlots - MemorySlots.Count;
+            if (EmptyMemorySlots > 0)
+            {
+                for (int i = 1; i <= EmptyMemorySlots; i++)
+                {
+                    MemorySlotObject MemorySlot = new MemorySlotObject();
+                    MemorySlot.empty = true;
+                    MemorySlots.Add(MemorySlot);
+                }
+            }
+            // Get total physical memory
+            Query = new ManagementObjectSearcher("Select * From Win32_ComputerSystem");
+            Collection = Query.Get();
+            double RamBytes = 0;
+            foreach (ManagementObject MO in Collection)
+            {
+                RamBytes = (Convert.ToDouble(MO["TotalPhysicalMemory"]));
+
+            }
+            Memory.total_physical_memory = Math.Round(RamBytes / 1048576).ToString();
+            return Memory;
+        }
         public List<PrinterObject> GetPrinters()
         {
             List<PrinterObject> Printers = new List<PrinterObject>();
@@ -463,23 +523,6 @@ namespace ComputerInfo
             IpAddress =  addr[0].ToString();
             return IpAddress;
         }
-        // Get Ram Size
-        /// <summary>
-        /// Gets the RAM size
-        /// </summary>
-        /// <returns>The RAM size in MegaBytes</returns>
-        public string GetRamSize()
-        {
-            ManagementObjectSearcher Search = new ManagementObjectSearcher("Select * From Win32_ComputerSystem");
-
-            double Ram_Bytes = 0;
-            foreach (ManagementObject Mobject in Search.Get())
-            {
-                Ram_Bytes = (Convert.ToDouble(Mobject["TotalPhysicalMemory"]));
-                
-            }
-            return (Math.Round(Ram_Bytes / 1048576)).ToString();
-        }
         #endregion
         #region Extra Functions (Doc)
         // Get Unix Timestamp
@@ -533,7 +576,6 @@ namespace ComputerInfo
             Output += "Mac Address: "+GetMacAddress()+"\r\n";
             Output += "Lan Mac Address: "+GetLanMacAddress()+"\r\n";
             Output += "Ip Address: "+GetIpAddress()+"\r\n";
-            Output += "Ram Size: "+GetRamSize()+"\r\n";
             return Output;
         }
         #endregion
@@ -616,6 +658,7 @@ namespace ComputerInfo
             BaseObject.computer.processors = GetProcessors();
             BaseObject.computer.model = GetComputerModel();
             BaseObject.computer.printers = GetPrinters();
+            BaseObject.computer.memory = GetMemory();
             return BaseObject;
         }
         #endregion
