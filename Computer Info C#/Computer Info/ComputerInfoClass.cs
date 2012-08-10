@@ -7,6 +7,7 @@ using System.Net.NetworkInformation;
 using System.Net;
 using System.Management;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 
 namespace ComputerInfoClass
@@ -107,7 +108,7 @@ namespace ComputerInfoClass
         public bool IsXp ()
         {
             System.OperatingSystem osInfo = System.Environment.OSVersion;
-            if (osInfo.Version.Major.ToString() + ":" + osInfo.Version.Minor.ToString() == "5:1")
+            if (osInfo.Version.Major == 5)
                 return true;
             else
                 return false;
