@@ -34,9 +34,9 @@ namespace Ini
 		/// Key Name
 		/// <param name="Value"></param>
 		/// Value Name
-		public void IniWriteValue(string Section,string Key,string Value)
+		public void IniWriteValue(string Section, string Key, string Value)
 		{
-			WritePrivateProfileString(Section,Key,Value,this.path);
+			WritePrivateProfileString(Section, Key, Value, this.path);
 		}
 		
 		/// <summary>
@@ -46,10 +46,10 @@ namespace Ini
 		/// <param name="Key"></param>
 		/// <param name="Path"></param>
 		/// <returns></returns>
-		public string IniReadValue(string Section,string Key)
+		public string IniReadValue(string Section, string Key)
 		{
 			StringBuilder temp = new StringBuilder(255);
-			int i = GetPrivateProfileString(Section,Key,"",temp,255,this.path);
+			int i = GetPrivateProfileString(Section, Key, "", temp, 255, this.path);
 			return temp.ToString();
 
 		}
