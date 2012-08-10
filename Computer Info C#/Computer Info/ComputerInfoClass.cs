@@ -11,9 +11,9 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 
 
-namespace ComputerInfoClass
+namespace ComputerInfo
 {
-    class ComputerInfo
+    class ComputerInfoClass
     {   
         // Full Constructor
         /// <summary>
@@ -25,7 +25,7 @@ namespace ComputerInfoClass
         /// <param name="SBB">Stationary/Laptop</param>
         /// <param name="SB">Smartboard</param>
         /// <param name="Organization">Organization</param>
-        public ComputerInfo(string Identifier, string Location, string SBB, string SB, string Organization)
+        public ComputerInfoClass (string Identifier, string Location, string SBB, string SB, string Organization)
         {
             // Constructor!
             _Identifier = Identifier;
@@ -39,7 +39,7 @@ namespace ComputerInfoClass
         /// <summary>
         /// Makes an empty ComputerInfo Class
         /// </summary>
-        public ComputerInfo()
+        public ComputerInfoClass ()
         {
             // Constructor!
             _Identifier = "";
@@ -66,6 +66,14 @@ namespace ComputerInfoClass
         ManagementObjectSearcher Search = new ManagementObjectSearcher("Select * From Win32_ComputerSystem");
         #endregion
         #region Objects
+        public class ComputerInfoComputerObject
+        {
+            public List<GraphicsCardObject> graphics_cards;
+        }
+        public class ComputerInfoObject 
+        {
+            public ComputerInfoComputerObject computer { get; set; }
+        }
         #region GraphicsCard
         public class GraphicsCardManufacturerObject
         {
@@ -545,6 +553,13 @@ namespace ComputerInfoClass
                     MessageBox.Show("Fejl! Måske er der ikke noget net?");
             Debug.Write(Url);
             return true;
+        }
+        public ComputerInfoObject CreateComputerInfoObject ()
+        {
+            ComputerInfoObject BaseObject = new ComputerInfoObject();
+            BaseObject.computer = new ComputerInfoComputerObject();
+            BaseObject.computer.graphics_cards = GetGraphicsCards();
+            return BaseObject;
         }
         #endregion
     }

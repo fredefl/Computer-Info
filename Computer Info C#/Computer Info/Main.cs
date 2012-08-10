@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using ComputerInfoClass;
+using ComputerInfo;
 using System.Diagnostics;
 using System.Net;
 using System.Reflection;
@@ -154,7 +154,7 @@ namespace Computer_Info
         #endregion
 
         IniFile Settings;
-        ComputerInfo ComputerInfoInstance;
+        ComputerInfoClass ComputerInfoInstance;
         string LogString = "Logging Started\r\n";
 
         public void SetToken (string Token)
@@ -190,11 +190,8 @@ namespace Computer_Info
             // Get the location list
             GetLocationList();
             // Create Computer Info Instance
-            ComputerInfoInstance = new ComputerInfo();
-            foreach (ComputerInfoClass.ComputerInfo.GraphicsCardObject GraphicsCard in ComputerInfoInstance.GetGraphicsCards())
-            {
-                MessageBox.Show(GraphicsCard.ram_size);
-            }
+            ComputerInfoInstance = new ComputerInfoClass();
+            Log(JsonConvert.SerializeObject(ComputerInfoInstance.CreateComputerInfoObject()));
             // Remove Dot
             //BUFUUFSelector.SelectedIndex = 0;
             // Set Last Used Organization
