@@ -65,6 +65,35 @@ namespace ComputerInfoClass
          	out ulong lpTotalNumberOfFreeBytes);
         ManagementObjectSearcher Search = new ManagementObjectSearcher("Select * From Win32_ComputerSystem");
         #endregion
+        #region Objects
+        #region GraphicsCard
+        public class GraphicsCardManufacturerObject
+        {
+            public string detection_string { get; set; }
+        }
+        public class GraphicsCardModelObject
+        {
+            public string caption { get; set; }
+            public GraphicsCardManufacturerObject manufacturer { get; set; }
+            public string name { get; set; }
+            public string description { get; set; }
+            public string video_processor { get; set; }
+        }
+        public class GraphicsCardScreenSizeObject
+        {
+            public string detection_string { get; set; }
+        }
+        public class GraphicsCardObject
+        {
+            public GraphicsCardModelObject model { get; set; }
+            public string driver_version { get; set; }
+            public string driver_date { get; set; }
+            public string ram_size { get; set; }
+            public GraphicsCardScreenSizeObject screen_size { get; set; }
+        }
+        #endregion
+
+        #endregion
         #region Functions (Doc)
         #region Helper Functions (Doc)
         // Get Cmd Output
@@ -133,32 +162,11 @@ namespace ComputerInfoClass
         }
         #endregion
         #region ComputerInfo Functions (Doc)
-        public class GraphicsCardManufacturerObject
-        {
-            public string name { get; set; }
-        }
-        public class GraphicsCardModelObject
-        {
-            public string caption { get; set; }
-            public GraphicsCardManufacturerObject manufacturer { get; set; }
-            public string name { get; set; }
-            public string description { get; set; }
-            public string video_processor { get; set; }
-        }
-        public class GraphicsCardScreenSizeObject
-        {
-            public string width { get; set; }
-            public string height { get; set; }
-        }
-        public class GraphicsCardObject
-        {
-            public GraphicsCardModelObject model { get; set; }
-            public string driver_version { get; set; }
-            public string driver_date { get; set; }
-            public string ram_size { get; set; }
-            public GraphicsCardScreenSizeObject screen_size { get; set; }
-        }
-
+        // Get Graphics Cards
+        /// <summary>
+        /// Gets a list of graphics cards
+        /// </summary>
+        /// <returns>A list of graphics cards</returns>
         public List<GraphicsCardObject> GetGraphicsCards()
         {
             List<GraphicsCardObject> GraphicsCards = new List<GraphicsCardObject>();
@@ -172,27 +180,33 @@ namespace ComputerInfoClass
                     GraphicsCard.driver_version = mo["DriverVersion"].ToString();
                     GraphicsCard.driver_date = mo["DriverDate"].ToString();
                     GraphicsCard.ram_size = Math.Round(Convert.ToDouble(mo["AdapterRAM"]) / 1048576).ToString();
-                } 
+                }
                 catch { }
 
                 GraphicsCard.model = new GraphicsCardModelObject();
                 try
                 {
-                    
                     GraphicsCard.model.caption = mo["Caption"].ToString();
                     GraphicsCard.model.name = mo["Name"].ToString();
                     GraphicsCard.model.description = mo["Description"].ToString();
                     GraphicsCard.model.video_processor = mo["VideoProcessor"].ToString();
-                } 
+                }
                 catch { }
-                
+
+                GraphicsCard.model.manufacturer = new GraphicsCardManufacturerObject();
+                try
+                {
+                    GraphicsCard.model.manufacturer.detection_string = mo["Name"].ToString();
+                }
+                catch { }
+
                 GraphicsCard.screen_size = new GraphicsCardScreenSizeObject();
                 try
                 {
-                    GraphicsCard.screen_size.height = mo["CurrentVerticalResolution"].ToString();
-                    GraphicsCard.screen_size.width = mo["CurrentHorizontalResolution"].ToString();
+                    GraphicsCard.screen_size.detection_string = mo["CurrentHorizontalResolution"].ToString() + "x" + mo["CurrentVerticalResolution"].ToString();
                 }
                 catch { }
+
                 GraphicsCards.Add(GraphicsCard);
             }
             return GraphicsCards;
