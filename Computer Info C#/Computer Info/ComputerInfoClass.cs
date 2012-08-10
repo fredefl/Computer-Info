@@ -9,6 +9,7 @@ using System.Management;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.IO;
 
 
 namespace ComputerInfo
@@ -66,14 +67,17 @@ namespace ComputerInfo
         ManagementObjectSearcher Search = new ManagementObjectSearcher("Select * From Win32_ComputerSystem");
         #endregion
         #region Objects
+        #region Computer Info
         public class ComputerInfoComputerObject
         {
             public List<GraphicsCardObject> graphics_cards;
+            public List<ProcessorObject> processors;
         }
         public class ComputerInfoObject 
         {
             public ComputerInfoComputerObject computer { get; set; }
         }
+        #endregion
         #region GraphicsCard
         public class GraphicsCardManufacturerObject
         {
@@ -100,7 +104,20 @@ namespace ComputerInfo
             public GraphicsCardScreenSizeObject screen_size { get; set; }
         }
         #endregion
+        #region Processor
+        public class ProcessorManufacturerObject
+        {
+            public string detection_string { get; set; }
+        }
 
+        public class ProcessorObject
+        {
+            public string cores { get; set; }
+            public string clock_speed { get; set; }
+            public string threads { get; set; }
+            public ProcessorManufacturerObject manufacturer { get; set; }
+        }
+        #endregion
         #endregion
         #region Functions (Doc)
         #region Helper Functions (Doc)
@@ -170,6 +187,33 @@ namespace ComputerInfo
         }
         #endregion
         #region ComputerInfo Functions (Doc)
+        public List<ProcessorObject> GetProcessors ()
+        {
+            List<ProcessorObject> Processors = new List<ProcessorObject>();
+            ManagementObjectSearcher Query = new ManagementObjectSearcher("SELECT * FROM Win32_Processor");
+            ManagementObjectCollection Collection = Query.Get();
+            foreach (ManagementObject MO in Collection)
+            {
+                ProcessorObject Processor = new ProcessorObject();
+                try
+                {
+                    Processor.manufacturer = new ProcessorManufacturerObject();
+                    Processor.manufacturer.detection_string = MO["Name"].ToString();
+                }
+                catch { }
+
+                try
+                {
+                    Processor.clock_speed = MO["MaxClockSpeed"].ToString();
+                    Processor.cores = MO["NumberOfCores"].ToString();
+                    Processor.threads = MO["NumberOfLogicalProcessors"].ToString();
+                }
+                catch { }
+
+                Processors.Add(Processor);
+            }
+            return Processors;
+        }
         // Get Graphics Cards
         /// <summary>
         /// Gets a list of graphics cards
@@ -178,40 +222,40 @@ namespace ComputerInfo
         public List<GraphicsCardObject> GetGraphicsCards()
         {
             List<GraphicsCardObject> GraphicsCards = new List<GraphicsCardObject>();
-            ManagementObjectSearcher query = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
-            ManagementObjectCollection coll = query.Get();
-            foreach (ManagementObject mo in coll)
+            ManagementObjectSearcher Query = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
+            ManagementObjectCollection Collection = Query.Get();
+            foreach (ManagementObject MO in Collection)
             {
                 GraphicsCardObject GraphicsCard = new GraphicsCardObject();
                 try
                 {
-                    GraphicsCard.driver_version = mo["DriverVersion"].ToString();
-                    GraphicsCard.driver_date = mo["DriverDate"].ToString();
-                    GraphicsCard.ram_size = Math.Round(Convert.ToDouble(mo["AdapterRAM"]) / 1048576).ToString();
+                    GraphicsCard.driver_version = MO["DriverVersion"].ToString();
+                    GraphicsCard.driver_date = MO["DriverDate"].ToString();
+                    GraphicsCard.ram_size = Math.Round(Convert.ToDouble(MO["AdapterRAM"]) / 1048576).ToString();
                 }
                 catch { }
 
                 GraphicsCard.model = new GraphicsCardModelObject();
                 try
                 {
-                    GraphicsCard.model.caption = mo["Caption"].ToString();
-                    GraphicsCard.model.name = mo["Name"].ToString();
-                    GraphicsCard.model.description = mo["Description"].ToString();
-                    GraphicsCard.model.video_processor = mo["VideoProcessor"].ToString();
+                    GraphicsCard.model.caption = MO["Caption"].ToString();
+                    GraphicsCard.model.name = MO["Name"].ToString();
+                    GraphicsCard.model.description = MO["Description"].ToString();
+                    GraphicsCard.model.video_processor = MO["VideoProcessor"].ToString();
                 }
                 catch { }
 
                 GraphicsCard.model.manufacturer = new GraphicsCardManufacturerObject();
                 try
                 {
-                    GraphicsCard.model.manufacturer.detection_string = mo["Name"].ToString();
+                    GraphicsCard.model.manufacturer.detection_string = MO["Name"].ToString();
                 }
                 catch { }
 
                 GraphicsCard.screen_size = new GraphicsCardScreenSizeObject();
                 try
                 {
-                    GraphicsCard.screen_size.detection_string = mo["CurrentHorizontalResolution"].ToString() + "x" + mo["CurrentVerticalResolution"].ToString();
+                    GraphicsCard.screen_size.detection_string = MO["CurrentHorizontalResolution"].ToString() + "x" + MO["CurrentVerticalResolution"].ToString();
                 }
                 catch { }
 
@@ -543,15 +587,31 @@ namespace ComputerInfo
         /// <returns>True</returns>
         public bool SendWithTokens(string Token)
         {
-            string Url = "";
-            WebClient Http = new WebClient();
-            string Response = Http.DownloadString(Url);
-            if (Response != "200")
-                if (Response == "403")
-                    MessageBox.Show("Forkerte Tokens");
-                else
-                    MessageBox.Show("Fejl! Måske er der ikke noget net?");
-            Debug.Write(Url);
+            HttpWebRequest Request = (HttpWebRequest)
+            WebRequest.Create(Computer_Info.Properties.Settings.Default.BaseUrl + "client/computer?dev=true&foramt=json"); 
+            Request.KeepAlive = false;
+            Request.ProtocolVersion = HttpVersion.Version10;
+            Request.Method = "POST";
+
+            byte[] PostBytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(CreateComputerInfoObject()));
+
+            Request.ContentType = "text/json";
+            Request.ContentLength = PostBytes.Length;
+            Stream RequestStream = Request.GetRequestStream();
+
+            RequestStream.Write(PostBytes, 0, PostBytes.Length);
+            RequestStream.Close();
+
+            HttpWebResponse Response = (HttpWebResponse) Request.GetResponse();
+            Stream ResponseStream = Response.GetResponseStream();
+            string ResponseString;
+            using (StreamReader Reader = new StreamReader(ResponseStream))
+            {
+                ResponseString = Reader.ReadToEnd();
+            }
+            MessageBox.Show(ResponseString);
+            int StatusCode = Convert.ToInt32(Response.StatusCode);
+
             return true;
         }
         public ComputerInfoObject CreateComputerInfoObject ()
@@ -559,6 +619,7 @@ namespace ComputerInfo
             ComputerInfoObject BaseObject = new ComputerInfoObject();
             BaseObject.computer = new ComputerInfoComputerObject();
             BaseObject.computer.graphics_cards = GetGraphicsCards();
+            BaseObject.computer.processors = GetProcessors();
             return BaseObject;
         }
         #endregion
