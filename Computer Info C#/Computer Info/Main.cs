@@ -164,6 +164,14 @@ namespace Computer_Info
 
         public void OpenLoginBox(bool SaveAfterwards = false)
         {
+            foreach (Form CurrentForm in Application.OpenForms)
+            {
+                if (CurrentForm is LoginBox)
+                {
+                    CurrentForm.BringToFront();
+                    return;
+                }
+            }
             LoginBox LoginBoxForm = new LoginBox(this, SaveAfterwards);
             LoginBoxForm.Show();
         }
@@ -180,7 +188,7 @@ namespace Computer_Info
             ComputerInfoInstance = new ComputerInfo();
             foreach (ComputerInfoClass.ComputerInfo.GraphicsCardObject GraphicsCard in ComputerInfoInstance.GetGraphicsCards())
             {
-                MessageBox.Show(GraphicsCard.model.name);
+                MessageBox.Show(GraphicsCard.ram_size);
             }
             // Remove Dot
             //BUFUUFSelector.SelectedIndex = 0;
@@ -338,6 +346,14 @@ namespace Computer_Info
         // When the about menu item is clicked, open the about form
         private void omToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            foreach (Form CurrentForm in Application.OpenForms)
+            {
+                if (CurrentForm is AboutBox)
+                {
+                    CurrentForm.BringToFront();
+                    return;
+                }
+            }
             AboutBox AboutboxForm = new AboutBox();
             AboutboxForm.Show();
         }
