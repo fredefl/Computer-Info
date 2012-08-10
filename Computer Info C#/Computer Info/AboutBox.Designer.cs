@@ -164,10 +164,10 @@ namespace Computer_Info
             // 
             this.ApplicationNameLabel.AutoSize = true;
             this.ApplicationNameLabel.BackColor = System.Drawing.Color.Transparent;
-            this.ApplicationNameLabel.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ApplicationNameLabel.Location = new System.Drawing.Point(9, 10);
+            this.ApplicationNameLabel.Font = new System.Drawing.Font("Arial", 22F);
+            this.ApplicationNameLabel.Location = new System.Drawing.Point(9, 15);
             this.ApplicationNameLabel.Name = "ApplicationNameLabel";
-            this.ApplicationNameLabel.Size = new System.Drawing.Size(228, 45);
+            this.ApplicationNameLabel.Size = new System.Drawing.Size(202, 35);
             this.ApplicationNameLabel.TabIndex = 1;
             this.ApplicationNameLabel.Text = "Computer Info";
             // 
@@ -175,7 +175,7 @@ namespace Computer_Info
             // 
             this.VersionLabel.AutoSize = true;
             this.VersionLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VersionLabel.Location = new System.Drawing.Point(14, 55);
+            this.VersionLabel.Location = new System.Drawing.Point(15, 52);
             this.VersionLabel.Name = "VersionLabel";
             this.VersionLabel.Size = new System.Drawing.Size(48, 15);
             this.VersionLabel.TabIndex = 2;
