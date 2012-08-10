@@ -191,7 +191,8 @@ namespace Computer_Info
             GetLocationList();
             // Create Computer Info Instance
             ComputerInfoInstance = new ComputerInfoClass();
-            Log(JsonConvert.SerializeObject(ComputerInfoInstance.CreateComputerInfoObject()));
+            Log(JsonConvert.SerializeObject(ComputerInfoInstance.CreateComputerInfoObject(),Formatting.Indented));
+            Log(ComputerInfoInstance.DebugToText());
             // Remove Dot
             //BUFUUFSelector.SelectedIndex = 0;
             // Set Last Used Organization

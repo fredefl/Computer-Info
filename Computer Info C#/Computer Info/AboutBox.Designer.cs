@@ -32,6 +32,7 @@ namespace Computer_Info
             this.BottomPanel = new System.Windows.Forms.Panel();
             this.SeperatorPanel = new System.Windows.Forms.Panel();
             this.DisclaimerLabel = new System.Windows.Forms.Label();
+            this.VersionStatusImage = new System.Windows.Forms.PictureBox();
             this.VersionStatusLabel = new System.Windows.Forms.Label();
             this.WebsiteLinkLabel = new System.Windows.Forms.LinkLabel();
             this.GitHubLinkLabel = new System.Windows.Forms.LinkLabel();
@@ -40,7 +41,6 @@ namespace Computer_Info
             this.OkButton = new System.Windows.Forms.Button();
             this.ApplicationNameLabel = new System.Windows.Forms.Label();
             this.VersionLabel = new System.Windows.Forms.Label();
-            this.VersionStatusImage = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VersionStatusImage)).BeginInit();
@@ -61,7 +61,7 @@ namespace Computer_Info
             this.BottomPanel.Controls.Add(this.OkButton);
             this.BottomPanel.Location = new System.Drawing.Point(-9, 134);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(388, 120);
+            this.BottomPanel.Size = new System.Drawing.Size(399, 120);
             this.BottomPanel.TabIndex = 0;
             // 
             // SeperatorPanel
@@ -82,6 +82,15 @@ namespace Computer_Info
             this.DisclaimerLabel.Size = new System.Drawing.Size(340, 14);
             this.DisclaimerLabel.TabIndex = 9;
             this.DisclaimerLabel.Text = "Vi er på ingen på ansvarlige for skader dette program måtte forvolde.";
+            // 
+            // VersionStatusImage
+            // 
+            this.VersionStatusImage.Image = global::Computer_Info.Properties.Resources.Loading;
+            this.VersionStatusImage.Location = new System.Drawing.Point(26, 78);
+            this.VersionStatusImage.Name = "VersionStatusImage";
+            this.VersionStatusImage.Size = new System.Drawing.Size(16, 16);
+            this.VersionStatusImage.TabIndex = 8;
+            this.VersionStatusImage.TabStop = false;
             // 
             // VersionStatusLabel
             // 
@@ -143,7 +152,7 @@ namespace Computer_Info
             // 
             // OkButton
             // 
-            this.OkButton.Location = new System.Drawing.Point(294, 74);
+            this.OkButton.Location = new System.Drawing.Point(305, 74);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 23);
             this.OkButton.TabIndex = 2;
@@ -154,10 +163,11 @@ namespace Computer_Info
             // ApplicationNameLabel
             // 
             this.ApplicationNameLabel.AutoSize = true;
-            this.ApplicationNameLabel.Font = new System.Drawing.Font("Arial", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ApplicationNameLabel.Location = new System.Drawing.Point(9, 18);
+            this.ApplicationNameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.ApplicationNameLabel.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ApplicationNameLabel.Location = new System.Drawing.Point(9, 10);
             this.ApplicationNameLabel.Name = "ApplicationNameLabel";
-            this.ApplicationNameLabel.Size = new System.Drawing.Size(198, 33);
+            this.ApplicationNameLabel.Size = new System.Drawing.Size(228, 45);
             this.ApplicationNameLabel.TabIndex = 1;
             this.ApplicationNameLabel.Text = "Computer Info";
             // 
@@ -171,19 +181,10 @@ namespace Computer_Info
             this.VersionLabel.TabIndex = 2;
             this.VersionLabel.Text = "Version";
             // 
-            // VersionStatusImage
-            // 
-            this.VersionStatusImage.Image = global::Computer_Info.Properties.Resources.Loading;
-            this.VersionStatusImage.Location = new System.Drawing.Point(26, 78);
-            this.VersionStatusImage.Name = "VersionStatusImage";
-            this.VersionStatusImage.Size = new System.Drawing.Size(16, 16);
-            this.VersionStatusImage.TabIndex = 8;
-            this.VersionStatusImage.TabStop = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(200, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(220, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(353, 335);
             this.pictureBox1.TabIndex = 3;
@@ -195,7 +196,7 @@ namespace Computer_Info
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(372, 242);
+            this.ClientSize = new System.Drawing.Size(383, 242);
             this.Controls.Add(this.VersionLabel);
             this.Controls.Add(this.ApplicationNameLabel);
             this.Controls.Add(this.BottomPanel);
