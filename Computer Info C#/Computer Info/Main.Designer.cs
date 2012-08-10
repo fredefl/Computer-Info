@@ -32,8 +32,10 @@
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.LoginMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UpdateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.programToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cacheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.SchoolLabel = new System.Windows.Forms.Label();
+            this.OrganizationLabel = new System.Windows.Forms.Label();
             this.LocationLabel = new System.Windows.Forms.Label();
             this.NumberBox = new System.Windows.Forms.TextBox();
             this.BUFUUFSelector = new System.Windows.Forms.ComboBox();
@@ -71,10 +73,26 @@
             // 
             // UpdateMenuItem
             // 
+            this.UpdateMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.programToolStripMenuItem,
+            this.cacheToolStripMenuItem});
             this.UpdateMenuItem.Name = "UpdateMenuItem";
             this.UpdateMenuItem.Size = new System.Drawing.Size(65, 20);
             this.UpdateMenuItem.Text = "Opdater";
-            this.UpdateMenuItem.Click += new System.EventHandler(this.NewUpdate_Click);
+            // 
+            // programToolStripMenuItem
+            // 
+            this.programToolStripMenuItem.Name = "programToolStripMenuItem";
+            this.programToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.programToolStripMenuItem.Text = "Program";
+            this.programToolStripMenuItem.Click += new System.EventHandler(this.programToolStripMenuItem_Click);
+            // 
+            // cacheToolStripMenuItem
+            // 
+            this.cacheToolStripMenuItem.Name = "cacheToolStripMenuItem";
+            this.cacheToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cacheToolStripMenuItem.Text = "Cache";
+            this.cacheToolStripMenuItem.Click += new System.EventHandler(this.cacheToolStripMenuItem_Click);
             // 
             // AboutMenuItem
             // 
@@ -83,18 +101,18 @@
             this.AboutMenuItem.Text = "Om";
             this.AboutMenuItem.Click += new System.EventHandler(this.omToolStripMenuItem_Click);
             // 
-            // SchoolLabel
+            // OrganizationLabel
             // 
-            this.SchoolLabel.AutoSize = true;
-            this.SchoolLabel.BackColor = System.Drawing.Color.Transparent;
-            this.SchoolLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SchoolLabel.ForeColor = System.Drawing.Color.Black;
-            this.SchoolLabel.Location = new System.Drawing.Point(9, 29);
-            this.SchoolLabel.Name = "SchoolLabel";
-            this.SchoolLabel.Size = new System.Drawing.Size(44, 16);
-            this.SchoolLabel.TabIndex = 4;
-            this.SchoolLabel.Text = "Skole";
-            this.SchoolLabel.UseMnemonic = false;
+            this.OrganizationLabel.AutoSize = true;
+            this.OrganizationLabel.BackColor = System.Drawing.Color.Transparent;
+            this.OrganizationLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OrganizationLabel.ForeColor = System.Drawing.Color.Black;
+            this.OrganizationLabel.Location = new System.Drawing.Point(9, 29);
+            this.OrganizationLabel.Name = "OrganizationLabel";
+            this.OrganizationLabel.Size = new System.Drawing.Size(44, 16);
+            this.OrganizationLabel.TabIndex = 4;
+            this.OrganizationLabel.Text = "Organisation";
+            this.OrganizationLabel.UseMnemonic = false;
             // 
             // LocationLabel
             // 
@@ -252,7 +270,7 @@
             this.Controls.Add(this.BUFUUFSelector);
             this.Controls.Add(this.NumberBox);
             this.Controls.Add(this.LocationLabel);
-            this.Controls.Add(this.SchoolLabel);
+            this.Controls.Add(this.OrganizationLabel);
             this.Controls.Add(this.MainMenu);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -275,7 +293,7 @@
 
         private System.Windows.Forms.MenuStrip MainMenu;
         private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
-        private System.Windows.Forms.Label SchoolLabel;
+        private System.Windows.Forms.Label OrganizationLabel;
         private System.Windows.Forms.Label LocationLabel;
         private System.Windows.Forms.TextBox NumberBox;
         private System.Windows.Forms.Label BUFUFFLabel;
@@ -290,6 +308,8 @@
         private System.Windows.Forms.ComboBox LocationBox;
         private System.Windows.Forms.ToolStripMenuItem LoginMenuItem;
         private System.Windows.Forms.ComboBox OrganizationBox;
+        private System.Windows.Forms.ToolStripMenuItem programToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cacheToolStripMenuItem;
 
     }
 }

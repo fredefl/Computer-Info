@@ -32,8 +32,7 @@ namespace Computer_Info
             this.BottomPanel = new System.Windows.Forms.Panel();
             this.SeperatorPanel = new System.Windows.Forms.Panel();
             this.DisclaimerLabel = new System.Windows.Forms.Label();
-            this.VersionStatusImage = new System.Windows.Forms.PictureBox();
-            this.VersionFeedbackLabel = new System.Windows.Forms.Label();
+            this.VersionStatusLabel = new System.Windows.Forms.Label();
             this.WebsiteLinkLabel = new System.Windows.Forms.LinkLabel();
             this.GitHubLinkLabel = new System.Windows.Forms.LinkLabel();
             this.OpenSourceInfoLabel = new System.Windows.Forms.Label();
@@ -41,6 +40,7 @@ namespace Computer_Info
             this.OkButton = new System.Windows.Forms.Button();
             this.ApplicationNameLabel = new System.Windows.Forms.Label();
             this.VersionLabel = new System.Windows.Forms.Label();
+            this.VersionStatusImage = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VersionStatusImage)).BeginInit();
@@ -53,7 +53,7 @@ namespace Computer_Info
             this.BottomPanel.Controls.Add(this.SeperatorPanel);
             this.BottomPanel.Controls.Add(this.DisclaimerLabel);
             this.BottomPanel.Controls.Add(this.VersionStatusImage);
-            this.BottomPanel.Controls.Add(this.VersionFeedbackLabel);
+            this.BottomPanel.Controls.Add(this.VersionStatusLabel);
             this.BottomPanel.Controls.Add(this.WebsiteLinkLabel);
             this.BottomPanel.Controls.Add(this.GitHubLinkLabel);
             this.BottomPanel.Controls.Add(this.OpenSourceInfoLabel);
@@ -83,24 +83,15 @@ namespace Computer_Info
             this.DisclaimerLabel.TabIndex = 9;
             this.DisclaimerLabel.Text = "Vi er på ingen på ansvarlige for skader dette program måtte forvolde.";
             // 
-            // VersionStatusImage
+            // VersionStatusLabel
             // 
-            this.VersionStatusImage.Image = ((System.Drawing.Image)(resources.GetObject("VersionStatusImage.Image")));
-            this.VersionStatusImage.Location = new System.Drawing.Point(26, 78);
-            this.VersionStatusImage.Name = "VersionStatusImage";
-            this.VersionStatusImage.Size = new System.Drawing.Size(16, 16);
-            this.VersionStatusImage.TabIndex = 8;
-            this.VersionStatusImage.TabStop = false;
-            // 
-            // VersionFeedbackLabel
-            // 
-            this.VersionFeedbackLabel.AutoSize = true;
-            this.VersionFeedbackLabel.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.VersionFeedbackLabel.Location = new System.Drawing.Point(46, 79);
-            this.VersionFeedbackLabel.Name = "VersionFeedbackLabel";
-            this.VersionFeedbackLabel.Size = new System.Drawing.Size(144, 14);
-            this.VersionFeedbackLabel.TabIndex = 7;
-            this.VersionFeedbackLabel.Text = "Du kører den nyeste version";
+            this.VersionStatusLabel.AutoSize = true;
+            this.VersionStatusLabel.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.VersionStatusLabel.Location = new System.Drawing.Point(46, 79);
+            this.VersionStatusLabel.Name = "VersionStatusLabel";
+            this.VersionStatusLabel.Size = new System.Drawing.Size(134, 14);
+            this.VersionStatusLabel.TabIndex = 7;
+            this.VersionStatusLabel.Text = "Søger efter opdateringer...";
             // 
             // WebsiteLinkLabel
             // 
@@ -180,6 +171,15 @@ namespace Computer_Info
             this.VersionLabel.TabIndex = 2;
             this.VersionLabel.Text = "Version";
             // 
+            // VersionStatusImage
+            // 
+            this.VersionStatusImage.Image = global::Computer_Info.Properties.Resources.Loading;
+            this.VersionStatusImage.Location = new System.Drawing.Point(26, 78);
+            this.VersionStatusImage.Name = "VersionStatusImage";
+            this.VersionStatusImage.Size = new System.Drawing.Size(16, 16);
+            this.VersionStatusImage.TabIndex = 8;
+            this.VersionStatusImage.TabStop = false;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -231,7 +231,7 @@ namespace Computer_Info
         private Label VersionLabel;
         private LinkLabel WebsiteLinkLabel;
         private PictureBox VersionStatusImage;
-        private Label VersionFeedbackLabel;
+        private Label VersionStatusLabel;
         private Label DisclaimerLabel;
         private PictureBox pictureBox1;
 

@@ -13,11 +13,13 @@ namespace Computer_Info
     public partial class LoginBox : Form
     {
         private Main ParentForm;
+        private bool SaveAfterwards;
 
-        public LoginBox (Main _ParentForm)
+        public LoginBox (Main _ParentForm, bool _SaveAfterwards)
         {
             InitializeComponent();
             ParentForm = _ParentForm;
+            SaveAfterwards = _SaveAfterwards;
         }
 
         private void LoginBox_Shown(object sender, EventArgs e)
@@ -30,6 +32,11 @@ namespace Computer_Info
             if (LoginBrowser.Url.ToString() == "")
             {
                 ParentForm.SetToken(Regex.Replace(LoginBrowser.DocumentText, @"<[^>]*>", String.Empty));
+                this.Hide();
+                if (SaveAfterwards)
+                {
+                    ParentForm.Save_Click(null, null);
+                }
             }
         }
     }

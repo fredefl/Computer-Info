@@ -6,6 +6,10 @@ namespace Computer_Info
 {
     partial class AboutBox : Form
     {
+        /*
+         *  VersionStatusImage.Image = Computer_Info.Properties.Resources.Error;
+         *  VersionStatusLabel.Text = "Du kører ikke den nyeste version!";
+         * */
         public AboutBox()
         {
             InitializeComponent();

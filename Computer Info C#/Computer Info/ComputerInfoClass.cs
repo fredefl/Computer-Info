@@ -19,19 +19,19 @@ namespace ComputerInfoClass
         /// </summary>
         /// <param name="BUFUUF">Wherever it's BUF or UUF</param>
         /// <param name="Number">The BUF/UUF Number</param>
-        /// <param name="Room">Room</param>
+        /// <param name="Location">Location</param>
         /// <param name="SBB">Stationary/Laptop</param>
         /// <param name="SB">Smartboard</param>
-        /// <param name="School">School</param>
-        public ComputerInfo (string BUFUUF, string Number, string Room, string SBB, string SB, string School)
+        /// <param name="Organization">Organization</param>
+        public ComputerInfo (string BUFUUF, string Number, string Location, string SBB, string SB, string Organization)
         {
             // Constructor!
             _BUFUUF = BUFUUF;
             _Number = Number;
-            _Room = Room;
+            _Location = Location;
             _SBB = SBB;
             _SB = SB;
-            _School = School;
+            _Organization = Organization;
         }
         
         // Empty Constructor
@@ -43,19 +43,19 @@ namespace ComputerInfoClass
             // Constructor!
             _BUFUUF = "";
             _Number = "";
-            _Room = "";
+            _Location = "";
             _SBB = "";
             _SB = "";
-            _School = "";
+            _Organization = "";
         }
         
         #region Vars
         public string _BUFUUF = "";
         public string _Number = "";
-        public string _Room = "";
+        public string _Location = "";
         public string _SBB = "";
         public string _SB = "";
-        public string _School = "";
+        public string _Organization = "";
         #endregion      
         #region Dll
         [DllImport("kernel32", CharSet = CharSet.Auto)]
@@ -374,19 +374,19 @@ namespace ComputerInfoClass
         /// </summary>
         /// <param name="BUFUUF">Wherever it's BUF or UUF</param>
         /// <param name="Number">The BUF/UUF Number</param>
-        /// <param name="Room">Room</param>
+        /// <param name="Location">Location</param>
         /// <param name="SBB">Stationary/Laptop</param>
         /// <param name="SB">Smartboard</param>
-        /// <param name="School">School</param>
-        public void SetVariables (string BUFUUF, string Number, string Room, string SBB, string SB, string School)
+        /// <param name="Organization">Organization</param>
+        public void SetVariables (string BUFUUF, string Number, string Location, string SBB, string SB, string Organization)
         {
             // Set variables!
             _BUFUUF = BUFUUF;
             _Number = Number;
-            _Room = Room;
+            _Location = Location;
             _SBB = SBB;
             _SB = SB;
-            _School = School;
+            _Organization = Organization;
         }
         #endregion
         #endregion
@@ -429,7 +429,7 @@ namespace ComputerInfoClass
             // Data += "&=" + ;
             Data += "Method=Computerinfo";
             Data += "&C=1";
-            Data += "&School=" + _School;
+            Data += "&Organization=" + _Organization;
             Data += "&Mac=" + GetLanMacAddress(false);
             Data += "&LanMac=" + GetLanMacAddress(false);
             Data += "&LanCards=" + GetLanMacAddress(true);
@@ -439,7 +439,7 @@ namespace ComputerInfoClass
             Data += "&Number=" + _Number;
             Data += "&Disk=" + GetTotalDiskSpace();
             Data += "&Ram=" + GetRamSize();
-            Data += "&Room=" + _Room;
+            Data += "&Location=" + _Location;
             Data += "&Model=" + GetComputerModel();
             Data += "&Serial=" + GetComputerSerial();
             Data += "&SBB=" + _SBB;

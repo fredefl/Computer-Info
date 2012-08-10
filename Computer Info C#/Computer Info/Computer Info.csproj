@@ -169,6 +169,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <None Include="Resources\Loading.gif" />
+    <None Include="Resources\Checkmark.png" />
+    <None Include="Resources\Error.png" />
     <None Include="Resources\RedBar.png" />
     <None Include="Resources\GreenBar.png" />
   </ItemGroup>

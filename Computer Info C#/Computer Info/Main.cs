@@ -20,7 +20,7 @@ namespace Computer_Info
         {
             public int id { get; set; }
             public string name { get; set; }
-            public string room_number { get; set; }
+            public string Location_number { get; set; }
             public string organization { get; set; }
         }
 
@@ -47,11 +47,11 @@ namespace Computer_Info
             }
             catch (WebException)
             {
-                Log("Error getting room list");
+                Log("Error getting Location list");
             }
             catch (Exception)
             {
-                Log("Error getting room list");
+                Log("Error getting Location list");
             }
         }
 
@@ -72,7 +72,7 @@ namespace Computer_Info
             }
             catch (Exception)
             {
-                Log("Error getting room list");
+                Log("Error getting Location list");
             }
         }
         #endregion
@@ -152,7 +152,7 @@ namespace Computer_Info
             }
         }
         #endregion
-
+       
         IniFile Settings = new IniFile(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Replace("file:///", "")) + "/Settings.ini");
         ComputerInfo ComputerInfoInstance;
         string LogString = "Logging Started\r\n";
@@ -160,6 +160,12 @@ namespace Computer_Info
         public void SetToken (string Token)
         {
             Settings.IniWriteValue("Settings", "Token", Token);
+        }
+
+        public void OpenLoginBox(bool SaveAfterwards = false)
+        {
+            LoginBox LoginBoxForm = new LoginBox(this, SaveAfterwards);
+            LoginBoxForm.Show();
         }
 
         public Main()
@@ -173,13 +179,13 @@ namespace Computer_Info
             // Create Computer Info Instance
             ComputerInfoInstance = new ComputerInfo();
             // Remove Dot
-            BUFUUFSelector.SelectedIndex = 0;
-            // Set Last Used School
-            OrganizationBox.Text = Settings.IniReadValue("Settings", "School");
+            //BUFUUFSelector.SelectedIndex = 0;
+            // Set Last Used Organization
+            OrganizationBox.Text = Settings.IniReadValue("Settings", "Organization");
             // Set Last Used Location
             LocationBox.Text = Settings.IniReadValue("Settings", "Location");
             // Initialize WMIC
-            //ComputerInfoInstance.GetComputerModel();
+            ComputerInfoInstance.GetComputerModel();
             // Get and Set LanMac
             string MacAddress = ComputerInfoInstance.GetLanMacAddress(false);
             MacAddressBox.Text = MacAddress;
@@ -211,7 +217,7 @@ namespace Computer_Info
                 File.Delete("ComputerInfoUpdater.exe");
         }
 
-        private void Save_Click(object sender, EventArgs e)
+        public void Save_Click(object sender, EventArgs e)
         {
             bool SBB;
             if (LaptopSelector.Checked) SBB = true; else SBB = false;
@@ -223,7 +229,7 @@ namespace Computer_Info
             }
             else
             {
-                MessageBox.Show("Tokens er ikke indtastet");
+                OpenLoginBox(true);
             }
             Settings.IniWriteValue("Settings", "Organization", OrganizationBox.Text);
             Settings.IniWriteValue("Settings", "Location", LocationBox.Text);
@@ -355,16 +361,22 @@ namespace Computer_Info
             Application.Exit();
         }
 
-        // Update the program when NewUpdate button is clicked
-        private void NewUpdate_Click(object sender, EventArgs e)
+        private void LoginMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenLoginBox();
+        }
+
+        private void programToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UpdateFromServer();
         }
 
-        private void LoginMenuItem_Click(object sender, EventArgs e)
+        private void cacheToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LoginBox LoginBoxForm = new LoginBox(this);
-            LoginBoxForm.Show();
+            OrganizationBox.Items.Clear();
+            GetOrganizationList();
+            LocationBox.Items.Clear();
+            GetLocationList();
         }
     
     }
