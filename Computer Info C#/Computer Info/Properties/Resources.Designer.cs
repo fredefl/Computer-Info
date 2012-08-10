@@ -94,5 +94,20 @@ namespace Computer_Info.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [Settings]
+        ///; Undlad at ændre denne, med mindre du ved hvad du laver!
+        ///Token=
+        ///; Dette er den sidst brugte lokation
+        ///Location=
+        ///; Dette er den sidst brugte organisation
+        ///Organization=.
+        /// </summary>
+        internal static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
     }
 }
