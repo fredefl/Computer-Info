@@ -72,6 +72,7 @@ namespace ComputerInfo
         {
             public List<GraphicsCardObject> graphics_cards;
             public List<ProcessorObject> processors;
+            public string model;
         }
         public class ComputerInfoObject 
         {
@@ -308,34 +309,30 @@ namespace ComputerInfo
         /// <returns>The computer model</returns>
         public string GetComputerModel()
         {
-            return Cmd("wmic csproduct get name").Replace("Name", "").Trim();
-        }
-        // Get Cpu name
-        /// <summary>
-        /// Gets the CPU name
-        /// </summary>
-        /// <returns>The CPU name</returns>
-        public string GetCpuName()
-        {
-            return Cmd("wmic cpu get name").Replace("Name", "").Trim();
+            string Model = "";
+            ManagementObjectSearcher Query = new ManagementObjectSearcher("SELECT * FROM Win32_ComputerSystem");
+            ManagementObjectCollection Collection = Query.Get();
+            foreach (ManagementObject MO in Collection)
+            {
+                Model = MO["Model"].ToString();
+            }
+            return Model;
         }
         // Get Computer Serial
         /// <summary>
         /// Gets the computers serial number
         /// </summary>
         /// <returns>The computers serial number</returns>
-        public string GetComputerSerial()
+        public string GetComputerSerialNumber()
         {
-            return Cmd("wmic bios get serialnumber").Replace("SerialNumber", "").Trim();
-        }
-        // Get Cpu Core Count
-        /// <summary>
-        /// Gets the CPU core count
-        /// </summary>
-        /// <returns>CPU core count</returns>
-        public string GetCpuCoreCount()
-        {
-            return Environment.ProcessorCount.ToString();
+            string SerialNumber = "";
+            ManagementObjectSearcher Query = new ManagementObjectSearcher("SELECT * FROM Win32_BIOS");
+            ManagementObjectCollection Collection = Query.Get();
+            foreach (ManagementObject MO in Collection)
+            {
+                SerialNumber = MO["SerialNumber"].ToString();
+            }
+            return SerialNumber;
         }
         // Get Mac Address
         /// <summary>
@@ -371,7 +368,6 @@ namespace ComputerInfo
             NetworkInterface[] interfaces = NetworkInterface.GetAllNetworkInterfaces();
             foreach (NetworkInterface adapter in interfaces)
             {
-
                 if (!IsXp()) 
                 {
                     if (adapter.NetworkInterfaceType.ToString() == "Ethernet" && adapter.OperationalStatus == OperationalStatus.Up)
@@ -396,15 +392,11 @@ namespace ComputerInfo
                 }
                 else
                 {
-
                     IPInterfaceProperties properties = adapter.GetIPProperties();
-
                     foreach (IPAddressInformation unicast in properties.UnicastAddresses)
                     {
-
                         if (IsLanIp(unicast.Address.ToString()))
                         {
-
                             istherearesult = 1;
                             PhysicalAddress address = adapter.GetPhysicalAddress();
                             byte[] bytes = address.GetAddressBytes();
@@ -422,11 +414,8 @@ namespace ComputerInfo
                             if (!All) break;
                             Output += "|";
                         }
-                    
                     }
-
                 }
-
             };
 
 
@@ -471,18 +460,6 @@ namespace ComputerInfo
                 
             }
             return (Math.Round(Ram_Bytes / 1048576)).ToString();
-        }
-        // Get Cpu Speed
-        /// <summary>
-        /// Get CPU speed
-        /// </summary>
-        /// <returns>Cpu speed in GHz</returns>
-        public string GetCpuSpeed()
-        {
-            ManagementObject Mo = new ManagementObject("Win32_Processor.DeviceID='CPU0'");
-            double CpuSpeed = Math.Round(Convert.ToDouble((uint)(Mo["MaxClockSpeed"])) / 1024, 1);
-            Mo.Dispose();
-            return CpuSpeed.ToString();
         }
         #endregion
         #region Extra Functions (Doc)
@@ -533,14 +510,11 @@ namespace ComputerInfo
             Output += "Computer Name: "+GetComputerName()+"\r\n";
             Output += "Total Disk Space: "+GetTotalDiskSpace()+"\r\n";
             Output += "Computer Model: "+GetComputerModel()+"\r\n";
-            Output += "Cpu Name: "+GetCpuName()+"\r\n";
-            Output += "Computer Serial: "+GetComputerSerial()+"\r\n";
-            Output += "Cpu Core Count: "+GetCpuCoreCount()+"\r\n";
+            Output += "Computer Serial: "+GetComputerSerialNumber()+"\r\n";
             Output += "Mac Address: "+GetMacAddress()+"\r\n";
             Output += "Lan Mac Address: "+GetLanMacAddress()+"\r\n";
             Output += "Ip Address: "+GetIpAddress()+"\r\n";
             Output += "Ram Size: "+GetRamSize()+"\r\n";
-            Output += "Data: " + GetUrlData() + "\r\n";
             return Output;
         }
         #endregion
@@ -551,6 +525,7 @@ namespace ComputerInfo
         /// </summary>
         /// <param name="Base64Encode">Wherever it should Base64 encode the result or not</param>
         /// <returns>URL string</returns>
+        /*
         public string GetUrlData (bool Base64Encode = true)
         {
             string Data = "";
@@ -568,16 +543,16 @@ namespace ComputerInfo
             Data += "&Ram=" + GetRamSize();
             Data += "&Location=" + _Location;
             Data += "&Model=" + GetComputerModel();
-            Data += "&Serial=" + GetComputerSerial();
+            Data += "&Serial=" + GetComputerSerialNumber();
             Data += "&SBB=" + _SBB;
             Data += "&SB=" + _SB;
-            Data += "&CpuCores=" + GetCpuCoreCount();
             Data += "&ScreenHeight=" + GetScreenHeight();
             Data += "&ScreenWidth=" + GetScreenWidth();
             Data += "&CpuName=" + GetCpuName();
             Data += "&CpuSpeed=" + GetCpuSpeed();
             if (Base64Encode) return Convert.ToBase64String(System.Text.UTF8Encoding.UTF8.GetBytes(Data)); else return Data;
         }
+         * */
         // Send With Tokens, Return Success
         /// <summary>
         /// Sends the computers data to the server, using Tokens.
@@ -620,6 +595,7 @@ namespace ComputerInfo
             BaseObject.computer = new ComputerInfoComputerObject();
             BaseObject.computer.graphics_cards = GetGraphicsCards();
             BaseObject.computer.processors = GetProcessors();
+            BaseObject.computer.model = GetComputerModel();
             return BaseObject;
         }
         #endregion
