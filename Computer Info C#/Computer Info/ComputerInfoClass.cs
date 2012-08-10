@@ -72,6 +72,7 @@ namespace ComputerInfo
         {
             public List<GraphicsCardObject> graphics_cards;
             public List<ProcessorObject> processors;
+            public List<PrinterObject> printers;
             public string model;
         }
         public class ComputerInfoObject 
@@ -119,6 +120,10 @@ namespace ComputerInfo
             public ProcessorManufacturerObject manufacturer { get; set; }
         }
         #endregion
+        public class PrinterObject
+        {
+            public string name;
+        }
         #endregion
         #region Functions (Doc)
         #region Helper Functions (Doc)
@@ -188,6 +193,20 @@ namespace ComputerInfo
         }
         #endregion
         #region ComputerInfo Functions (Doc)
+        public List<PrinterObject> GetPrinters()
+        {
+            List<PrinterObject> Printers = new List<PrinterObject>();
+            ManagementObjectSearcher Query = new ManagementObjectSearcher("SELECT * FROM Win32_Printer");
+            ManagementObjectCollection Collection = Query.Get();
+            foreach (ManagementObject MO in Collection)
+            {
+                PrinterObject Printer = new PrinterObject();
+                Printer.name = MO["Name"].ToString();
+
+                Printers.Add(Printer);
+            }
+            return Printers;
+        }
         public List<ProcessorObject> GetProcessors ()
         {
             List<ProcessorObject> Processors = new List<ProcessorObject>();
@@ -596,6 +615,7 @@ namespace ComputerInfo
             BaseObject.computer.graphics_cards = GetGraphicsCards();
             BaseObject.computer.processors = GetProcessors();
             BaseObject.computer.model = GetComputerModel();
+            BaseObject.computer.printers = GetPrinters();
             return BaseObject;
         }
         #endregion
