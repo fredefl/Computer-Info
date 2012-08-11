@@ -424,7 +424,7 @@ namespace ComputerInfo
                     ComputerModel.manufacturer = new ComputerModelManufacturerObject();
                     ComputerModel.manufacturer.detection_string = MO["Manufacturer"].ToString();
                 }
-                catch { MessageBox.Show("Tihi"); }
+                catch { }
             }
             return ComputerModel;
         }
@@ -684,7 +684,7 @@ namespace ComputerInfo
         public ComputerInfoObject CreateCompleteComputerInfoObject()
         {
             ComputerInfoObject Object = CreateComputerInfoObject();
-            Object.computer.model.type = _ComputerType;
+            Object.computer.model.type = (_ComputerType != "" ? _ComputerType : "7");
             return Object;
         }
         public ComputerInfoObject CreateComputerInfoObject ()
