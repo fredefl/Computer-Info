@@ -112,12 +112,17 @@ namespace ComputerInfo
         {
             public string detection_string { get; set; }
         }
-
-        public class ProcessorObject
+        public class ProcessorModelObject
         {
             public string cores { get; set; }
-            public string clock_speed { get; set; }
             public string threads { get; set; }
+            public string clock_speed { get; set; }
+            public string max_clock_speed { get; set; }
+            public string detection_string { get; set; }
+        }
+        public class ProcessorObject
+        {
+            public ProcessorModelObject model { get; set; }
             public ProcessorManufacturerObject manufacturer { get; set; }
         }
         #endregion
@@ -284,15 +289,18 @@ namespace ComputerInfo
                 try
                 {
                     Processor.manufacturer = new ProcessorManufacturerObject();
-                    Processor.manufacturer.detection_string = MO["Name"].ToString();
+                    Processor.manufacturer.detection_string = MO["Manifacturer"].ToString();
                 }
                 catch { }
 
                 try
                 {
-                    Processor.clock_speed = MO["MaxClockSpeed"].ToString();
-                    Processor.cores = MO["NumberOfCores"].ToString();
-                    Processor.threads = MO["NumberOfLogicalProcessors"].ToString();
+                    Processor.model = new ProcessorModelObject();
+                    Processor.model.clock_speed = Math.Round(Convert.ToDouble(MO["CurrentClockSpeed"].ToString()) / 1000, 1).ToString();
+                    Processor.model.cores = MO["NumberOfCores"].ToString();
+                    Processor.model.threads = MO["NumberOfLogicalProcessors"].ToString();
+                    Processor.model.max_clock_speed = Math.Round(Convert.ToDouble(MO["MaxClockSpeed"].ToString()) / 1000, 1).ToString();
+                    Processor.model.detection_string = MO["Name"].ToString();
                 }
                 catch { }
 
