@@ -192,7 +192,7 @@ namespace Computer_Info
             GetLocationList();
             // Create Computer Info Instance
             ComputerInfoInstance = new ComputerInfoClass();
-            Log(JsonConvert.SerializeObject(ComputerInfoInstance.CreateComputerInfoObject(),Formatting.Indented));
+            Log(JsonConvert.SerializeObject(ComputerInfoInstance.CreateCompleteComputerInfoObject(),Formatting.Indented));
             Log(ComputerInfoInstance.DebugToText());
             // Remove Dot
             //BUFUUFSelector.SelectedIndex = 0;
@@ -235,9 +235,16 @@ namespace Computer_Info
 
         public void Save_Click(object sender, EventArgs e)
         {
-            bool SBB;
-            if (LaptopSelector.Checked) SBB = true; else SBB = false;
-            ComputerInfoInstance.SetVariables(IdentifierBox.Text, LocationBox.Text, ComputerInfoInstance.BoolToString(SBB), ComputerInfoInstance.BoolToString(SmartboardSelector.Checked), OrganizationBox.Text);
+            int ComputerType = 7;
+            if (LaptopSelector.Checked)
+            {
+                ComputerType = 1;
+            }
+            else if (StationarySelector.Checked)
+            {
+                ComputerType = 2;
+            }
+            ComputerInfoInstance.SetVariables(IdentifierBox.Text, LocationBox.Text, ComputerType.ToString(), ComputerInfoInstance.BoolToString(SmartboardSelector.Checked), OrganizationBox.Text);
 
             if (Settings.IniReadValue("Settings", "Token").Length > 0) {
                 ComputerInfoInstance.SendWithTokens(Settings.IniReadValue("Settings", "Token"));

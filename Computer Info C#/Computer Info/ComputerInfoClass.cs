@@ -23,15 +23,15 @@ namespace ComputerInfo
         /// <param name="BUFUUF">Wherever it's BUF or UUF</param>
         /// <param name="Number">The BUF/UUF Number</param>
         /// <param name="Location">Location</param>
-        /// <param name="SBB">Stationary/Laptop</param>
+        /// <param name="ComputerType">Computer Type</param>
         /// <param name="SB">Smartboard</param>
         /// <param name="Organization">Organization</param>
-        public ComputerInfoClass (string Identifier, string Location, string SBB, string SB, string Organization)
+        public ComputerInfoClass (string Identifier, string Location, string ComputerType, string SB, string Organization)
         {
             // Constructor!
             _Identifier = Identifier;
             _Location = Location;
-            _SBB = SBB;
+            _ComputerType = ComputerType;
             _SB = SB;
             _Organization = Organization;
         }
@@ -45,7 +45,7 @@ namespace ComputerInfo
             // Constructor!
             _Identifier = "";
             _Location = "";
-            _SBB = "";
+            _ComputerType = "";
             _SB = "";
             _Organization = "";
         }
@@ -53,7 +53,7 @@ namespace ComputerInfo
         #region Vars
         public string _Identifier = "";
         public string _Location = "";
-        public string _SBB = "";
+        public string _ComputerType = "";
         public string _SB = "";
         public string _Organization = "";
         #endregion      
@@ -133,9 +133,15 @@ namespace ComputerInfo
         }
         #endregion
         #region Computer Model
+        public class ComputerModelManufacturerObject
+        {
+            public string detection_string { get; set; }
+        }
         public class ComputerModelObject
         {
             public string detection_string { get; set; }
+            public string type = "7";
+            public ComputerModelManufacturerObject manufacturer { get; set; }
         }
         #endregion
         #region Memory
@@ -289,7 +295,7 @@ namespace ComputerInfo
                 try
                 {
                     Processor.manufacturer = new ProcessorManufacturerObject();
-                    Processor.manufacturer.detection_string = MO["Manifacturer"].ToString();
+                    Processor.manufacturer.detection_string = MO["Manufacturer"].ToString();
                 }
                 catch { }
 
@@ -402,15 +408,24 @@ namespace ComputerInfo
         /// <returns>The computer model</returns>
         public ComputerModelObject GetComputerModel()
         {
-            string Model = "";
             ComputerModelObject ComputerModel = new ComputerModelObject();
             ManagementObjectSearcher Query = new ManagementObjectSearcher("SELECT * FROM Win32_ComputerSystem");
             ManagementObjectCollection Collection = Query.Get();
             foreach (ManagementObject MO in Collection)
             {
-                Model = MO["Model"].ToString();
+                try
+                {
+                    ComputerModel.detection_string = MO["Model"].ToString();
+                }
+                catch { }
+
+                try
+                {
+                    ComputerModel.manufacturer = new ComputerModelManufacturerObject();
+                    ComputerModel.manufacturer.detection_string = MO["Manufacturer"].ToString();
+                }
+                catch { MessageBox.Show("Tihi"); }
             }
-            ComputerModel.detection_string = Model;
             return ComputerModel;
         }
         // Get Computer Serial
@@ -559,15 +574,15 @@ namespace ComputerInfo
         /// <param name="BUFUUF">Wherever it's BUF or UUF</param>
         /// <param name="Number">The BUF/UUF Number</param>
         /// <param name="Location">Location</param>
-        /// <param name="SBB">Stationary/Laptop</param>
+        /// <param name="ComputerType">Computer Type</param>
         /// <param name="SB">Smartboard</param>
         /// <param name="Organization">Organization</param>
-        public void SetVariables(string Identifier, string Location, string SBB, string SB, string Organization)
+        public void SetVariables(string Identifier, string Location, string ComputerType, string SB, string Organization)
         {
             // Set variables!
             _Identifier = Identifier;
             _Location = Location;
-            _SBB = SBB;
+            _ComputerType = ComputerType;
             _SB = SB;
             _Organization = Organization;
         }
@@ -645,7 +660,7 @@ namespace ComputerInfo
             Request.ProtocolVersion = HttpVersion.Version10;
             Request.Method = "POST";
 
-            byte[] PostBytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(CreateComputerInfoObject()));
+            byte[] PostBytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(CreateCompleteComputerInfoObject()));
 
             Request.ContentType = "text/json";
             Request.ContentLength = PostBytes.Length;
@@ -666,9 +681,16 @@ namespace ComputerInfo
 
             return true;
         }
+        public ComputerInfoObject CreateCompleteComputerInfoObject()
+        {
+            ComputerInfoObject Object = CreateComputerInfoObject();
+            Object.computer.model.type = _ComputerType;
+            return Object;
+        }
         public ComputerInfoObject CreateComputerInfoObject ()
         {
             ComputerInfoObject BaseObject = new ComputerInfoObject();
+            // Collect data from machine
             BaseObject.computer = new ComputerInfoComputerObject();
             BaseObject.computer.graphics_cards = GetGraphicsCards();
             BaseObject.computer.processors = GetProcessors();
