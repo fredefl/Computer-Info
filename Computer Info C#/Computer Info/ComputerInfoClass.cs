@@ -74,7 +74,7 @@ namespace ComputerInfo
             public List<ProcessorObject> processors;
             public List<PrinterObject> printers;
             public MemoryObject memory;
-            public string model;
+            public ComputerModelObject model;
         }
         public class ComputerInfoObject 
         {
@@ -124,7 +124,13 @@ namespace ComputerInfo
         #region Printer
         public class PrinterObject
         {
-            public string name;
+            public string name { get; set; }
+        }
+        #endregion
+        #region Computer Model
+        public class ComputerModelObject
+        {
+            public string detection_string { get; set; }
         }
         #endregion
         #region Memory
@@ -386,16 +392,18 @@ namespace ComputerInfo
         /// Gets the computer model
         /// </summary>
         /// <returns>The computer model</returns>
-        public string GetComputerModel()
+        public ComputerModelObject GetComputerModel()
         {
             string Model = "";
+            ComputerModelObject ComputerModel = new ComputerModelObject();
             ManagementObjectSearcher Query = new ManagementObjectSearcher("SELECT * FROM Win32_ComputerSystem");
             ManagementObjectCollection Collection = Query.Get();
             foreach (ManagementObject MO in Collection)
             {
                 Model = MO["Model"].ToString();
             }
-            return Model;
+            ComputerModel.detection_string = Model;
+            return ComputerModel;
         }
         // Get Computer Serial
         /// <summary>
