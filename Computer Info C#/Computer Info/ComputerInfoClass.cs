@@ -259,6 +259,11 @@ namespace ComputerInfo
         }
         #endregion
         #region ComputerInfo Functions (Doc)
+        // Get operating system
+        /// <summary>
+        /// Gets basic operating system information
+        /// </summary>
+        /// <returns>An OperatingSystemObject</returns>
         public OperatingSystemObject GetOperatingSystem ()
         {
             OperatingSystemObject OperatingSystem = new OperatingSystemObject();
@@ -279,6 +284,11 @@ namespace ComputerInfo
             }
             return OperatingSystem;
         }
+        // Get memory
+        /// <summary>
+        /// Gets general memory information such as total memory and all ram slots
+        /// </summary>
+        /// <returns>A MemoryObject</returns>
         public MemoryObject GetMemory()
         {
             MemoryObject Memory = new MemoryObject();    
@@ -334,6 +344,11 @@ namespace ComputerInfo
             Memory.total_physical_memory = Math.Round(RamBytes / 1048576).ToString();
             return Memory;
         }
+        // Get printers
+        /// <summary>
+        /// Gets a list of printers
+        /// </summary>
+        /// <returns>A list of PrinterObjects</returns>
         public List<PrinterObject> GetPrinters()
         {
             List<PrinterObject> Printers = new List<PrinterObject>();
@@ -348,6 +363,11 @@ namespace ComputerInfo
             }
             return Printers;
         }
+        // Get processors
+        /// <summary>
+        /// Gets a list of processors
+        /// </summary>
+        /// <returns>A list of ProcessorObjects</returns>
         public List<ProcessorObject> GetProcessors ()
         {
             List<ProcessorObject> Processors = new List<ProcessorObject>();
@@ -380,7 +400,7 @@ namespace ComputerInfo
         /// <summary>
         /// Gets a list of graphics cards
         /// </summary>
-        /// <returns>A list of graphics cards</returns>
+        /// <returns>A list of GraphicsCardObjects</returns>
         public List<GraphicsCardObject> GetGraphicsCards()
         {
             List<GraphicsCardObject> GraphicsCards = new List<GraphicsCardObject>();
