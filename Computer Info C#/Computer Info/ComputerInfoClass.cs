@@ -11,11 +11,10 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 
-
 namespace ComputerInfo
 {
     class ComputerInfoClass
-    {   
+    {
         // Full Constructor
         /// <summary>
         /// Makes a full ComputerInfo Class
@@ -75,6 +74,7 @@ namespace ComputerInfo
             public List<PrinterObject> printers;
             public MemoryObject memory;
             public ComputerModelObject model;
+            public OperatingSystemObject operating_system;
         }
         public class ComputerInfoObject 
         {
@@ -164,6 +164,32 @@ namespace ComputerInfo
             public string detection_string;
         }
         #endregion
+        #region Operating System
+        public class OperatingSystemEditionObject
+        {
+            public string detection_string;
+        }
+        public class OperatingSystemManufacturerObject
+        {
+            public string detection_string;
+        }
+        public class OperatingSystemCoreObject
+        {
+            public string detection_string;
+            public OperatingSystemEditionObject edition = new OperatingSystemEditionObject();
+            public OperatingSystemManufacturerObject manufacturer = new OperatingSystemManufacturerObject();
+        }
+        public class OperatingSystemObject
+        {
+            public OperatingSystemCoreObject core = new OperatingSystemCoreObject();
+            public string architecture = "32-bit";
+            public string computer_name;
+            public string install_date;
+            public string service_pack;
+            public string system_drive;
+            public string version;
+        }
+        #endregion
         #endregion
         #region Functions (Doc)
         #region Helper Functions (Doc)
@@ -233,6 +259,26 @@ namespace ComputerInfo
         }
         #endregion
         #region ComputerInfo Functions (Doc)
+        public OperatingSystemObject GetOperatingSystem ()
+        {
+            OperatingSystemObject OperatingSystem = new OperatingSystemObject();
+            ManagementObjectSearcher Query = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem");
+            ManagementObjectCollection Collection = Query.Get();
+            foreach (ManagementObject MO in Collection)
+            {
+                //OperatingSystem.core.detection_string = GetProductInfo();
+                OperatingSystem.core.manufacturer.detection_string = MO["Manufacturer"].ToString();
+                OperatingSystem.architecture = MO["OSArchitecture"].ToString();
+                OperatingSystem.computer_name = MO["CSName"].ToString();
+                TimeSpan ts = (ManagementDateTimeConverter.ToDateTime(MO["InstallDate"].ToString()).ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0));
+                int unixTime = (int)Math.Round((double)ts.TotalSeconds);
+                OperatingSystem.install_date = unixTime.ToString();
+                OperatingSystem.service_pack = MO["ServicePackMajorVersion"].ToString();
+                OperatingSystem.system_drive = MO["SystemDrive"].ToString();
+                OperatingSystem.version = MO["Version"].ToString();
+            }
+            return OperatingSystem;
+        }
         public MemoryObject GetMemory()
         {
             MemoryObject Memory = new MemoryObject();    
@@ -719,6 +765,7 @@ namespace ComputerInfo
             BaseObject.computer.model = GetComputerModel();
             BaseObject.computer.printers = GetPrinters();
             BaseObject.computer.memory = GetMemory();
+            BaseObject.computer.operating_system = GetOperatingSystem();
             return BaseObject;
         }
         #endregion
