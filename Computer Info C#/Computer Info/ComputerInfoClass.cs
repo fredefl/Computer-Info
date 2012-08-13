@@ -152,9 +152,16 @@ namespace ComputerInfo
         }
         public class MemorySlotObject
         {
-            public string device_id;
+            public string device_identifier;
             public string capacity;
             public bool empty;
+            public string serial;
+            public string part_number;
+            public string speed;
+            public MemorySlotManifacturerObject manifacturer;
+        }
+        public class MemorySlotManifacturerObject {
+            public string detection_string;
         }
         #endregion
         #endregion
@@ -237,7 +244,7 @@ namespace ComputerInfo
             foreach (ManagementObject MO in Collection)
             {
                 MemorySlotObject MemorySlot = new MemorySlotObject();
-                MemorySlot.device_id = MO["DeviceID"].ToString();
+                MemorySlot.device_identifier = MO["DeviceID"].ToString().Replace("Memory Device ", "");
                 MemorySlot.capacity = Math.Round((Convert.ToDouble(MO["EndingAddress"].ToString()) - Convert.ToDouble(MO["StartingAddress"].ToString())) / 1024).ToString();
                 if (Convert.ToDouble(MemorySlot.capacity) == 0)
                 {
@@ -248,6 +255,30 @@ namespace ComputerInfo
                     MemorySlot.empty = false;
                 }
                 MemorySlots.Add(MemorySlot);
+            }
+            Query = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMemory");
+            Collection = Query.Get();
+            foreach (ManagementObject MO in Collection)
+            {
+                var Identifier = MO["Tag"].ToString().Replace("Physical Memory ", "");
+                foreach (MemorySlotObject MemorySlot in MemorySlots)
+                {
+                    if (MemorySlot.device_identifier == Identifier)
+                    {
+                        try { MemorySlot.part_number = MO["PartNumber"].ToString(); }
+                        catch { };
+                        try { MemorySlot.serial = MO["Serial"].ToString(); }
+                        catch { };
+                        try { MemorySlot.speed = MO["Speed"].ToString(); }
+                        catch { };
+                        try
+                        {
+                            MemorySlot.manifacturer = new MemorySlotManifacturerObject();
+                            MemorySlot.manifacturer.detection_string = MO["Manifacturer"].ToString();
+                        }
+                        catch { }
+                    }
+                }
             }
             // Get total physical memory
             Query = new ManagementObjectSearcher("Select * From Win32_ComputerSystem");
