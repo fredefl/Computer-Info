@@ -78,70 +78,70 @@ namespace ComputerInfo
         }
         public class ComputerInfoObject 
         {
-            public ComputerInfoComputerObject computer { get; set; }
+            public ComputerInfoComputerObject computer;
         }
         #endregion
         #region GraphicsCard
         public class GraphicsCardManufacturerObject
         {
-            public string detection_string { get; set; }
+            public string detection_string;
         }
         public class GraphicsCardModelObject
         {
-            public string caption { get; set; }
-            public GraphicsCardManufacturerObject manufacturer { get; set; }
-            public string name { get; set; }
-            public string description { get; set; }
-            public string video_processor { get; set; }
+            public string caption;
+            public GraphicsCardManufacturerObject manufacturer = new GraphicsCardManufacturerObject();
+            public string name;
+            public string description;
+            public string video_processor;
         }
         public class GraphicsCardScreenSizeObject
         {
-            public string detection_string { get; set; }
+            public string detection_string;
         }
         public class GraphicsCardObject
         {
-            public GraphicsCardModelObject model { get; set; }
-            public string driver_version { get; set; }
-            public string driver_date { get; set; }
-            public string ram_size { get; set; }
-            public GraphicsCardScreenSizeObject screen_size { get; set; }
+            public GraphicsCardModelObject model = new GraphicsCardModelObject();
+            public string driver_version;
+            public string driver_date;
+            public string ram_size;
+            public GraphicsCardScreenSizeObject screen_size = new GraphicsCardScreenSizeObject();
         }
         #endregion
         #region Processor
         public class ProcessorManufacturerObject
         {
-            public string detection_string { get; set; }
+            public string detection_string;
         }
         public class ProcessorModelObject
         {
-            public string cores { get; set; }
-            public string threads { get; set; }
-            public string clock_speed { get; set; }
-            public string max_clock_speed { get; set; }
-            public string detection_string { get; set; }
+            public string cores;
+            public string threads;
+            public string clock_speed;
+            public string max_clock_speed;
+            public string detection_string;
         }
         public class ProcessorObject
         {
-            public ProcessorModelObject model { get; set; }
-            public ProcessorManufacturerObject manufacturer { get; set; }
+            public ProcessorModelObject model = new ProcessorModelObject();
+            public ProcessorManufacturerObject manufacturer = new ProcessorManufacturerObject();
         }
         #endregion
         #region Printer
         public class PrinterObject
         {
-            public string name { get; set; }
+            public string name;
         }
         #endregion
         #region Computer Model
         public class ComputerModelManufacturerObject
         {
-            public string detection_string { get; set; }
+            public string detection_string;
         }
         public class ComputerModelObject
         {
-            public string detection_string { get; set; }
+            public string detection_string;
             public string type = "7";
-            public ComputerModelManufacturerObject manufacturer { get; set; }
+            public ComputerModelManufacturerObject manufacturer = new ComputerModelManufacturerObject();
         }
         #endregion
         #region Memory
@@ -158,7 +158,7 @@ namespace ComputerInfo
             public string serial;
             public string part_number;
             public string speed;
-            public MemorySlotManifacturerObject manifacturer;
+            public MemorySlotManifacturerObject manifacturer = new MemorySlotManifacturerObject();
         }
         public class MemorySlotManifacturerObject {
             public string detection_string;
@@ -317,11 +317,7 @@ namespace ComputerInfo
                         catch { };
                         try { MemorySlot.speed = MO["Speed"].ToString(); }
                         catch { };
-                        try
-                        {
-                            MemorySlot.manifacturer = new MemorySlotManifacturerObject();
-                            MemorySlot.manifacturer.detection_string = MO["Manifacturer"].ToString();
-                        }
+                        try { MemorySlot.manifacturer.detection_string = MO["Manifacturer"].ToString(); }
                         catch { }
                     }
                 }
@@ -360,16 +356,14 @@ namespace ComputerInfo
             foreach (ManagementObject MO in Collection)
             {
                 ProcessorObject Processor = new ProcessorObject();
-                try
+                try 
                 {
-                    Processor.manufacturer = new ProcessorManufacturerObject();
                     Processor.manufacturer.detection_string = MO["Manufacturer"].ToString();
                 }
                 catch { }
 
                 try
                 {
-                    Processor.model = new ProcessorModelObject();
                     Processor.model.clock_speed = Math.Round(Convert.ToDouble(MO["CurrentClockSpeed"].ToString()) / 1000, 1).ToString();
                     Processor.model.cores = MO["NumberOfCores"].ToString();
                     Processor.model.threads = MO["NumberOfLogicalProcessors"].ToString();
@@ -403,7 +397,6 @@ namespace ComputerInfo
                 }
                 catch { }
 
-                GraphicsCard.model = new GraphicsCardModelObject();
                 try
                 {
                     GraphicsCard.model.caption = MO["Caption"].ToString();
@@ -413,14 +406,12 @@ namespace ComputerInfo
                 }
                 catch { }
 
-                GraphicsCard.model.manufacturer = new GraphicsCardManufacturerObject();
                 try
                 {
                     GraphicsCard.model.manufacturer.detection_string = MO["Name"].ToString();
                 }
                 catch { }
 
-                GraphicsCard.screen_size = new GraphicsCardScreenSizeObject();
                 try
                 {
                     GraphicsCard.screen_size.detection_string = MO["CurrentHorizontalResolution"].ToString() + "x" + MO["CurrentVerticalResolution"].ToString();
