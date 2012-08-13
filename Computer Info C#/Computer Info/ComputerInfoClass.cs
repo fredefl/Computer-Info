@@ -152,6 +152,7 @@ namespace ComputerInfo
         }
         public class MemorySlotObject
         {
+            public string device_id;
             public string capacity;
             public bool empty;
         }
@@ -231,32 +232,22 @@ namespace ComputerInfo
             List<MemorySlotObject> MemorySlots = new List<MemorySlotObject>();
             Memory.slots = MemorySlots;
             // Get used memory slots
-            ManagementObjectSearcher Query = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMemory");
+            ManagementObjectSearcher Query = new ManagementObjectSearcher("SELECT * FROM Win32_MemoryDevice");
             ManagementObjectCollection Collection = Query.Get();
             foreach (ManagementObject MO in Collection)
             {
                 MemorySlotObject MemorySlot = new MemorySlotObject();
-                MemorySlot.capacity = Math.Round(Convert.ToDouble(MO["Capacity"].ToString()) / 1048576).ToString();
-                MemorySlot.empty = false;
-                MemorySlots.Add(MemorySlot);
-            }
-            // Get empty memory slots
-            Query = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMemoryArray");
-            Collection = Query.Get();
-            int TotalMemorySlots = 0;
-            foreach (ManagementObject MO in Collection)
-            {
-                TotalMemorySlots += Convert.ToInt32(MO["MemoryDevices"].ToString());
-            }
-            int EmptyMemorySlots = TotalMemorySlots - MemorySlots.Count;
-            if (EmptyMemorySlots > 0)
-            {
-                for (int i = 1; i <= EmptyMemorySlots; i++)
+                MemorySlot.device_id = MO["DeviceID"].ToString();
+                MemorySlot.capacity = Math.Round((Convert.ToDouble(MO["EndingAddress"].ToString()) - Convert.ToDouble(MO["StartingAddress"].ToString())) / 1024).ToString();
+                if (Convert.ToDouble(MemorySlot.capacity) == 0)
                 {
-                    MemorySlotObject MemorySlot = new MemorySlotObject();
                     MemorySlot.empty = true;
-                    MemorySlots.Add(MemorySlot);
                 }
+                else
+                {
+                    MemorySlot.empty = false;
+                }
+                MemorySlots.Add(MemorySlot);
             }
             // Get total physical memory
             Query = new ManagementObjectSearcher("Select * From Win32_ComputerSystem");
