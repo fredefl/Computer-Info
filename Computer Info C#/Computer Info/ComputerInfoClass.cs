@@ -696,34 +696,6 @@ namespace ComputerInfo
         /// </summary>
         /// <param name="Base64Encode">Wherever it should Base64 encode the result or not</param>
         /// <returns>URL string</returns>
-        /*
-        public string GetUrlData (bool Base64Encode = true)
-        {
-            string Data = "";
-            // Data += "&=" + ;
-            Data += "Method=Computerinfo";
-            Data += "&C=1";
-            Data += "&Organization=" + _Organization;
-            Data += "&Mac=" + GetLanMacAddress(false);
-            Data += "&LanMac=" + GetLanMacAddress(false);
-            Data += "&LanCards=" + GetLanMacAddress(true);
-            Data += "&Ip=" + GetIpAddress();
-            Data += "&Name=" + GetComputerName();
-            Data += "&Identifier=" + _Identifier;
-            Data += "&Disk=" + GetTotalDiskSpace();
-            Data += "&Ram=" + GetRamSize();
-            Data += "&Location=" + _Location;
-            Data += "&Model=" + GetComputerModel();
-            Data += "&Serial=" + GetComputerSerialNumber();
-            Data += "&SBB=" + _SBB;
-            Data += "&SB=" + _SB;
-            Data += "&ScreenHeight=" + GetScreenHeight();
-            Data += "&ScreenWidth=" + GetScreenWidth();
-            Data += "&CpuName=" + GetCpuName();
-            Data += "&CpuSpeed=" + GetCpuSpeed();
-            if (Base64Encode) return Convert.ToBase64String(System.Text.UTF8Encoding.UTF8.GetBytes(Data)); else return Data;
-        }
-         * */
         // Send With Tokens, Return Success
         /// <summary>
         /// Sends the computers data to the server, using Tokens.
