@@ -176,12 +176,12 @@ namespace ComputerInfo
         public class OperatingSystemCoreObject
         {
             public string detection_string;
-            public OperatingSystemEditionObject edition = new OperatingSystemEditionObject();
             public OperatingSystemManufacturerObject manufacturer = new OperatingSystemManufacturerObject();
         }
         public class OperatingSystemObject
         {
             public OperatingSystemCoreObject core = new OperatingSystemCoreObject();
+            public OperatingSystemEditionObject edition = new OperatingSystemEditionObject();
             public string architecture = "32-bit";
             public string computer_name;
             public string install_date;
