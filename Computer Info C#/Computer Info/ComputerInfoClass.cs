@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using JCS;
 
 namespace ComputerInfo
 {
@@ -273,7 +274,9 @@ namespace ComputerInfo
             {
                 //OperatingSystem.core.detection_string = GetProductInfo();
                 OperatingSystem.core.manufacturer.detection_string = MO["Manufacturer"].ToString();
-                OperatingSystem.architecture = MO["OSArchitecture"].ToString();
+                OperatingSystem.core.detection_string = OSVersionInfo.Name;
+                OperatingSystem.edition.detection_string = OSVersionInfo.Edition;
+                OperatingSystem.architecture = OSVersionInfo.OSBits;
                 OperatingSystem.computer_name = MO["CSName"].ToString();
                 TimeSpan ts = (ManagementDateTimeConverter.ToDateTime(MO["InstallDate"].ToString()).ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0));
                 int unixTime = (int)Math.Round((double)ts.TotalSeconds);
