@@ -25,7 +25,7 @@ namespace Computer_Info.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://127.0.0.1/ci/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://ci.illution.dk")]
         public string BaseUrl {
             get {
                 return ((string)(this["BaseUrl"]));
