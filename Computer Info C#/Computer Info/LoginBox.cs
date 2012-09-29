@@ -18,7 +18,7 @@ namespace Computer_Info
 
         private void LoginBox_Shown(object sender, EventArgs e)
         {
-            LoginBrowser.Navigate("https://illution.dk/ClickThis/login/google");
+            LoginBrowser.Navigate("https://ci.illution.dk/windows_client_login");
         }
 
         private void LoginBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)

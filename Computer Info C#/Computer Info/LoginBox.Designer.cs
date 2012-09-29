@@ -38,6 +38,7 @@
             this.LoginBrowser.Location = new System.Drawing.Point(0, 0);
             this.LoginBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.LoginBrowser.Name = "LoginBrowser";
+            this.LoginBrowser.ScriptErrorsSuppressed = true;
             this.LoginBrowser.ScrollBarsEnabled = false;
             this.LoginBrowser.Size = new System.Drawing.Size(466, 357);
             this.LoginBrowser.TabIndex = 0;
