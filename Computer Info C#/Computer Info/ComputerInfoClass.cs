@@ -709,7 +709,7 @@ namespace ComputerInfo
         public bool SendWithTokens(string Token)
         {
             HttpWebRequest Request = (HttpWebRequest)
-            WebRequest.Create(Computer_Info.Properties.Settings.Default.BaseUrl + "client/computer?dev=true&foramt=json"); 
+            WebRequest.Create(Computer_Info.Properties.Settings.Default.BaseUrl + "/client/computer?dev=true&foramt=json"); 
             Request.KeepAlive = false;
             Request.ProtocolVersion = HttpVersion.Version10;
             Request.Method = "POST";

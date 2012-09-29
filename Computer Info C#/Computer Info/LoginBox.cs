@@ -18,12 +18,12 @@ namespace Computer_Info
 
         private void LoginBox_Shown(object sender, EventArgs e)
         {
-            LoginBrowser.Navigate("https://ci.illution.dk/windows_client_login");
+            LoginBrowser.Navigate(Computer_Info.Properties.Settings.Default.BaseUrl + "/windows/login");
         }
 
         private void LoginBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            if (LoginBrowser.Url.ToString() == "")
+            if (LoginBrowser.Url.ToString() == Computer_Info.Properties.Settings.Default.BaseUrl + "/login/windows")
             {
                 ParentForm.SetToken(Regex.Replace(LoginBrowser.DocumentText, @"<[^>]*>", String.Empty));
                 this.Hide();
