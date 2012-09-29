@@ -226,6 +226,7 @@
             this.LocationBox.Size = new System.Drawing.Size(190, 21);
             this.LocationBox.Sorted = true;
             this.LocationBox.TabIndex = 16;
+            this.LocationBox.SelectedIndexChanged += new System.EventHandler(this.LocationBox_SelectedIndexChanged);
             // 
             // OrganizationBox
             // 
@@ -235,6 +236,7 @@
             this.OrganizationBox.Name = "OrganizationBox";
             this.OrganizationBox.Size = new System.Drawing.Size(190, 21);
             this.OrganizationBox.TabIndex = 17;
+            this.OrganizationBox.SelectedValueChanged += new System.EventHandler(this.OrganizationBox_SelectedValueChanged);
             // 
             // Main
             // 

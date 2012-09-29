@@ -35,11 +35,23 @@ namespace Computer_Info
 
         public void GetLocationList()
         {
+            string CurrentOrganizationId = "";
+            try
+            {
+                if (OrganizationBox.Text != "") {
+                    CurrentOrganizationId = Organizations[OrganizationBox.Text].ToString();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Den valgte organization kunne ikke findes, fjern den manuelt i Settings.ini hvis den er blevet slettet");
+                return;
+            }
             try
             {
                 string Url = 
-                    Properties.Settings.Default.BaseUrl + 
-                    "options/location/?organization=1&format=json&dev=true";
+                    Properties.Settings.Default.BaseUrl +
+                    "/options/location/?organization=" + CurrentOrganizationId + "&format=json&dev=true&token=" + GetToken();
                 WebClient Http = new WebClient();
                 Http.DownloadStringAsync(new Uri(Url));
                 Http.DownloadStringCompleted += new DownloadStringCompletedEventHandler(GetLocationListResponse);
@@ -89,7 +101,7 @@ namespace Computer_Info
         {
             public int id { get; set; }
             public string name { get; set; }
-            public OrganizationEmployeesObject employees { get; set; }
+            public List<OrganizationEmployeesObject> employees { get; set; }
         }
 
         public class OrganizationUserObject
@@ -104,8 +116,8 @@ namespace Computer_Info
         {
             public OrganizationUserObject User { get; set; }
             public int count { get; set; }
-            public object error_message { get; set; }
-            public object error_code { get; set; }
+            public string error_message { get; set; }
+            public string error_code { get; set; }
             public string script_excecution_time { get; set; }
             public int server_time { get; set; }
         }
@@ -116,7 +128,7 @@ namespace Computer_Info
             {
                 string Url =
                     Properties.Settings.Default.BaseUrl +
-                    "user/me?format=json&dev=true";
+                    "/user/me?format=json&dev=true&token=" + GetToken();
                 WebClient Http = new WebClient();
                 Http.DownloadStringAsync(new Uri(Url));
                 Http.DownloadStringCompleted += new DownloadStringCompletedEventHandler(GetOrganizationListResponse);
@@ -142,12 +154,13 @@ namespace Computer_Info
                 OrganizationRootObject Object = JsonConvert.DeserializeObject<OrganizationRootObject>(Response);
                 foreach (OrganizationObject Organization in Object.User.organizations)
                 {
+                    Organizations.Add(Organization.name, Organization.id);
                     OrganizationBox.Items.Add(Organization.name);
                 }
             }
             catch (Exception)
             {
-                Log("Error getting organization list");
+                Log("Error getting organization list - afterwards");
             }
         }
         #endregion
@@ -156,24 +169,52 @@ namespace Computer_Info
         ComputerInfoClass ComputerInfoInstance;
         string WorkingDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Replace("file:///", "")) + @"\";
         string LogString = "Logging Started\r\n";
+        Dictionary<string, int> Organizations = new Dictionary<string, int>();
+
+        public bool ValidateToken()
+        {
+            string Url =
+                    Properties.Settings.Default.BaseUrl +
+                    "/token/" + GetToken();
+            WebClient Http = new WebClient();
+            Http.Headers.Add("Referer:CI/Windows");
+            string Result = Http.DownloadString(new Uri(Url));
+
+            if (Result == "true")
+                return true;
+            else
+                return false;
+        }
 
         public void SetToken (string Token)
         {
             Settings.IniWriteValue("Settings", "Token", Token);
         }
 
-        public void OpenLoginBox(bool SaveAfterwards = false)
+        public string GetToken()
+        {
+            return Settings.IniReadValue("Settings", "Token");
+        }
+
+        public void OpenLoginBox(bool SaveAfterwards = false, bool WaitForClose = false)
         {
             foreach (Form CurrentForm in Application.OpenForms)
             {
                 if (CurrentForm is LoginBox)
                 {
+                    if (WaitForClose)
+                        CurrentForm.ShowDialog();
+                    else
+                        CurrentForm.Show();
                     CurrentForm.BringToFront();
                     return;
                 }
             }
             LoginBox LoginBoxForm = new LoginBox(this, SaveAfterwards);
-            LoginBoxForm.Show();
+            if (WaitForClose)
+                LoginBoxForm.ShowDialog();
+            else
+                LoginBoxForm.Show();
         }
 
         public Main()
@@ -185,6 +226,20 @@ namespace Computer_Info
                 File.WriteAllText(WorkingDirectory + "Settings.ini", Computer_Info.Properties.Resources.Settings);
             }
             Settings = new IniFile(WorkingDirectory + "Settings.ini");
+            // Set Last Used Organization
+            OrganizationBox.Text = Settings.IniReadValue("Settings", "Organization");
+            // Set Last Used Location
+            LocationBox.Text = Settings.IniReadValue("Settings", "Location");
+            // Check if logged in
+            if (GetToken() == "")
+            {
+                OpenLoginBox(false,true);
+            }
+            // Keep validating the token until it's valid
+            while (ValidateToken() == false)
+            {
+                OpenLoginBox(false, true);
+            }
             // Get the organization list
             GetOrganizationList();
             // Get the location list
@@ -192,13 +247,6 @@ namespace Computer_Info
             // Create Computer Info Instance
             ComputerInfoInstance = new ComputerInfoClass();
             Log(JsonConvert.SerializeObject(ComputerInfoInstance.CreateCompleteComputerInfoObject(),Formatting.Indented));
-            //Log(ComputerInfoInstance.DebugToText());
-            // Remove Dot
-            //BUFUUFSelector.SelectedIndex = 0;
-            // Set Last Used Organization
-            OrganizationBox.Text = Settings.IniReadValue("Settings", "Organization");
-            // Set Last Used Location
-            LocationBox.Text = Settings.IniReadValue("Settings", "Location");
             // Initialize WMIC
             ComputerInfoInstance.GetComputerModel();
             // Get and Set LanMac
@@ -407,6 +455,17 @@ namespace Computer_Info
             GetOrganizationList();
             LocationBox.Items.Clear();
             GetLocationList();
+        }
+
+        private void OrganizationBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Settings.IniWriteValue("Settings", "Organization", OrganizationBox.Text);
+            GetLocationList();
+        }
+
+        private void LocationBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Settings.IniWriteValue("Settings", "Location", LocationBox.Text);
         }
     
     }

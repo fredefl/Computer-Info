@@ -25,11 +25,20 @@ namespace Computer_Info
         {
             if (LoginBrowser.Url.ToString() == Computer_Info.Properties.Settings.Default.BaseUrl + "/login/windows")
             {
-                ParentForm.SetToken(Regex.Replace(LoginBrowser.DocumentText, @"<[^>]*>", String.Empty));
-                this.Hide();
-                if (SaveAfterwards)
+                string CleanText = Regex.Replace(LoginBrowser.DocumentText, @"<[^>]*>", String.Empty).Trim();
+                
+                if (CleanText != "")
                 {
-                    ParentForm.Save_Click(null, null);
+                    ParentForm.SetToken(CleanText);
+                    this.Hide();
+                    if (SaveAfterwards)
+                    {
+                        ParentForm.Save_Click(null, null);
+                    }
+                }
+                else
+                {
+                    LoginBrowser.Navigate(Computer_Info.Properties.Settings.Default.BaseUrl + "/windows/login");
                 }
             }
         }
