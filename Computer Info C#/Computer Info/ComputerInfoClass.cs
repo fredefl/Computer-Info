@@ -133,6 +133,7 @@ namespace ComputerInfo
         public class PrinterObject
         {
             public string name;
+            public string identifier;
         }
         #endregion
         #region Computer Model
@@ -363,6 +364,7 @@ namespace ComputerInfo
             {
                 PrinterObject Printer = new PrinterObject();
                 Printer.name = MO["Name"].ToString();
+                Printer.identifier = MO["Name"].ToString();
 
                 Printers.Add(Printer);
             }
