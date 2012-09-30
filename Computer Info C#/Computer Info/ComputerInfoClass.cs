@@ -26,14 +26,14 @@ namespace ComputerInfo
         /// <param name="ComputerType">Computer Type</param>
         /// <param name="SB">Smartboard</param>
         /// <param name="Organization">Organization</param>
-        public ComputerInfoClass (string Identifier, string Location, string ComputerType, string SB, string Organization)
+        public ComputerInfoClass (string Identifier, string Location, string ComputerType, string SB, int OrganizationId)
         {
             // Constructor!
             _Identifier = Identifier;
             _Location = Location;
             _ComputerType = ComputerType;
             _SB = SB;
-            _Organization = Organization;
+            _OrganizationId = OrganizationId;
         }
         
         // Empty Constructor
@@ -47,7 +47,7 @@ namespace ComputerInfo
             _Location = "";
             _ComputerType = "";
             _SB = "";
-            _Organization = "";
+            _OrganizationId = 0;
         }
         
         #region Vars
@@ -55,7 +55,7 @@ namespace ComputerInfo
         public string _Location = "";
         public string _ComputerType = "";
         public string _SB = "";
-        public string _Organization = "";
+        public int _OrganizationId = 0;
         #endregion      
         #region Dll
         [DllImport("kernel32", CharSet = CharSet.Auto)]
@@ -70,6 +70,8 @@ namespace ComputerInfo
         #region Computer Info
         public class ComputerInfoComputerObject
         {
+            public string identifier;
+            public int organization;
             public List<GraphicsCardObject> graphics_cards;
             public List<ProcessorObject> processors;
             public List<PrinterObject> printers;
@@ -659,14 +661,14 @@ namespace ComputerInfo
         /// <param name="ComputerType">Computer Type</param>
         /// <param name="SB">Smartboard</param>
         /// <param name="Organization">Organization</param>
-        public void SetVariables(string Identifier, string Location, string ComputerType, string SB, string Organization)
+        public void SetVariables(string Identifier, string Location, string ComputerType, string SB, int OrganizationId)
         {
             // Set variables!
             _Identifier = Identifier;
             _Location = Location;
             _ComputerType = ComputerType;
             _SB = SB;
-            _Organization = Organization;
+            _OrganizationId = OrganizationId;
         }
         #endregion
         #endregion
@@ -703,8 +705,7 @@ namespace ComputerInfo
         /// <summary>
         /// Sends the computers data to the server, using Tokens.
         /// </summary>
-        /// <param name="Token1">The first Token</param>
-        /// <param name="Token2">The second Token</param>
+        /// <param name="Token">The Token</param>
         /// <returns>True</returns>
         public bool SendWithTokens(string Token)
         {
@@ -713,8 +714,8 @@ namespace ComputerInfo
             Request.KeepAlive = false;
             Request.ProtocolVersion = HttpVersion.Version10;
             Request.Method = "POST";
-
             byte[] PostBytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(CreateCompleteComputerInfoObject()));
+            File.WriteAllBytes("Request.log", PostBytes);
 
             Request.ContentType = "text/json";
             Request.ContentLength = PostBytes.Length;
@@ -723,24 +724,38 @@ namespace ComputerInfo
             RequestStream.Write(PostBytes, 0, PostBytes.Length);
             RequestStream.Close();
 
-            HttpWebResponse Response = (HttpWebResponse) Request.GetResponse();
-            Stream ResponseStream = Response.GetResponseStream();
-            string ResponseString;
-            using (StreamReader Reader = new StreamReader(ResponseStream))
+            try
             {
-                ResponseString = Reader.ReadToEnd();
-            }
-            MessageBox.Show(ResponseString);
-            int StatusCode = Convert.ToInt32(Response.StatusCode);
+                HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
+                Stream ResponseStream = Response.GetResponseStream();
+                string ResponseString;
+                using (StreamReader Reader = new StreamReader(ResponseStream))
+                {
+                    ResponseString = Reader.ReadToEnd();
+                }
+                MessageBox.Show(ResponseString);
+                File.WriteAllText("Response.log", ResponseString);
+                int StatusCode = Convert.ToInt32(Response.StatusCode);
 
-            return true;
+                return true;
+            }
+            catch (Exception)
+            {
+                HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
+                MessageBox.Show("Could not connect to server, please try again");
+                return false;
+            }
         }
+
         public ComputerInfoObject CreateCompleteComputerInfoObject()
         {
             ComputerInfoObject Object = CreateComputerInfoObject();
             Object.computer.model.type = (_ComputerType != "" ? _ComputerType : "7");
+            Object.computer.organization = _OrganizationId;
+            Object.computer.identifier = _Identifier;
             return Object;
         }
+
         public ComputerInfoObject CreateComputerInfoObject ()
         {
             ComputerInfoObject BaseObject = new ComputerInfoObject();

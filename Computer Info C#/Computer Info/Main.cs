@@ -178,12 +178,20 @@ namespace Computer_Info
                     "/token/" + GetToken();
             WebClient Http = new WebClient();
             Http.Headers.Add("Referer:CI/Windows");
-            string Result = Http.DownloadString(new Uri(Url));
-
-            if (Result == "true")
-                return true;
-            else
+            try
+            {
+                string Result = Http.DownloadString(new Uri(Url));
+                if (Result == "true")
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception)
+            {
                 return false;
+            }
+
+
         }
 
         public void SetToken (string Token)
@@ -291,7 +299,15 @@ namespace Computer_Info
             {
                 ComputerType = 2;
             }
-            ComputerInfoInstance.SetVariables(IdentifierBox.Text, LocationBox.Text, ComputerType.ToString(), ComputerInfoInstance.BoolToString(SmartboardSelector.Checked), OrganizationBox.Text);
+            int OrganizationId = 0;
+            try 
+            {
+                OrganizationId = Organizations[OrganizationBox.Text];
+            } catch (Exception) {
+
+            }
+
+            ComputerInfoInstance.SetVariables(IdentifierBox.Text, LocationBox.Text, ComputerType.ToString(), ComputerInfoInstance.BoolToString(SmartboardSelector.Checked), OrganizationId);
 
             if (Settings.IniReadValue("Settings", "Token").Length > 0) {
                 ComputerInfoInstance.SendWithTokens(Settings.IniReadValue("Settings", "Token"));
