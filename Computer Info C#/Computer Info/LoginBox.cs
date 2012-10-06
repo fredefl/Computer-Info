@@ -23,7 +23,7 @@ namespace Computer_Info
 
         private void LoginBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            if (LoginBrowser.Url.ToString() == Computer_Info.Properties.Settings.Default.BaseUrl + "/login/windows")
+            if (LoginBrowser.Url.ToString().Contains(Computer_Info.Properties.Settings.Default.BaseUrl + "/login/windows"))
             {
                 string CleanText = Regex.Replace(LoginBrowser.DocumentText, @"<[^>]*>", String.Empty).Trim();
                 
