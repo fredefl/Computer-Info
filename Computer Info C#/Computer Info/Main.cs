@@ -8,7 +8,11 @@ using Ini;
 using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+//using Computer_Info.Resources;
+using System.Threading;
+using System.Globalization;
 using Computer_Info.Resources;
+using System.ComponentModel;
 
 namespace Computer_Info
 {
@@ -232,9 +236,27 @@ namespace Computer_Info
 
         public Main()
         {
-            Console.WriteLine(Strings.Location);
+            //Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-GB");
             // Initialize
             InitializeComponent();
+            // Localization
+            OrganizationLabel.Text = Strings.Organization;
+            LocationLabel.Text = Strings.Location;
+            IdentifierLabel.Text = Strings.Identifier;
+            ComputerTypeLabel.Text = Strings.ComputerType;
+            DesktopSelector.Text = Strings.Desktop;
+            LaptopSelector.Text = Strings.Laptop;
+            BoardSelector.Text = Strings.Board;
+            SaveButton.Text = Strings.Save;
+
+            SignInMenuItem.Text = Strings.SignIn;
+            // SIGN OUT
+            UpdateMenuItem.Text = Strings.Update;
+            UpdateProgramMenuItem.Text = Strings.Program;
+            UpdateCacheMenuItem.Text = Strings.Cache;
+            
+
+
             if (!File.Exists(WorkingDirectory + "Settings.ini"))
             {
                 File.WriteAllText(WorkingDirectory + "Settings.ini", Computer_Info.Properties.Resources.Settings);
@@ -301,7 +323,7 @@ namespace Computer_Info
             {
                 ComputerType = 1;
             }
-            else if (StationarySelector.Checked)
+            else if (DesktopSelector.Checked)
             {
                 ComputerType = 2;
             }
@@ -313,7 +335,7 @@ namespace Computer_Info
 
             }
 
-            ComputerInfoInstance.SetVariables(IdentifierBox.Text, LocationBox.Text, ComputerType.ToString(), ComputerInfoInstance.BoolToString(SmartboardSelector.Checked), OrganizationId);
+            ComputerInfoInstance.SetVariables(IdentifierBox.Text, LocationBox.Text, ComputerType.ToString(), ComputerInfoInstance.BoolToString(BoardSelector.Checked), OrganizationId);
 
             if (Settings.IniReadValue("Settings", "Token").Length > 0) {
                 ComputerInfoInstance.SendWithTokens(Settings.IniReadValue("Settings", "Token"));
@@ -357,7 +379,7 @@ namespace Computer_Info
             {
                 string Response = (string)e.Result;
                 if (Response == "0")
-                    StationarySelector.Checked = true;
+                    DesktopSelector.Checked = true;
                 if (Response == "1")
                     LaptopSelector.Checked = true;
             }
@@ -446,7 +468,7 @@ namespace Computer_Info
         // Change the tabstop when StationarySelector is checked
         private void Stationary_CheckedChanged(object sender, EventArgs e)
         {
-            StationarySelector.TabStop = true;
+            DesktopSelector.TabStop = true;
         }
 
         // Change the tabstop when LaptopSelector is checked
