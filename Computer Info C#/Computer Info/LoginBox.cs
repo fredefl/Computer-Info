@@ -8,12 +8,15 @@ namespace Computer_Info
     {
         private Main ParentForm;
         private bool SaveAfterwards;
+        private bool TerminateApplicationOnClose;
+        private bool Success = false;
 
-        public LoginBox (Main _ParentForm, bool _SaveAfterwards)
+        public LoginBox(Main _ParentForm, bool _SaveAfterwards, bool _TerminateApplicationOnClose)
         {
             InitializeComponent();
             ParentForm = _ParentForm;
             SaveAfterwards = _SaveAfterwards;
+            TerminateApplicationOnClose = _TerminateApplicationOnClose;
         }
 
         private void LoginBox_Shown(object sender, EventArgs e)
@@ -40,6 +43,14 @@ namespace Computer_Info
                 {
                     LoginBrowser.Navigate(Computer_Info.Properties.Settings.Default.BaseUrl + "/windows/login");
                 }
+            }
+        }
+
+        private void LoginBox_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (TerminateApplicationOnClose && e.CloseReason == CloseReason.UserClosing)
+            {
+                Environment.Exit(0);
             }
         }
     }

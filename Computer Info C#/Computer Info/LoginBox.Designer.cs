@@ -55,6 +55,7 @@
             this.Name = "LoginBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginBox_FormClosing);
             this.Shown += new System.EventHandler(this.LoginBox_Shown);
             this.ResumeLayout(false);
 

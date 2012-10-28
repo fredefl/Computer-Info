@@ -8,6 +8,7 @@ using Ini;
 using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Computer_Info.Resources;
 
 namespace Computer_Info
 {
@@ -204,21 +205,25 @@ namespace Computer_Info
             return Settings.IniReadValue("Settings", "Token");
         }
 
-        public void OpenLoginBox(bool SaveAfterwards = false, bool WaitForClose = false)
+        public void OpenLoginBox(bool SaveAfterwards = false, bool WaitForClose = false, bool TerminateApplicationOnClose = false)
         {
             foreach (Form CurrentForm in Application.OpenForms)
             {
                 if (CurrentForm is LoginBox)
                 {
                     if (WaitForClose)
+                    {
                         CurrentForm.ShowDialog();
+                    }
                     else
+                    {
                         CurrentForm.Show();
+                    }
                     CurrentForm.BringToFront();
                     return;
                 }
             }
-            LoginBox LoginBoxForm = new LoginBox(this, SaveAfterwards);
+            LoginBox LoginBoxForm = new LoginBox(this, SaveAfterwards, TerminateApplicationOnClose);
             if (WaitForClose)
                 LoginBoxForm.ShowDialog();
             else
@@ -227,6 +232,7 @@ namespace Computer_Info
 
         public Main()
         {
+            Console.WriteLine(Strings.Location);
             // Initialize
             InitializeComponent();
             if (!File.Exists(WorkingDirectory + "Settings.ini"))
@@ -241,12 +247,12 @@ namespace Computer_Info
             // Check if logged in
             if (GetToken() == "")
             {
-                OpenLoginBox(false,true);
+                OpenLoginBox(false,true, true);
             }
             // Keep validating the token until it's valid
             while (ValidateToken() == false)
             {
-                OpenLoginBox(false, true);
+                OpenLoginBox(false, true, true);
             }
             // Get the organization list
             GetOrganizationList();

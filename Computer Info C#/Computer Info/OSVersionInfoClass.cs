@@ -111,18 +111,13 @@ namespace JCS
                 {
                     case 64:
                         return "64-bit";
-                        break;
-
                     case 32:
                         if (Is32BitProcessOn64BitProcessor())
                             return "64-bit";
                         else
                             return "32-bit";
-                        break;
-
                     default:
                         return null;
-                        break;
                 }
             }
         }
