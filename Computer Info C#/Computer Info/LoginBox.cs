@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using Computer_Info.Resources;
 
 namespace Computer_Info
 {
@@ -9,7 +10,6 @@ namespace Computer_Info
         private Main ParentForm;
         private bool SaveAfterwards;
         private bool TerminateApplicationOnClose;
-        private bool Success = false;
 
         public LoginBox(Main _ParentForm, bool _SaveAfterwards, bool _TerminateApplicationOnClose)
         {
@@ -21,7 +21,7 @@ namespace Computer_Info
 
         private void LoginBox_Shown(object sender, EventArgs e)
         {
-            LoginBrowser.Navigate(Computer_Info.Properties.Settings.Default.BaseUrl + "/windows/login");
+            LoginBrowser.Navigate(Computer_Info.Properties.Settings.Default.BaseUrl + "/windows/login?language=" + Strings.CurrentLanguage);
         }
 
         private void LoginBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)

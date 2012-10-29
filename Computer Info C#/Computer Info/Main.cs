@@ -254,8 +254,6 @@ namespace Computer_Info
             UpdateMenuItem.Text = Strings.Update;
             UpdateProgramMenuItem.Text = Strings.Program;
             UpdateCacheMenuItem.Text = Strings.Cache;
-            
-
 
             if (!File.Exists(WorkingDirectory + "Settings.ini"))
             {

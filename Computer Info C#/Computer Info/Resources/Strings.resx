@@ -129,6 +129,9 @@
   <data name="ComputerType" xml:space="preserve">
     <value>Computer Type</value>
   </data>
+  <data name="CurrentLanguage" xml:space="preserve">
+    <value>english</value>
+  </data>
   <data name="Desktop" xml:space="preserve">
     <value>Desktop</value>
   </data>

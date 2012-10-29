@@ -97,6 +97,15 @@ namespace Computer_Info.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to english.
+        /// </summary>
+        internal static string CurrentLanguage {
+            get {
+                return ResourceManager.GetString("CurrentLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Desktop.
         /// </summary>
         internal static string Desktop {
