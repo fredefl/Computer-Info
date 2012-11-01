@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using System.Windows.Forms;
+using Computer_Info.Resources;
 
 namespace Computer_Info
 {
@@ -13,6 +14,11 @@ namespace Computer_Info
         public AboutBox()
         {
             InitializeComponent();
+            CopyrightLabel.Text = Strings.AboutCopyright;
+            DisclaimerLabel.Text = Strings.AboutDisclaimer;
+            OpenSourceInfoLabel.Text = Strings.AboutOpenSource;
+            VersionStatusLabel.Text = Strings.AboutUpdatesSearching;
+            GitHubLinkLabel.Left = Int32.Parse(Strings.AboutGithubLeft);
         }
 
         private void CloseForm()

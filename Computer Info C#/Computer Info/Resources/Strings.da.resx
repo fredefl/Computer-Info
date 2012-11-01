@@ -120,6 +120,21 @@
   <data name="About" xml:space="preserve">
     <value>Om</value>
   </data>
+  <data name="AboutCopyright" xml:space="preserve">
+    <value>Copyright © 2012</value>
+  </data>
+  <data name="AboutDisclaimer" xml:space="preserve">
+    <value>Vi er på ingen på ansvarlige for skader dette program måtte forvolde.</value>
+  </data>
+  <data name="AboutGithubLeft" xml:space="preserve">
+    <value>263</value>
+  </data>
+  <data name="AboutOpenSource" xml:space="preserve">
+    <value>Denne klient er open source, koden kan findes på</value>
+  </data>
+  <data name="AboutUpdatesSearching" xml:space="preserve">
+    <value>Søger efter opdateringer...</value>
+  </data>
   <data name="Board" xml:space="preserve">
     <value>Smartboard / Activeboard</value>
   </data>

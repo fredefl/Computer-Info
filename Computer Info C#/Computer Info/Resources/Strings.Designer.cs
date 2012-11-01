@@ -70,6 +70,51 @@ namespace Computer_Info.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copyright © 2012.
+        /// </summary>
+        internal static string AboutCopyright {
+            get {
+                return ResourceManager.GetString("AboutCopyright", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We are responsible for any damage caused by this application..
+        /// </summary>
+        internal static string AboutDisclaimer {
+            get {
+                return ResourceManager.GetString("AboutDisclaimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 247.
+        /// </summary>
+        internal static string AboutGithubLeft {
+            get {
+                return ResourceManager.GetString("AboutGithubLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This client is open source, grab the code from .
+        /// </summary>
+        internal static string AboutOpenSource {
+            get {
+                return ResourceManager.GetString("AboutOpenSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Searching for updates....
+        /// </summary>
+        internal static string AboutUpdatesSearching {
+            get {
+                return ResourceManager.GetString("AboutUpdatesSearching", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Smartboard / Activeboard.
         /// </summary>
         internal static string Board {

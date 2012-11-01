@@ -8,7 +8,6 @@ using Ini;
 using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-//using Computer_Info.Resources;
 using System.Threading;
 using System.Globalization;
 using Computer_Info.Resources;
@@ -248,6 +247,7 @@ namespace Computer_Info
             LaptopSelector.Text = Strings.Laptop;
             BoardSelector.Text = Strings.Board;
             SaveButton.Text = Strings.Save;
+            AboutMenuItem.Text = Strings.About;
 
             SignInMenuItem.Text = Strings.SignIn;
             // SIGN OUT

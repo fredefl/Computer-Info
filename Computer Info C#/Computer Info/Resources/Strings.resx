@@ -120,6 +120,21 @@
   <data name="About" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="AboutCopyright" xml:space="preserve">
+    <value>Copyright © 2012</value>
+  </data>
+  <data name="AboutDisclaimer" xml:space="preserve">
+    <value>We are responsible for any damage caused by this application.</value>
+  </data>
+  <data name="AboutGithubLeft" xml:space="preserve">
+    <value>247</value>
+  </data>
+  <data name="AboutOpenSource" xml:space="preserve">
+    <value>This client is open source, grab the code from </value>
+  </data>
+  <data name="AboutUpdatesSearching" xml:space="preserve">
+    <value>Searching for updates...</value>
+  </data>
   <data name="Board" xml:space="preserve">
     <value>Smartboard / Activeboard</value>
   </data>
