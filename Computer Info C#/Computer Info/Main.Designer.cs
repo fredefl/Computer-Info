@@ -68,7 +68,7 @@
             this.SignOutMenuItem.Name = "SignOutMenuItem";
             this.SignOutMenuItem.Size = new System.Drawing.Size(56, 20);
             this.SignOutMenuItem.Text = "Log ud";
-            this.SignOutMenuItem.Click += new System.EventHandler(this.LoginMenuItem_Click);
+            this.SignOutMenuItem.Click += new System.EventHandler(this.SignOutMenuItem_Click);
             // 
             // UpdateMenuItem
             // 
@@ -84,21 +84,21 @@
             this.UpdateProgramMenuItem.Name = "UpdateProgramMenuItem";
             this.UpdateProgramMenuItem.Size = new System.Drawing.Size(122, 22);
             this.UpdateProgramMenuItem.Text = "Program";
-            this.UpdateProgramMenuItem.Click += new System.EventHandler(this.programToolStripMenuItem_Click);
+            this.UpdateProgramMenuItem.Click += new System.EventHandler(this.UpdateProgramMenuItem_Click);
             // 
             // UpdateCacheMenuItem
             // 
             this.UpdateCacheMenuItem.Name = "UpdateCacheMenuItem";
             this.UpdateCacheMenuItem.Size = new System.Drawing.Size(122, 22);
             this.UpdateCacheMenuItem.Text = "Cache";
-            this.UpdateCacheMenuItem.Click += new System.EventHandler(this.cacheToolStripMenuItem_Click);
+            this.UpdateCacheMenuItem.Click += new System.EventHandler(this.UpdateCacheMenuItem_Click);
             // 
             // AboutMenuItem
             // 
             this.AboutMenuItem.Name = "AboutMenuItem";
             this.AboutMenuItem.Size = new System.Drawing.Size(39, 20);
             this.AboutMenuItem.Text = "Om";
-            this.AboutMenuItem.Click += new System.EventHandler(this.omToolStripMenuItem_Click);
+            this.AboutMenuItem.Click += new System.EventHandler(this.AboutMenuItem_Click);
             // 
             // OrganizationLabel
             // 
@@ -157,7 +157,7 @@
             this.DesktopSelector.TabStop = true;
             this.DesktopSelector.Text = "Desktop";
             this.DesktopSelector.UseVisualStyleBackColor = false;
-            this.DesktopSelector.CheckedChanged += new System.EventHandler(this.Stationary_CheckedChanged);
+            this.DesktopSelector.CheckedChanged += new System.EventHandler(this.DesktopSelector_CheckedChanged);
             // 
             // LaptopSelector
             // 
@@ -172,7 +172,7 @@
             this.LaptopSelector.TabStop = true;
             this.LaptopSelector.Text = "Laptop";
             this.LaptopSelector.UseVisualStyleBackColor = false;
-            this.LaptopSelector.CheckedChanged += new System.EventHandler(this.Laptop_CheckedChanged);
+            this.LaptopSelector.CheckedChanged += new System.EventHandler(this.LaptopSelector_CheckedChanged);
             // 
             // ComputerTypeLabel
             // 
