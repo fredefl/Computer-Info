@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.MainMenu = new System.Windows.Forms.MenuStrip();
-            this.SignInMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SignOutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UpdateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UpdateProgramMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UpdateCacheMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,7 +54,7 @@
             // 
             this.MainMenu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SignInMenuItem,
+            this.SignOutMenuItem,
             this.UpdateMenuItem,
             this.AboutMenuItem});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
@@ -63,12 +63,12 @@
             this.MainMenu.TabIndex = 2;
             this.MainMenu.Text = "MainMenu";
             // 
-            // SignInMenuItem
+            // SignOutMenuItem
             // 
-            this.SignInMenuItem.Name = "SignInMenuItem";
-            this.SignInMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.SignInMenuItem.Text = "Log ind";
-            this.SignInMenuItem.Click += new System.EventHandler(this.LoginMenuItem_Click);
+            this.SignOutMenuItem.Name = "SignOutMenuItem";
+            this.SignOutMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.SignOutMenuItem.Text = "Log ud";
+            this.SignOutMenuItem.Click += new System.EventHandler(this.LoginMenuItem_Click);
             // 
             // UpdateMenuItem
             // 
@@ -82,14 +82,14 @@
             // UpdateProgramMenuItem
             // 
             this.UpdateProgramMenuItem.Name = "UpdateProgramMenuItem";
-            this.UpdateProgramMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.UpdateProgramMenuItem.Size = new System.Drawing.Size(122, 22);
             this.UpdateProgramMenuItem.Text = "Program";
             this.UpdateProgramMenuItem.Click += new System.EventHandler(this.programToolStripMenuItem_Click);
             // 
             // UpdateCacheMenuItem
             // 
             this.UpdateCacheMenuItem.Name = "UpdateCacheMenuItem";
-            this.UpdateCacheMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.UpdateCacheMenuItem.Size = new System.Drawing.Size(122, 22);
             this.UpdateCacheMenuItem.Text = "Cache";
             this.UpdateCacheMenuItem.Click += new System.EventHandler(this.cacheToolStripMenuItem_Click);
             // 
@@ -293,7 +293,7 @@
         private System.Windows.Forms.TextBox MacAddressBox;
         private System.Windows.Forms.ToolStripMenuItem UpdateMenuItem;
         private System.Windows.Forms.ComboBox LocationBox;
-        private System.Windows.Forms.ToolStripMenuItem SignInMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SignOutMenuItem;
         private System.Windows.Forms.ComboBox OrganizationBox;
         private System.Windows.Forms.ToolStripMenuItem UpdateProgramMenuItem;
         private System.Windows.Forms.ToolStripMenuItem UpdateCacheMenuItem;

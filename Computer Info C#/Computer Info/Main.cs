@@ -21,20 +21,20 @@ namespace Computer_Info
         #region Location List
         public class LocationObject
         {
-            public int id { get; set; }
-            public string name { get; set; }
-            public string Location_number { get; set; }
-            public string organization { get; set; }
+            public int id;
+            public string name;
+            public string Location_number;
+            public string organization;
         }
 
         public class LocationRootObject
         {
-            public List<LocationObject> Locations { get; set; }
-            public int count { get; set; }
-            public object error_message { get; set; }
-            public object error_code { get; set; }
-            public string script_excecution_time { get; set; }
-            public int server_time { get; set; }
+            public List<LocationObject> Locations;
+            public int count;
+            public object error_message;
+            public object error_code;
+            public string script_excecution_time;
+            public int server_time;
         }
 
         public void GetLocationList()
@@ -95,35 +95,35 @@ namespace Computer_Info
         #region OrganizationList
         public class OrganizationEmployeesObject
         {
-            public int id { get; set; }
-            public List<string> organizations { get; set; }
-            public string email { get; set; }
-            public string name { get; set; }
+            public int id;
+            public List<string> organizations;
+            public string email;
+            public string name;
         }
 
         public class OrganizationObject
         {
-            public int id { get; set; }
-            public string name { get; set; }
-            public List<OrganizationEmployeesObject> employees { get; set; }
+            public int id;
+            public string name;
+            public List<OrganizationEmployeesObject> employees;
         }
 
         public class OrganizationUserObject
         {
-            public int id { get; set; }
-            public List<OrganizationObject> organizations { get; set; }
-            public string email { get; set; }
-            public string name { get; set; }
+            public int id;
+            public List<OrganizationObject> organizations;
+            public string email;
+            public string name;
         }
 
         public class OrganizationRootObject
         {
-            public OrganizationUserObject User { get; set; }
-            public int count { get; set; }
-            public string error_message { get; set; }
-            public string error_code { get; set; }
-            public string script_excecution_time { get; set; }
-            public int server_time { get; set; }
+            public OrganizationUserObject User;
+            public int count;
+            public string error_message;
+            public string error_code;
+            public string script_excecution_time;
+            public int server_time;
         }
 
         public void GetOrganizationList()
@@ -249,7 +249,7 @@ namespace Computer_Info
             SaveButton.Text = Strings.Save;
             AboutMenuItem.Text = Strings.About;
 
-            SignInMenuItem.Text = Strings.SignIn;
+            SignOutMenuItem.Text = Strings.SignOut;
             // SIGN OUT
             UpdateMenuItem.Text = Strings.Update;
             UpdateProgramMenuItem.Text = Strings.Program;
@@ -483,7 +483,8 @@ namespace Computer_Info
 
         private void LoginMenuItem_Click(object sender, EventArgs e)
         {
-            OpenLoginBox();
+            Settings.IniWriteValue("Settings", "Token", "");
+            System.Windows.Forms.Application.Restart();
         }
 
         private void programToolStripMenuItem_Click(object sender, EventArgs e)

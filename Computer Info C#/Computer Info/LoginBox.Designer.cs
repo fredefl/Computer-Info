@@ -29,33 +29,75 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginBox));
-            this.LoginBrowser = new System.Windows.Forms.WebBrowser();
+            this.SignInBrowser = new System.Windows.Forms.WebBrowser();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.AddressBox = new System.Windows.Forms.TextBox();
+            this.BackButton = new System.Windows.Forms.Button();
+            this.ForwardButton = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // LoginBrowser
+            // SignInBrowser
             // 
-            resources.ApplyResources(this.LoginBrowser, "LoginBrowser");
-            this.LoginBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.LoginBrowser.Name = "LoginBrowser";
-            this.LoginBrowser.ScriptErrorsSuppressed = true;
-            this.LoginBrowser.ScrollBarsEnabled = false;
-            this.LoginBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.LoginBrowser_DocumentCompleted);
+            resources.ApplyResources(this.SignInBrowser, "SignInBrowser");
+            this.SignInBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.SignInBrowser.Name = "SignInBrowser";
+            this.SignInBrowser.ScriptErrorsSuppressed = true;
+            this.SignInBrowser.ScrollBarsEnabled = false;
+            this.SignInBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.LoginBrowser_DocumentCompleted);
+            this.SignInBrowser.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.LoginBrowser_Navigating);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ForwardButton);
+            this.panel1.Controls.Add(this.BackButton);
+            this.panel1.Controls.Add(this.AddressBox);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
+            // AddressBox
+            // 
+            this.AddressBox.BackColor = System.Drawing.SystemColors.Control;
+            this.AddressBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.AddressBox, "AddressBox");
+            this.AddressBox.Name = "AddressBox";
+            // 
+            // BackButton
+            // 
+            resources.ApplyResources(this.BackButton, "BackButton");
+            this.BackButton.Name = "BackButton";
+            this.BackButton.UseVisualStyleBackColor = true;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
+            // 
+            // ForwardButton
+            // 
+            resources.ApplyResources(this.ForwardButton, "ForwardButton");
+            this.ForwardButton.Name = "ForwardButton";
+            this.ForwardButton.UseVisualStyleBackColor = true;
+            this.ForwardButton.Click += new System.EventHandler(this.ForwardButton_Click);
             // 
             // LoginBox
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.LoginBrowser);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.SignInBrowser);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "LoginBox";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginBox_FormClosing);
             this.Shown += new System.EventHandler(this.LoginBox_Shown);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.WebBrowser LoginBrowser;
+        private System.Windows.Forms.WebBrowser SignInBrowser;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button ForwardButton;
+        private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.TextBox AddressBox;
     }
 }

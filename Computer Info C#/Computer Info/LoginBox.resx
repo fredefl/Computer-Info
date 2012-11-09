@@ -118,30 +118,138 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="LoginBrowser.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="SignInBrowser.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="LoginBrowser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="SignInBrowser.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
   </data>
-  <data name="LoginBrowser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>466, 357</value>
+  <data name="SignInBrowser.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="SignInBrowser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>466, 370</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="LoginBrowser.TabIndex" type="System.Int32, mscorlib">
+  <data name="SignInBrowser.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;LoginBrowser.Name" xml:space="preserve">
-    <value>LoginBrowser</value>
+  <data name="&gt;&gt;SignInBrowser.Name" xml:space="preserve">
+    <value>SignInBrowser</value>
   </data>
-  <data name="&gt;&gt;LoginBrowser.Type" xml:space="preserve">
+  <data name="&gt;&gt;SignInBrowser.Type" xml:space="preserve">
     <value>System.Windows.Forms.WebBrowser, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;LoginBrowser.Parent" xml:space="preserve">
+  <data name="&gt;&gt;SignInBrowser.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;LoginBrowser.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;SignInBrowser.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ForwardButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="ForwardButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>443, 0</value>
+  </data>
+  <data name="ForwardButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 24</value>
+  </data>
+  <data name="ForwardButton.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="ForwardButton.Text" xml:space="preserve">
+    <value>&gt;</value>
+  </data>
+  <data name="&gt;&gt;ForwardButton.Name" xml:space="preserve">
+    <value>ForwardButton</value>
+  </data>
+  <data name="&gt;&gt;ForwardButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ForwardButton.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;ForwardButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="BackButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="BackButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>420, 0</value>
+  </data>
+  <data name="BackButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 24</value>
+  </data>
+  <data name="BackButton.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="BackButton.Text" xml:space="preserve">
+    <value>&lt;</value>
+  </data>
+  <data name="&gt;&gt;BackButton.Name" xml:space="preserve">
+    <value>BackButton</value>
+  </data>
+  <data name="&gt;&gt;BackButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BackButton.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;BackButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="AddressBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 11.25pt</value>
+  </data>
+  <data name="AddressBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="AddressBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="AddressBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>423, 24</value>
+  </data>
+  <data name="AddressBox.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;AddressBox.Name" xml:space="preserve">
+    <value>AddressBox</value>
+  </data>
+  <data name="&gt;&gt;AddressBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AddressBox.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;AddressBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>466, 24</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -151,7 +259,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>466, 357</value>
+    <value>466, 394</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
