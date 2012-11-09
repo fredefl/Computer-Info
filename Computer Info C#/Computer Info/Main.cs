@@ -93,19 +93,12 @@ namespace Computer_Info
         #endregion
 
         #region OrganizationList
-        public class OrganizationEmployeesObject
-        {
-            public int id;
-            public List<string> organizations;
-            public string email;
-            public string name;
-        }
 
         public class OrganizationObject
         {
             public int id;
             public string name;
-            public List<OrganizationEmployeesObject> employees;
+            public List<string> employees;
         }
 
         public class OrganizationUserObject
@@ -133,6 +126,7 @@ namespace Computer_Info
                 string Url =
                     Properties.Settings.Default.BaseUrl +
                     "/user/me?format=json&dev=true&token=" + GetToken();
+                Log(Url);
                 WebClient Http = new WebClient();
                 Http.DownloadStringAsync(new Uri(Url));
                 Http.DownloadStringCompleted += new DownloadStringCompletedEventHandler(GetOrganizationListResponse);
@@ -194,8 +188,6 @@ namespace Computer_Info
             {
                 return false;
             }
-
-
         }
 
         public void SetToken (string Token)
