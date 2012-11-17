@@ -160,7 +160,7 @@
     <value>Location</value>
   </data>
   <data name="Organization" xml:space="preserve">
-    <value>OrganizationEN</value>
+    <value>Organization</value>
   </data>
   <data name="Program" xml:space="preserve">
     <value>Program</value>
@@ -172,7 +172,7 @@
     <value>Sign In</value>
   </data>
   <data name="SignOut" xml:space="preserve">
-    <value>SignOut</value>
+    <value>Sign Out</value>
   </data>
   <data name="Update" xml:space="preserve">
     <value>Update</value>

@@ -91,15 +91,18 @@ namespace Computer_Info
             MacAddressBox.Text = MacAddress;
             
             // Check if a LAN MAC address is available, if not color the form red otherwise green
-            if (MacAddress.Length == 17)
+            if (JCS.OSVersionInfo.Name != "Windows 8")
             {
-                MainMenu.BackgroundImage = Computer_Info.Properties.Resources.GreenBar;
-                this.BackgroundImage = Computer_Info.Properties.Resources.GreenBar;
-            }
-            else
-            {
-                MainMenu.BackgroundImage = Computer_Info.Properties.Resources.RedBar;
-                this.BackgroundImage = Computer_Info.Properties.Resources.RedBar;
+                if (MacAddress.Length == 17)
+                {
+                    MainMenu.BackgroundImage = Computer_Info.Properties.Resources.GreenBar;
+                    this.BackgroundImage = Computer_Info.Properties.Resources.GreenBar;
+                }
+                else
+                {
+                    MainMenu.BackgroundImage = Computer_Info.Properties.Resources.RedBar;
+                    this.BackgroundImage = Computer_Info.Properties.Resources.RedBar;
+                }
             }
 
             // Get Tokens
