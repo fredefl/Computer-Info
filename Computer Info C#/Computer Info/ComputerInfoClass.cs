@@ -71,6 +71,7 @@ namespace ComputerInfo
         public class ComputerInfoComputerObject
         {
             public string identifier;
+            public string location;
             public int organization;
             public List<GraphicsCardObject> graphics_cards;
             public List<ProcessorObject> processors;
@@ -755,6 +756,7 @@ namespace ComputerInfo
             Object.computer.model.type = (_ComputerType != "" ? _ComputerType : "7");
             Object.computer.organization = _OrganizationId;
             Object.computer.identifier = _Identifier;
+            Object.computer.location = _Location;
             return Object;
         }
 
