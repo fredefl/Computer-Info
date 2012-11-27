@@ -73,6 +73,7 @@ namespace ComputerInfo
             public string identifier;
             public string location;
             public int organization;
+            public int execution_time;
             public List<GraphicsCardObject> graphics_cards;
             public List<ProcessorObject> processors;
             public List<PrinterObject> printers;
@@ -725,22 +726,15 @@ namespace ComputerInfo
         }
         #endregion
         #region Send (Doc)
-        // Get Url
         /// <summary>
-        /// Gets the data URL
+        /// Sends the computer with tokens
         /// </summary>
-        /// <param name="Base64Encode">Wherever it should Base64 encode the result or not</param>
-        /// <returns>URL string</returns>
-        // Send With Tokens, Return Success
-        /// <summary>
-        /// Sends the computers data to the server, using Tokens.
-        /// </summary>
-        /// <param name="Token">The Token</param>
-        /// <returns>True</returns>
+        /// <param name="Token">The token that will be used to authenticate</param>
+        /// <returns>Success, true og false</returns>
         public bool SendWithTokens(string Token)
         {
             HttpWebRequest Request = (HttpWebRequest)
-            WebRequest.Create(Computer_Info.Properties.Settings.Default.BaseUrl + "/client/computer?dev=true&format=json&token=" + Token); 
+            WebRequest.Create(Computer_Info.Properties.Settings.Default.BaseUrl + "/client/computer?format=json&token=" + Token); 
             Request.KeepAlive = false;
             Request.ProtocolVersion = HttpVersion.Version10;
             Request.Method = "POST";
@@ -763,7 +757,6 @@ namespace ComputerInfo
                 {
                     ResponseString = Reader.ReadToEnd();
                 }
-                MessageBox.Show(ResponseString);
                 File.WriteAllText("Response.log", ResponseString);
                 int StatusCode = Convert.ToInt32(Response.StatusCode);
 
@@ -779,11 +772,17 @@ namespace ComputerInfo
 
         public ComputerInfoObject CreateCompleteComputerInfoObject()
         {
+            var ExecutionTimeMeasurer = new Stopwatch();
+            ExecutionTimeMeasurer.Start();
+            
             ComputerInfoObject Object = CreateComputerInfoObject();
             Object.computer.model.type = (_ComputerType != "" ? _ComputerType : "7");
             Object.computer.organization = _OrganizationId;
             Object.computer.identifier = _Identifier;
             Object.computer.location = _Location;
+
+            ExecutionTimeMeasurer.Stop();
+            Object.computer.execution_time = ExecutionTimeMeasurer.Elapsed.Milliseconds;
             return Object;
         }
 
