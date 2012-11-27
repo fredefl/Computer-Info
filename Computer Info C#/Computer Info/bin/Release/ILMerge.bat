@@ -1,6 +1,6 @@
 @echo off
-ILMerge.exe /out:ComputerInfo.exe ComputerInfo.exe ^
+ILMerge.exe /out:ComputerInfo.exe ComputerInfoUnmerged.exe ^
 Newtonsoft.Json.dll ^
-da/ComputerInfo.resources.dll ^
-en-GB/ComputerInfo.resources.dll
+da/ComputerInfoUnmerged.resources.dll ^
+en-GB/ComputerInfoUnmerged.resources.dll
 pause

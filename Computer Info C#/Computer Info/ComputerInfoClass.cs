@@ -123,10 +123,22 @@ namespace ComputerInfo
             public string clock_speed;
             public string max_clock_speed;
             public string detection_string;
+            public string data_width;
+        }
+        public class ProcessorFamilyObject
+        {
+            public string detection_string;
+            public ProcessorFamilyArchitectureObject architecture = new ProcessorFamilyArchitectureObject();
+        }
+        public class ProcessorFamilyArchitectureObject
+        {
+            public string detection_string;
         }
         public class ProcessorObject
         {
+            public string device_identifier;
             public ProcessorModelObject model = new ProcessorModelObject();
+            public ProcessorFamilyObject family = new ProcessorFamilyObject();
             public ProcessorManufacturerObject manufacturer = new ProcessorManufacturerObject();
         }
         #endregion
@@ -384,6 +396,12 @@ namespace ComputerInfo
             foreach (ManagementObject MO in Collection)
             {
                 ProcessorObject Processor = new ProcessorObject();
+                try
+                {
+                    Processor.device_identifier = MO["DeviceID"].ToString();
+                }
+                catch { }
+
                 try 
                 {
                     Processor.manufacturer.detection_string = MO["Manufacturer"].ToString();
@@ -392,11 +410,20 @@ namespace ComputerInfo
 
                 try
                 {
+                    
                     Processor.model.clock_speed = Math.Round(Convert.ToDouble(MO["CurrentClockSpeed"].ToString()) / 1000, 1).ToString();
                     Processor.model.cores = MO["NumberOfCores"].ToString();
                     Processor.model.threads = MO["NumberOfLogicalProcessors"].ToString();
                     Processor.model.max_clock_speed = Math.Round(Convert.ToDouble(MO["MaxClockSpeed"].ToString()) / 1000, 1).ToString();
                     Processor.model.detection_string = MO["Name"].ToString();
+                    Processor.model.data_width = MO["DataWidth"].ToString();
+                }
+                catch { }
+
+                try
+                {
+                    Processor.family.architecture.detection_string = MO["Architecture"].ToString();
+                    Processor.family.detection_string = MO["Family"].ToString();
                 }
                 catch { }
 
