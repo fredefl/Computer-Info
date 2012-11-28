@@ -20,12 +20,10 @@ namespace ComputerInfo
         /// <summary>
         /// Makes a full ComputerInfo Class
         /// </summary>
-        /// <param name="BUFUUF">Wherever it's BUF or UUF</param>
-        /// <param name="Number">The BUF/UUF Number</param>
         /// <param name="Location">Location</param>
         /// <param name="ComputerType">Computer Type</param>
         /// <param name="SB">Smartboard</param>
-        /// <param name="Organization">Organization</param>
+        /// <param name="OrganizationId">The ID of the organization</param>
         public ComputerInfoClass (string Identifier, string Location, string ComputerType, string SB, int OrganizationId)
         {
             // Constructor!
@@ -80,6 +78,8 @@ namespace ComputerInfo
             public MemoryObject memory;
             public ComputerModelObject model;
             public OperatingSystemObject operating_system;
+            public List<LogicalDrive> logical_drives;
+            public List<PhysicalDrive> physical_drives;
         }
         public class ComputerInfoObject 
         {
@@ -206,6 +206,36 @@ namespace ComputerInfo
             public string service_pack;
             public string system_drive;
             public string version;
+        }
+        #endregion
+        #region Drives
+        public class LogicalDrive
+        {
+            public string device_identifier;
+            public string free_space;
+            public string disk_size;
+            public string volume_name;
+            public string volume_serial_number;
+            public string file_system;
+            public string drive_type;
+        }
+
+        public class Partition
+        {
+            public string device_identifier;
+            public string disk_size;
+            public bool boot_partition;
+            public string index;
+            public string starting_index;
+        }
+
+        public class PhysicalDrive
+        {
+            public string model;
+            public string device_identifier;
+            public string disk_size;
+            public string serial_number;
+            public List<Partition> partitions;
         }
         #endregion
         #endregion
@@ -411,7 +441,6 @@ namespace ComputerInfo
 
                 try
                 {
-                    
                     Processor.model.clock_speed = Math.Round(Convert.ToDouble(MO["CurrentClockSpeed"].ToString()) / 1000, 1).ToString();
                     Processor.model.cores = MO["NumberOfCores"].ToString();
                     Processor.model.threads = MO["NumberOfLogicalProcessors"].ToString();
@@ -477,6 +506,21 @@ namespace ComputerInfo
                 GraphicsCards.Add(GraphicsCard);
             }
             return GraphicsCards;
+        }
+        public List<PhysicalDrive> GetPhysicalDrives()
+        {
+            List<PhysicalDrive> PhysicalDrives = new List<PhysicalDrive>();
+            ManagementObjectSearcher Query = new ManagementObjectSearcher("SELECT * FROM Win32_DiskDrive");
+            ManagementObjectCollection Collection = Query.Get();
+            foreach (ManagementObject MO in Collection)
+            {
+                PhysicalDrive PhysicalDrive = new PhysicalDrive();
+                //PhysicalDrive.name = MO["Name"].ToString();
+                //PhysicalDrive.identifier = MO["Name"].ToString();
+
+                PhysicalDrives.Add(PhysicalDrive);
+            }
+            return PhysicalDrives;
         }
         // Get Screen Height
         /// <summary>
@@ -734,10 +778,11 @@ namespace ComputerInfo
         public bool SendWithTokens(string Token)
         {
             HttpWebRequest Request = (HttpWebRequest)
-            WebRequest.Create(Computer_Info.Properties.Settings.Default.BaseUrl + "/client/computer?format=json&token=" + Token); 
+            WebRequest.Create(Computer_Info.Properties.Settings.Default.BaseUrl + "/client/computer?format=json&token=" + Token);
             Request.KeepAlive = false;
             Request.ProtocolVersion = HttpVersion.Version10;
             Request.Method = "POST";
+            Request.UserAgent = "CI/Windows";
             byte[] PostBytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(CreateCompleteComputerInfoObject()));
             File.WriteAllBytes("Request.log", PostBytes);
 
@@ -764,7 +809,6 @@ namespace ComputerInfo
             }
             catch (Exception)
             {
-                HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
                 MessageBox.Show("Could not connect to server, please try again");
                 return false;
             }

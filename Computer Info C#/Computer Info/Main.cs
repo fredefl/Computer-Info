@@ -91,7 +91,7 @@ namespace Computer_Info
             MacAddressBox.Text = MacAddress;
             
             // Check if a LAN MAC address is available, if not color the form red otherwise green
-            if (JCS.OSVersionInfo.Name != "Windows 8")
+            if (JCS.OSVersionInfo.Name != "Windows 8" || true)
             {
                 if (MacAddress.Length == 17)
                 {
@@ -327,7 +327,7 @@ namespace Computer_Info
                     Properties.Settings.Default.BaseUrl +
                     "/token/" + GetToken();
             WebClient Http = new WebClient();
-            Http.Headers.Add("Referer:CI/Windows");
+            Http.Headers.Add("user-agent: CI/Windows");
             try
             {
                 string Result = Http.DownloadString(new Uri(Url));
