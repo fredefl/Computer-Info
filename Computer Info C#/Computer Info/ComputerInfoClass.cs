@@ -180,9 +180,9 @@ namespace ComputerInfo
             public string serial;
             public string part_number;
             public string speed;
-            public MemorySlotmanufacturerObject manufacturer = new MemorySlotmanufacturerObject();
+            public MemorySlotManufacturerObject manufacturer = new MemorySlotmManufacturerObject();
         }
-        public class MemorySlotmanufacturerObject {
+        public class MemorySlotManufacturerObject {
             public string detection_string;
         }
         #endregion
@@ -254,17 +254,17 @@ namespace ComputerInfo
         #region Functions (Doc)
         #region Helper Functions (Doc)
         /// <summary>
-        /// method for converting a System.DateTime value to a UNIX Timestamp
+        /// Converts a System.DateTime value to a UNIX Timestamp
         /// </summary>
-        /// <param name="value">date to convert</param>
+        /// <param name="value">Date to convert</param>
         /// <returns></returns>
         private string ConvertToTimestamp(DateTime value)
         {
-            //create Timespan by subtracting the value provided from
-            //the Unix Epoch
+            // Create Timespan by subtracting the value provided from
+            // The Unix Epoch
             TimeSpan span = (value - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime());
 
-            //return the total seconds (which is a UNIX timestamp)
+            // Return the total seconds (which is a UNIX timestamp)
             return span.TotalSeconds.ToString();
         }
 
@@ -404,7 +404,7 @@ namespace ComputerInfo
                         catch { };
                         try { MemorySlot.speed = MO["Speed"].ToString(); }
                         catch { };
-                        try { MemorySlot.manufacturer.detection_string = MO["manufacturer"].ToString(); }
+                        try { MemorySlot.manufacturer.detection_string = MO["Manufacturer"].ToString(); }
                         catch { }
                     }
                 }
