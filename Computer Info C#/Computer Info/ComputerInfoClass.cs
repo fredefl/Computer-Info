@@ -100,6 +100,7 @@ namespace ComputerInfo
             public string name;
             public string description;
             public string video_processor;
+            public string detection_string;
         }
         public class GraphicsCardScreenSizeObject
         {
@@ -111,6 +112,7 @@ namespace ComputerInfo
             public string driver_version;
             public string driver_date;
             public string ram_size;
+            public string device_identifier;
             public GraphicsCardScreenSizeObject screen_size = new GraphicsCardScreenSizeObject();
         }
         #endregion
@@ -178,9 +180,9 @@ namespace ComputerInfo
             public string serial;
             public string part_number;
             public string speed;
-            public MemorySlotManifacturerObject manifacturer = new MemorySlotManifacturerObject();
+            public MemorySlotmanufacturerObject manufacturer = new MemorySlotmanufacturerObject();
         }
-        public class MemorySlotManifacturerObject {
+        public class MemorySlotmanufacturerObject {
             public string detection_string;
         }
         #endregion
@@ -251,6 +253,21 @@ namespace ComputerInfo
         #endregion
         #region Functions (Doc)
         #region Helper Functions (Doc)
+        /// <summary>
+        /// method for converting a System.DateTime value to a UNIX Timestamp
+        /// </summary>
+        /// <param name="value">date to convert</param>
+        /// <returns></returns>
+        private string ConvertToTimestamp(DateTime value)
+        {
+            //create Timespan by subtracting the value provided from
+            //the Unix Epoch
+            TimeSpan span = (value - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime());
+
+            //return the total seconds (which is a UNIX timestamp)
+            return span.TotalSeconds.ToString();
+        }
+
         // Get Cmd Output
         /// <summary>
         /// Get output from a CMD command.
@@ -387,7 +404,7 @@ namespace ComputerInfo
                         catch { };
                         try { MemorySlot.speed = MO["Speed"].ToString(); }
                         catch { };
-                        try { MemorySlot.manifacturer.detection_string = MO["Manifacturer"].ToString(); }
+                        try { MemorySlot.manufacturer.detection_string = MO["manufacturer"].ToString(); }
                         catch { }
                     }
                 }
@@ -485,9 +502,10 @@ namespace ComputerInfo
             {
                 GraphicsCardObject GraphicsCard = new GraphicsCardObject();
                 try
-                {
+                {   
                     GraphicsCard.driver_version = MO["DriverVersion"].ToString();
-                    GraphicsCard.driver_date = MO["DriverDate"].ToString();
+                    GraphicsCard.device_identifier = MO["DeviceID"].ToString();
+                    GraphicsCard.driver_date = this.ConvertToTimestamp(Convert.ToDateTime(MO["DriverDate"].ToString()));
                     GraphicsCard.ram_size = Math.Round(Convert.ToDouble(MO["AdapterRAM"]) / 1048576).ToString();
                 }
                 catch { }
@@ -498,6 +516,7 @@ namespace ComputerInfo
                     GraphicsCard.model.name = MO["Name"].ToString();
                     GraphicsCard.model.description = MO["Description"].ToString();
                     GraphicsCard.model.video_processor = MO["VideoProcessor"].ToString();
+                    GraphicsCard.model.detection_string = MO["Name"].ToString();
                 }
                 catch { }
 
