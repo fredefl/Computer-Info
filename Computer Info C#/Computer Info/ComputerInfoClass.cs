@@ -71,6 +71,7 @@ namespace ComputerInfo
             public string identifier;
             public string location;
             public int organization;
+            public string serial;
             public int execution_time;
             public List<GraphicsCardObject> graphics_cards;
             public List<ProcessorObject> processors;
@@ -78,8 +79,9 @@ namespace ComputerInfo
             public MemoryObject memory;
             public ComputerModelObject model;
             public OperatingSystemObject operating_system;
-            public List<LogicalDrive> logical_drives;
-            public List<PhysicalDrive> physical_drives;
+            public List<LogicalDriveObject> logical_drives;
+            public List<PhysicalDriveObject> physical_drives;
+            public ScreenSizeObject screen_size;
         }
         public class ComputerInfoObject 
         {
@@ -209,7 +211,7 @@ namespace ComputerInfo
         }
         #endregion
         #region Drives
-        public class LogicalDrive
+        public class LogicalDriveObject
         {
             public string device_identifier;
             public string free_space;
@@ -220,7 +222,7 @@ namespace ComputerInfo
             public string drive_type;
         }
 
-        public class Partition
+        public class PartitionObject
         {
             public string device_identifier;
             public string disk_size;
@@ -229,13 +231,21 @@ namespace ComputerInfo
             public string starting_index;
         }
 
-        public class PhysicalDrive
+        public class PhysicalDriveObject
         {
             public string model;
             public string device_identifier;
             public string disk_size;
             public string serial_number;
-            public List<Partition> partitions;
+            public List<PartitionObject> partitions;
+        }
+        #endregion
+        #region Screen Size
+        public class ScreenSizeObject
+        {
+            public int heigth;
+            public int width;
+            public string detection_string;
         }
         #endregion
         #endregion
@@ -507,14 +517,14 @@ namespace ComputerInfo
             }
             return GraphicsCards;
         }
-        public List<PhysicalDrive> GetPhysicalDrives()
+        public List<PhysicalDriveObject> GetPhysicalDrives()
         {
-            List<PhysicalDrive> PhysicalDrives = new List<PhysicalDrive>();
+            List<PhysicalDriveObject> PhysicalDrives = new List<PhysicalDriveObject>();
             ManagementObjectSearcher Query = new ManagementObjectSearcher("SELECT * FROM Win32_DiskDrive");
             ManagementObjectCollection Collection = Query.Get();
             foreach (ManagementObject MO in Collection)
             {
-                PhysicalDrive PhysicalDrive = new PhysicalDrive();
+                PhysicalDriveObject PhysicalDrive = new PhysicalDriveObject();
                 //PhysicalDrive.name = MO["Name"].ToString();
                 //PhysicalDrive.identifier = MO["Name"].ToString();
 
@@ -522,23 +532,14 @@ namespace ComputerInfo
             }
             return PhysicalDrives;
         }
-        // Get Screen Height
-        /// <summary>
-        /// Gets the screen height
-        /// </summary>
-        /// <returns>The screen height in pixels</returns>
-        public string GetScreenHeight()
+
+        public ScreenSizeObject GetScreenSize()
         {
-            return Screen.PrimaryScreen.Bounds.Height.ToString();
-        }
-        // Get Screen Width
-        /// <summary>
-        /// Gets the screen width
-        /// </summary>
-        /// <returns>The screen width in pixels.</returns>
-        public string GetScreenWidth()
-        {
-            return Screen.PrimaryScreen.Bounds.Width.ToString();
+            ScreenSizeObject ScreenSize = new ScreenSizeObject();
+            ScreenSize.heigth = Screen.PrimaryScreen.Bounds.Height;
+            ScreenSize.width = Screen.PrimaryScreen.Bounds.Width;
+            ScreenSize.detection_string = ScreenSize.width + "x" + ScreenSize.heigth.ToString();
+            return ScreenSize;
         }
         // Get Computer Name
         /// <summary>
@@ -747,28 +748,6 @@ namespace ComputerInfo
         }
         #endregion
         #endregion
-        #region Debug (Doc)
-        /// <summary>
-        /// Get a debug string that holds the computers information.
-        /// </summary>
-        /// <returns>String with computer information</returns>
-        public string DebugToText()
-        {
-            string Output = "";
-            // Output += ": "++"\r\n";
-            Output += "Screen Height: "+GetScreenHeight()+"\r\n";
-            Output += "Screen Width: "+GetScreenWidth()+"\r\n";
-            Output += "Unix Timestamp: "+GetUnixTimeStamp()+"\r\n";
-            Output += "Computer Name: "+GetComputerName()+"\r\n";
-            Output += "Total Disk Space: "+GetTotalDiskSpace()+"\r\n";
-            Output += "Computer Model: "+GetComputerModel()+"\r\n";
-            Output += "Computer Serial: "+GetComputerSerialNumber()+"\r\n";
-            Output += "Mac Address: "+GetMacAddress()+"\r\n";
-            Output += "Lan Mac Address: "+GetLanMacAddress()+"\r\n";
-            Output += "Ip Address: "+GetIpAddress()+"\r\n";
-            return Output;
-        }
-        #endregion
         #region Send (Doc)
         /// <summary>
         /// Sends the computer with tokens
@@ -824,6 +803,7 @@ namespace ComputerInfo
             Object.computer.organization = _OrganizationId;
             Object.computer.identifier = _Identifier;
             Object.computer.location = _Location;
+            Object.computer.serial = GetComputerSerialNumber();
 
             ExecutionTimeMeasurer.Stop();
             Object.computer.execution_time = ExecutionTimeMeasurer.Elapsed.Milliseconds;
@@ -841,6 +821,7 @@ namespace ComputerInfo
             BaseObject.computer.printers = GetPrinters();
             BaseObject.computer.memory = GetMemory();
             BaseObject.computer.operating_system = GetOperatingSystem();
+            BaseObject.computer.screen_size = GetScreenSize();
             return BaseObject;
         }
         #endregion
