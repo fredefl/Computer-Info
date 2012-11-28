@@ -399,8 +399,10 @@ namespace Computer_Info
             ComputerInfoInstance.SetVariables(IdentifierBox.Text, LocationBox.Text, ComputerType.ToString(), ComputerInfoInstance.BoolToString(BoardSelector.Checked), OrganizationId);
 
             if (Settings.IniReadValue("Settings", "Token").Length > 0) {
-                ComputerInfoInstance.SendWithTokens(Settings.IniReadValue("Settings", "Token"));
-                Application.Exit();
+                if (ComputerInfoInstance.SendWithTokens(Settings.IniReadValue("Settings", "Token")))
+                {
+                    Application.Exit();
+                }
             }
             else
             {
