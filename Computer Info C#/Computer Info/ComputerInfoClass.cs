@@ -180,7 +180,7 @@ namespace ComputerInfo
             public string serial;
             public string part_number;
             public string speed;
-            public MemorySlotManufacturerObject manufacturer = new MemorySlotmManufacturerObject();
+            public MemorySlotManufacturerObject manufacturer = new MemorySlotManufacturerObject();
         }
         public class MemorySlotManufacturerObject {
             public string detection_string;
