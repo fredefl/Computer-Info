@@ -81,6 +81,7 @@ namespace ComputerInfo
             public OperatingSystemObject operating_system;
             public List<LogicalDriveObject> logical_drives;
             public List<PhysicalDriveObject> physical_drives;
+            public List<NetworkCardObject> network_cards;
             public ScreenSizeObject screen_size;
         }
         public class ComputerInfoObject 
@@ -250,6 +251,26 @@ namespace ComputerInfo
             public string detection_string;
         }
         #endregion
+        #region Network Cards
+        public class NetworkCardObject
+        {
+            public string mac_address;
+            public NetworkCardAdapterTypeObject adapter_type = new NetworkCardAdapterTypeObject();
+            public List<string> ip_addresses = new List<string>();
+            public string guid;
+            public NetworkCardModelObject model;
+            public string description;
+            public int device_identifier;
+        }
+        public class NetworkCardAdapterTypeObject
+        {
+            public string detection_string;
+        }
+        public class NetworkCardModelObject
+        {
+            public string detection_string;
+        }
+        #endregion
         #endregion
         #region Functions (Doc)
         #region Helper Functions (Doc)
@@ -334,6 +355,35 @@ namespace ComputerInfo
         }
         #endregion
         #region ComputerInfo Functions (Doc)
+        public List<NetworkCardObject> GetNetworkCards()
+        {
+            List<NetworkCardObject> NetworkCards = new List<NetworkCardObject>();
+            int DeviceIdentifier = 0;
+            foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                if (nic.OperationalStatus == OperationalStatus.Up && nic.NetworkInterfaceType.ToString() != "Loopback")
+                {
+                    NetworkCardObject NetworkCard = new NetworkCardObject();
+                    try
+                    {
+                        NetworkCard.model.detection_string = nic.Name.ToString();
+                    }
+                    catch { }
+                    NetworkCard.guid = nic.Id;
+                    NetworkCard.device_identifier = DeviceIdentifier;
+                    NetworkCard.description = nic.Description;
+                    NetworkCard.mac_address = nic.GetPhysicalAddress().ToString();
+                    NetworkCard.adapter_type.detection_string = nic.NetworkInterfaceType.ToString();
+                    foreach (UnicastIPAddressInformation ip_address in nic.GetIPProperties().UnicastAddresses)
+                    {
+                        NetworkCard.ip_addresses.Add(ip_address.Address.ToString());
+                    }
+                    NetworkCards.Add(NetworkCard);
+                }
+                DeviceIdentifier++;
+            }
+            return NetworkCards;
+        }
         // Get operating system
         /// <summary>
         /// Gets basic operating system information
@@ -840,6 +890,7 @@ namespace ComputerInfo
             BaseObject.computer.printers = GetPrinters();
             BaseObject.computer.memory = GetMemory();
             BaseObject.computer.operating_system = GetOperatingSystem();
+            BaseObject.computer.network_cards = GetNetworkCards();
             BaseObject.computer.screen_size = GetScreenSize();
             return BaseObject;
         }
