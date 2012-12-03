@@ -630,6 +630,27 @@ namespace ComputerInfo
             return PhysicalDrives;
         }
 
+        public List<LogicalDriveObject> GetLogicalDrives() 
+        {
+            List<LogicalDriveObject> LogicalDrives = new List<LogicalDriveObject>();
+            ManagementObjectSearcher Query = new ManagementObjectSearcher("SELECT * FROM Win32_LogicalDisk");
+            ManagementObjectCollection Collection = Query.Get();
+            foreach (ManagementObject MO in Collection)
+            {
+                LogicalDriveObject LogicalDrive = new LogicalDriveObject();
+                LogicalDrive.device_identifier = MO["DeviceID"].ToString();
+                LogicalDrive.drive_type.detection_string = MO["DriveType"].ToString();
+                LogicalDrive.free_space = MO["FreeSpace"].ToString();
+                LogicalDrive.disk_size = MO["Size"].ToString();
+                LogicalDrive.volume_name = MO["VolumeName"].ToString();
+                LogicalDrive.volume_serial_number = MO["VolumeSerialNumber"].ToString();
+                LogicalDrive.file_system = MO["FileSystem"].ToString();
+
+                LogicalDrives.Add(LogicalDrive);
+            }
+            return LogicalDrives;
+        }
+
         public ScreenSizeObject GetScreenSize()
         {
             ScreenSizeObject ScreenSize = new ScreenSizeObject();
@@ -920,6 +941,8 @@ namespace ComputerInfo
             BaseObject.computer.operating_system = GetOperatingSystem();
             BaseObject.computer.network_cards = GetNetworkCards();
             BaseObject.computer.screen_size = GetScreenSize();
+            BaseObject.computer.logical_drives = GetLogicalDrives();
+            BaseObject.computer.physical_drives = GetPhysicalDrives();
             return BaseObject;
         }
         #endregion
