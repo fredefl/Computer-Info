@@ -260,6 +260,7 @@ namespace ComputerInfo
             public string guid;
             public NetworkCardModelObject model = new NetworkCardModelObject();
             public int device_identifier;
+            public long max_speed;
         }
         public class NetworkCardAdapterTypeObject
         {
@@ -388,6 +389,7 @@ namespace ComputerInfo
                     NetworkCard.device_identifier = DeviceIdentifier;
                     NetworkCard.mac_address = FormatMacAddress(nic.GetPhysicalAddress());
                     NetworkCard.adapter_type.detection_string = nic.NetworkInterfaceType.ToString();
+                    NetworkCard.max_speed = nic.Speed / 1024 / 1024;
                     foreach (UnicastIPAddressInformation ip_address in nic.GetIPProperties().UnicastAddresses)
                     {
                         NetworkCard.ip_addresses.Add(ip_address.Address.ToString());
