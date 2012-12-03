@@ -222,7 +222,17 @@ namespace ComputerInfo
             public string volume_name;
             public string volume_serial_number;
             public string file_system;
-            public string drive_type;
+            public DriveTypeObject drive_type = new DriveTypeObject();
+        }
+
+        public class DriveTypeObject
+        {
+            public string detection_string;
+        }
+
+        public class PhysicalDriveModelObject
+        {
+            public string detection_string;
         }
 
         public class PartitionObject
@@ -236,7 +246,7 @@ namespace ComputerInfo
 
         public class PhysicalDriveObject
         {
-            public string model;
+            public PhysicalDriveModelObject model = new PhysicalDriveModelObject();
             public string device_identifier;
             public string disk_size;
             public string serial_number;
@@ -610,8 +620,10 @@ namespace ComputerInfo
             foreach (ManagementObject MO in Collection)
             {
                 PhysicalDriveObject PhysicalDrive = new PhysicalDriveObject();
-                //PhysicalDrive.name = MO["Name"].ToString();
-                //PhysicalDrive.identifier = MO["Name"].ToString();
+                PhysicalDrive.model.detection_string = MO["Model"].ToString();
+                PhysicalDrive.disk_size = MO["Size"].ToString();
+                PhysicalDrive.device_identifier = MO["DeviceID"].ToString();
+                PhysicalDrive.serial_number = MO["SerialNumber"].ToString();
 
                 PhysicalDrives.Add(PhysicalDrive);
             }
