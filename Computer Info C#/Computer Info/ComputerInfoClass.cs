@@ -258,8 +258,7 @@ namespace ComputerInfo
             public NetworkCardAdapterTypeObject adapter_type = new NetworkCardAdapterTypeObject();
             public List<string> ip_addresses = new List<string>();
             public string guid;
-            public NetworkCardModelObject model;
-            public string description;
+            public NetworkCardModelObject model = new NetworkCardModelObject();
             public int device_identifier;
         }
         public class NetworkCardAdapterTypeObject
@@ -274,6 +273,22 @@ namespace ComputerInfo
         #endregion
         #region Functions (Doc)
         #region Helper Functions (Doc)
+        public string FormatMacAddress (PhysicalAddress Input) {
+            string Output = "";
+            byte[] bytes = Input.GetAddressBytes();
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                // Display the physical address in hexadecimal.
+                Output += bytes[i].ToString("X2");
+                // Insert a hyphen after each byte, unless we are at the end of the 
+                // address.
+                if (i != bytes.Length)
+                {
+                    Output += ":";
+                }
+            }
+            return Output.Trim(':');
+        }
         /// <summary>
         /// Converts a System.DateTime value to a UNIX Timestamp
         /// </summary>
@@ -366,13 +381,12 @@ namespace ComputerInfo
                     NetworkCardObject NetworkCard = new NetworkCardObject();
                     try
                     {
-                        NetworkCard.model.detection_string = nic.Name.ToString();
+                        NetworkCard.model.detection_string = nic.Description.ToString();
                     }
                     catch { }
                     NetworkCard.guid = nic.Id;
                     NetworkCard.device_identifier = DeviceIdentifier;
-                    NetworkCard.description = nic.Description;
-                    NetworkCard.mac_address = nic.GetPhysicalAddress().ToString();
+                    NetworkCard.mac_address = FormatMacAddress(nic.GetPhysicalAddress());
                     NetworkCard.adapter_type.detection_string = nic.NetworkInterfaceType.ToString();
                     foreach (UnicastIPAddressInformation ip_address in nic.GetIPProperties().UnicastAddresses)
                     {
