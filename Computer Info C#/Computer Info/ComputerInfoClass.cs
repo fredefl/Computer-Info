@@ -637,16 +637,20 @@ namespace ComputerInfo
             ManagementObjectCollection Collection = Query.Get();
             foreach (ManagementObject MO in Collection)
             {
-                LogicalDriveObject LogicalDrive = new LogicalDriveObject();
-                LogicalDrive.device_identifier = MO["DeviceID"].ToString();
-                LogicalDrive.drive_type.detection_string = MO["DriveType"].ToString();
-                LogicalDrive.free_space = MO["FreeSpace"].ToString();
-                LogicalDrive.disk_size = MO["Size"].ToString();
-                LogicalDrive.volume_name = MO["VolumeName"].ToString();
-                LogicalDrive.volume_serial_number = MO["VolumeSerialNumber"].ToString();
-                LogicalDrive.file_system = MO["FileSystem"].ToString();
+                try
+                {
+                    LogicalDriveObject LogicalDrive = new LogicalDriveObject();
+                    LogicalDrive.device_identifier = MO["DeviceID"].ToString();
+                    LogicalDrive.drive_type.detection_string = MO["DriveType"].ToString();
+                    LogicalDrive.free_space = MO["FreeSpace"].ToString();
+                    LogicalDrive.disk_size = MO["Size"].ToString();
+                    LogicalDrive.volume_name = MO["VolumeName"].ToString();
+                    LogicalDrive.volume_serial_number = MO["VolumeSerialNumber"].ToString();
+                    LogicalDrive.file_system = MO["FileSystem"].ToString();
 
-                LogicalDrives.Add(LogicalDrive);
+                    LogicalDrives.Add(LogicalDrive);
+                }
+                catch { }
             }
             return LogicalDrives;
         }
