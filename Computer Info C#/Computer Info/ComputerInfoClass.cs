@@ -102,8 +102,18 @@ namespace ComputerInfo
             public string description;
             public string video_processor;
             public string detection_string;
+            public GraphicsCardMemoryTypeObject memory_type = new GraphicsCardMemoryTypeObject();
         }
         public class GraphicsCardScreenSizeObject
+        {
+            public string detection_string;
+        }
+
+        public class GraphicsCardMemoryTypeObject
+        {
+            public string detection_string;
+        }
+        public class GraphicsCardVideoArchiteture
         {
             public string detection_string;
         }
@@ -114,6 +124,7 @@ namespace ComputerInfo
             public string driver_date;
             public string ram_size;
             public string device_identifier;
+            public GraphicsCardVideoArchiteture video_architecture = new GraphicsCardVideoArchiteture();
             public GraphicsCardScreenSizeObject screen_size = new GraphicsCardScreenSizeObject();
         }
         #endregion
@@ -583,6 +594,7 @@ namespace ComputerInfo
                     GraphicsCard.device_identifier = MO["DeviceID"].ToString();
                     GraphicsCard.driver_date = this.ConvertToTimestamp(Convert.ToDateTime(MO["DriverDate"].ToString()));
                     GraphicsCard.ram_size = Math.Round(Convert.ToDouble(MO["AdapterRAM"]) / 1048576).ToString();
+                    GraphicsCard.video_architecture.detection_string = MO["VideoArchitecture"].ToString();
                 }
                 catch { }
 
@@ -593,6 +605,7 @@ namespace ComputerInfo
                     GraphicsCard.model.description = MO["Description"].ToString();
                     GraphicsCard.model.video_processor = MO["VideoProcessor"].ToString();
                     GraphicsCard.model.detection_string = MO["Name"].ToString();
+                    GraphicsCard.model.memory_type.detection_string = MO["VideoMemoryType"].ToString();
                 }
                 catch { }
 
