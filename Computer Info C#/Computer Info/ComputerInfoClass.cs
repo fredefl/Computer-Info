@@ -113,7 +113,7 @@ namespace ComputerInfo
         {
             public string detection_string;
         }
-        public class GraphicsCardVideoArchitecture
+        public class GraphicsCardVideoArchitectureObject
         {
             public string detection_string;
         }
@@ -124,7 +124,7 @@ namespace ComputerInfo
             public string driver_date;
             public string ram_size;
             public string device_identifier;
-            public GraphicsCardVideoArchitecture video_architecture = new GraphicsCardVideoArchitecture();
+            public GraphicsCardVideoArchitectureObject video_architecture = new GraphicsCardVideoArchitectureObject();
             public GraphicsCardScreenSizeObject screen_size = new GraphicsCardScreenSizeObject();
         }
         #endregion
