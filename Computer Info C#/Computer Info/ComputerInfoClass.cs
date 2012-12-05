@@ -233,6 +233,7 @@ namespace ComputerInfo
             public string volume_name;
             public string volume_serial_number;
             public string file_system;
+            public string name;
             public DriveTypeObject drive_type = new DriveTypeObject();
         }
 
@@ -660,6 +661,7 @@ namespace ComputerInfo
                     LogicalDrive.volume_name = MO["VolumeName"].ToString();
                     LogicalDrive.volume_serial_number = MO["VolumeSerialNumber"].ToString();
                     LogicalDrive.file_system = MO["FileSystem"].ToString();
+                    LogicalDrive.name = MO["Name"].ToString();
 
                     LogicalDrives.Add(LogicalDrive);
                 }
