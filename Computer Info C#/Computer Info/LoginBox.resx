@@ -128,6 +128,9 @@
   <data name="SignInBrowser.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
+  <data name="SignInBrowser.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
   <data name="SignInBrowser.Size" type="System.Drawing.Size, System.Drawing">
     <value>466, 370</value>
   </data>

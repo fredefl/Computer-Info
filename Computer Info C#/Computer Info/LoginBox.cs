@@ -78,5 +78,12 @@ namespace Computer_Info
         {
             SignInBrowser.GoBack();
         }
+
+        private void AddressBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13) {
+                SignInBrowser.Navigate(AddressBox.Text);
+            }
+        }
     }
 }

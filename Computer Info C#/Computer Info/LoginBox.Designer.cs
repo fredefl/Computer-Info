@@ -31,16 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginBox));
             this.SignInBrowser = new System.Windows.Forms.WebBrowser();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.AddressBox = new System.Windows.Forms.TextBox();
-            this.BackButton = new System.Windows.Forms.Button();
             this.ForwardButton = new System.Windows.Forms.Button();
+            this.BackButton = new System.Windows.Forms.Button();
+            this.AddressBox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // SignInBrowser
             // 
             resources.ApplyResources(this.SignInBrowser, "SignInBrowser");
-            this.SignInBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.SignInBrowser.Name = "SignInBrowser";
             this.SignInBrowser.ScriptErrorsSuppressed = true;
             this.SignInBrowser.ScrollBarsEnabled = false;
@@ -55,12 +54,12 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
-            // AddressBox
+            // ForwardButton
             // 
-            this.AddressBox.BackColor = System.Drawing.SystemColors.Control;
-            this.AddressBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.AddressBox, "AddressBox");
-            this.AddressBox.Name = "AddressBox";
+            resources.ApplyResources(this.ForwardButton, "ForwardButton");
+            this.ForwardButton.Name = "ForwardButton";
+            this.ForwardButton.UseVisualStyleBackColor = true;
+            this.ForwardButton.Click += new System.EventHandler(this.ForwardButton_Click);
             // 
             // BackButton
             // 
@@ -69,12 +68,13 @@
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
-            // ForwardButton
+            // AddressBox
             // 
-            resources.ApplyResources(this.ForwardButton, "ForwardButton");
-            this.ForwardButton.Name = "ForwardButton";
-            this.ForwardButton.UseVisualStyleBackColor = true;
-            this.ForwardButton.Click += new System.EventHandler(this.ForwardButton_Click);
+            this.AddressBox.BackColor = System.Drawing.SystemColors.Control;
+            this.AddressBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.AddressBox, "AddressBox");
+            this.AddressBox.Name = "AddressBox";
+            this.AddressBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AddressBox_KeyPress);
             // 
             // LoginBox
             // 
