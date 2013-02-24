@@ -463,19 +463,31 @@ namespace ComputerInfo
             ManagementObjectCollection Collection = Query.Get();
             foreach (ManagementObject MO in Collection)
             {
-                //OperatingSystem.core.detection_string = GetProductInfo();
-                OperatingSystem.core.manufacturer.detection_string = MO["Manufacturer"].ToString();
-                OperatingSystem.core.detection_string = OSVersionInfo.Name;
-                OperatingSystem.edition.detection_string = OSVersionInfo.Edition;
-                OperatingSystem.edition.manufacturer.detection_string = MO["Manufacturer"].ToString();
-                OperatingSystem.architecture = OSVersionInfo.OSBits;
-                OperatingSystem.computer_name = MO["CSName"].ToString();
-                TimeSpan ts = (ManagementDateTimeConverter.ToDateTime(MO["InstallDate"].ToString()).ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0));
-                int unixTime = (int)Math.Round((double)ts.TotalSeconds);
-                OperatingSystem.install_date = unixTime.ToString();
-                OperatingSystem.service_pack = MO["ServicePackMajorVersion"].ToString();
-                OperatingSystem.system_drive = MO["SystemDrive"].ToString();
-                OperatingSystem.version = MO["Version"].ToString();
+                Try(() =>
+                    OperatingSystem.core.manufacturer.detection_string = MO["Manufacturer"].ToString());
+                Try(() =>
+                    OperatingSystem.core.detection_string = OSVersionInfo.Name);
+                Try(() =>
+                    OperatingSystem.edition.detection_string = OSVersionInfo.Edition);
+                Try(() =>
+                    OperatingSystem.edition.manufacturer.detection_string = MO["Manufacturer"].ToString());
+                Try(() =>
+                    OperatingSystem.architecture = OSVersionInfo.OSBits);
+                Try(() =>
+                    OperatingSystem.computer_name = MO["CSName"].ToString());
+                Try(() =>
+                    OperatingSystem.service_pack = MO["ServicePackMajorVersion"].ToString());
+                Try(() =>
+                    OperatingSystem.system_drive = MO["SystemDrive"].ToString());
+                Try(() =>
+                    OperatingSystem.version = MO["Version"].ToString());
+
+                try {
+                    TimeSpan ts = (ManagementDateTimeConverter.ToDateTime(MO["InstallDate"].ToString()).ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0));
+                    int unixTime = (int)Math.Round((double)ts.TotalSeconds);
+                    OperatingSystem.install_date = unixTime.ToString();
+                } catch { }
+
             }
             return OperatingSystem;
         }
@@ -495,8 +507,12 @@ namespace ComputerInfo
             foreach (ManagementObject MO in Collection)
             {
                 MemorySlotObject MemorySlot = new MemorySlotObject();
-                MemorySlot.device_identifier = MO["DeviceID"].ToString().Replace("Memory Device ", "");
-                MemorySlot.capacity = Math.Round((Convert.ToDouble(MO["EndingAddress"].ToString()) - Convert.ToDouble(MO["StartingAddress"].ToString())) / 1024).ToString();
+                
+                Try(() =>
+                    MemorySlot.device_identifier = MO["DeviceID"].ToString().Replace("Memory Device ", ""));
+                Try(() =>
+                    MemorySlot.capacity = Math.Round((Convert.ToDouble(MO["EndingAddress"].ToString()) - Convert.ToDouble(MO["StartingAddress"].ToString())) / 1024).ToString());
+                
                 if (Convert.ToDouble(MemorySlot.capacity) == 0)
                 {
                     MemorySlot.empty = true;
@@ -505,27 +521,32 @@ namespace ComputerInfo
                 {
                     MemorySlot.empty = false;
                 }
+                
                 MemorySlots.Add(MemorySlot);
             }
             Query = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMemory");
             Collection = Query.Get();
             foreach (ManagementObject MO in Collection)
             {
-                var Identifier = MO["Tag"].ToString().Replace("Physical Memory ", "");
-                foreach (MemorySlotObject MemorySlot in MemorySlots)
+                try
                 {
-                    if (MemorySlot.device_identifier == Identifier)
+                    var Identifier = MO["Tag"].ToString().Replace("Physical Memory ", "");
+                    foreach (MemorySlotObject MemorySlot in MemorySlots)
                     {
-                        try { MemorySlot.part_number = MO["PartNumber"].ToString(); }
-                        catch { };
-                        try { MemorySlot.serial = MO["Serial"].ToString(); }
-                        catch { };
-                        try { MemorySlot.speed = MO["Speed"].ToString(); }
-                        catch { };
-                        try { MemorySlot.manufacturer.detection_string = MO["Manufacturer"].ToString(); }
-                        catch { }
+                        if (MemorySlot.device_identifier == Identifier)
+                        {
+                            Try(() =>
+                                MemorySlot.part_number = MO["PartNumber"].ToString());
+                            Try(() =>
+                                MemorySlot.serial = MO["Serial"].ToString());
+                            Try(() =>
+                                MemorySlot.speed = MO["Speed"].ToString());
+                            Try(() =>
+                                MemorySlot.manufacturer.detection_string = MO["Manufacturer"].ToString());
+                        }
                     }
                 }
+                catch { }
             }
             // Get total physical memory
             Query = new ManagementObjectSearcher("Select * From Win32_ComputerSystem");
@@ -533,8 +554,8 @@ namespace ComputerInfo
             double RamBytes = 0;
             foreach (ManagementObject MO in Collection)
             {
-                RamBytes = (Convert.ToDouble(MO["TotalPhysicalMemory"]));
-
+                Try(() =>
+                    RamBytes = (Convert.ToDouble(MO["TotalPhysicalMemory"])));
             }
             Memory.total_physical_memory = Math.Round(RamBytes / 1048576).ToString();
             return Memory;
@@ -549,28 +570,36 @@ namespace ComputerInfo
             List<PrinterObject> Printers = new List<PrinterObject>();
             ManagementObjectSearcher Query = new ManagementObjectSearcher("SELECT * FROM Win32_Printer");
             ManagementObjectCollection Collection = Query.Get();
-            try
+            foreach (ManagementObject MO in Collection)
             {
-                foreach (ManagementObject MO in Collection)
+                PrinterObject Printer = new PrinterObject();
+                    
+                Try(() =>
+                    Printer.name = MO["Name"].ToString());
+                Try(() =>
+                    Printer.identifier = MO["Name"].ToString());
+                Try(() =>
+                    Printer.model.detection_string = MO["DriverName"].ToString());
+                Try(() =>
+                    Printer.location.name = MO["Location"].ToString());
+                Try(() =>
+                    Printer.local = MO["Local"].ToString());
+                try
                 {
-                    PrinterObject Printer = new PrinterObject();
-                    Printer.name = MO["Name"].ToString();
-                    Printer.identifier = MO["Name"].ToString();
-                    Printer.model.detection_string = MO["DriverName"].ToString();
-                    Printer.location.name = MO["Location"].ToString();
-                    Printer.local = MO["Local"].ToString();
-                    string capabilitiesString = MO["Capabilities"].ToString();
-                    string[] capabilities = capabilitiesString.Split(' ');
+                    string CapabilitiesString = MO["Capabilities"].ToString();
+                    string[] Capabilities = CapabilitiesString.Split(' ');
 
-                    foreach ( string capability in capabilities ) {
+                    foreach (string Capability in Capabilities)
+                    {
                         PrinterCapabilitiesObject PrinterCapability = new PrinterCapabilitiesObject();
-                        PrinterCapability.detection_string = capability;
+                        PrinterCapability.detection_string = Capability;
                         Printer.capabilities.Add(PrinterCapability);
                     }
-
-                    Printers.Add(Printer);
                 }
-            } catch {}
+                catch { }
+
+                Printers.Add(Printer);
+            }
             return Printers;
         }
         // Get processors
@@ -586,35 +615,27 @@ namespace ComputerInfo
             foreach (ManagementObject MO in Collection)
             {
                 ProcessorObject Processor = new ProcessorObject();
-                try
-                {
-                    Processor.device_identifier = MO["DeviceID"].ToString();
-                }
-                catch { }
-
-                try 
-                {
-                    Processor.manufacturer.detection_string = MO["Manufacturer"].ToString();
-                }
-                catch { }
-
-                try
-                {
-                    Processor.model.clock_speed = Math.Round(Convert.ToDouble(MO["CurrentClockSpeed"].ToString()) / 1000, 1).ToString();
-                    Processor.model.cores = MO["NumberOfCores"].ToString();
-                    Processor.model.threads = MO["NumberOfLogicalProcessors"].ToString();
-                    Processor.model.max_clock_speed = Math.Round(Convert.ToDouble(MO["MaxClockSpeed"].ToString()) / 1000, 1).ToString();
-                    Processor.model.detection_string = MO["Name"].ToString();
-                    Processor.model.data_width = MO["DataWidth"].ToString();
-                }
-                catch { }
-
-                try
-                {
-                    Processor.family.architecture.detection_string = MO["Architecture"].ToString();
-                    Processor.family.detection_string = MO["Family"].ToString();
-                }
-                catch { }
+                
+                Try(() =>
+                    Processor.device_identifier = MO["DeviceID"].ToString());
+                Try(() =>
+                    Processor.manufacturer.detection_string = MO["Manufacturer"].ToString());
+                Try(() =>
+                    Processor.model.clock_speed = Math.Round(Convert.ToDouble(MO["CurrentClockSpeed"].ToString()) / 1000, 1).ToString());
+                Try(() =>
+                    Processor.model.cores = MO["NumberOfCores"].ToString());
+                Try(() =>
+                    Processor.model.threads = MO["NumberOfLogicalProcessors"].ToString());
+                Try(() =>
+                    Processor.model.max_clock_speed = Math.Round(Convert.ToDouble(MO["MaxClockSpeed"].ToString()) / 1000, 1).ToString());
+                Try(() =>
+                    Processor.model.detection_string = MO["Name"].ToString());
+                Try(() =>
+                    Processor.model.data_width = MO["DataWidth"].ToString());
+                Try(() =>
+                    Processor.family.architecture.detection_string = MO["Architecture"].ToString());
+                Try(() =>
+                    Processor.family.detection_string = MO["Family"].ToString());
 
                 Processors.Add(Processor);
             }
@@ -732,9 +753,14 @@ namespace ComputerInfo
         public ScreenSizeObject GetScreenSize()
         {
             ScreenSizeObject ScreenSize = new ScreenSizeObject();
-            ScreenSize.heigth = Screen.PrimaryScreen.Bounds.Height;
-            ScreenSize.width = Screen.PrimaryScreen.Bounds.Width;
-            ScreenSize.detection_string = ScreenSize.width + "x" + ScreenSize.heigth.ToString();
+
+            Try(() => 
+                ScreenSize.heigth = Screen.PrimaryScreen.Bounds.Height);
+            Try(() => 
+                ScreenSize.width = Screen.PrimaryScreen.Bounds.Width);
+            Try(() => 
+                ScreenSize.detection_string = ScreenSize.width + "x" + ScreenSize.heigth.ToString());
+            
             return ScreenSize;
         }
         // Get Computer Name
@@ -744,18 +770,11 @@ namespace ComputerInfo
         /// <returns>The computers name</returns>
         public string GetComputerName()
         {
-            return System.Environment.MachineName;
-        }
-        // Get Total Disk Space
-        /// <summary>
-        /// Gets the total disk space
-        /// </summary>
-        /// <returns>The total disk space</returns>
-        public string GetTotalDiskSpace()
-        {
-            ulong freeBytesAvailable, totalBytes, freeBytes;
-            GetDiskFreeSpaceEx("C:", out freeBytesAvailable, out totalBytes, out freeBytes);
-            return Convert.ToInt32(totalBytes / 1024 / 1024 / 1024).ToString();
+            try
+            {
+                return System.Environment.MachineName;
+            }
+            catch { return ""; }
         }
         // Get Computer Model
         /// <summary>
@@ -769,18 +788,10 @@ namespace ComputerInfo
             ManagementObjectCollection Collection = Query.Get();
             foreach (ManagementObject MO in Collection)
             {
-                try
-                {
-                    ComputerModel.detection_string = MO["Model"].ToString();
-                }
-                catch { }
-
-                try
-                {
-                    ComputerModel.manufacturer = new ComputerModelManufacturerObject();
-                    ComputerModel.manufacturer.detection_string = MO["Manufacturer"].ToString();
-                }
-                catch { }
+                Try(() =>
+                    ComputerModel.detection_string = MO["Model"].ToString());
+                Try(() =>
+                    ComputerModel.manufacturer.detection_string = MO["Manufacturer"].ToString());
             }
             return ComputerModel;
         }
@@ -796,7 +807,8 @@ namespace ComputerInfo
             ManagementObjectCollection Collection = Query.Get();
             foreach (ManagementObject MO in Collection)
             {
-                SerialNumber = MO["SerialNumber"].ToString();
+                Try(() =>
+                    SerialNumber = MO["SerialNumber"].ToString());
             }
             return SerialNumber;
         }
@@ -808,15 +820,18 @@ namespace ComputerInfo
         public string GetMacAddress()
         {
             string macAddresses = "";
-
-            foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+            try
             {
-                if (nic.OperationalStatus == OperationalStatus.Up)
+                foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+                {
+                    if (nic.OperationalStatus == OperationalStatus.Up)
                     {
                         macAddresses += nic.GetPhysicalAddress().ToString();
                         break;
                     }
+                }
             }
+            catch { }
             return macAddresses;
 
         }
@@ -828,40 +843,16 @@ namespace ComputerInfo
         /// <returns>The MAC Address(es)</returns>
         public string GetLanMacAddress(bool All = false)
         {
-            
-            int istherearesult = 0;
-            string Output = "";
-            NetworkInterface[] interfaces = NetworkInterface.GetAllNetworkInterfaces();
-            foreach (NetworkInterface adapter in interfaces)
+            try
             {
-                if (!IsXp()) 
+                int istherearesult = 0;
+                string Output = "";
+                NetworkInterface[] interfaces = NetworkInterface.GetAllNetworkInterfaces();
+                foreach (NetworkInterface adapter in interfaces)
                 {
-                    if (adapter.NetworkInterfaceType.ToString() == "Ethernet" && adapter.OperationalStatus == OperationalStatus.Up)
+                    if (!IsXp())
                     {
-                        istherearesult = 1;
-                        PhysicalAddress address = adapter.GetPhysicalAddress();
-                        byte[] bytes = address.GetAddressBytes();
-                        for (int i = 0; i < bytes.Length; i++)
-                        {
-                            // Display the physical address in hexadecimal.
-                            Output += bytes[i].ToString("X2");
-                            // Insert a hyphen after each byte, unless we are at the end of the 
-                            // address.
-                            if (i != bytes.Length)
-                            {
-                                Output += "-";
-                            }
-                        }
-                        if (!All) break;
-                        Output += "|";
-                    };
-                }
-                else
-                {
-                    IPInterfaceProperties properties = adapter.GetIPProperties();
-                    foreach (IPAddressInformation unicast in properties.UnicastAddresses)
-                    {
-                        if (IsLanIp(unicast.Address.ToString()))
+                        if (adapter.NetworkInterfaceType.ToString() == "Ethernet" && adapter.OperationalStatus == OperationalStatus.Up)
                         {
                             istherearesult = 1;
                             PhysicalAddress address = adapter.GetPhysicalAddress();
@@ -879,21 +870,48 @@ namespace ComputerInfo
                             }
                             if (!All) break;
                             Output += "|";
+                        };
+                    }
+                    else
+                    {
+                        IPInterfaceProperties properties = adapter.GetIPProperties();
+                        foreach (IPAddressInformation unicast in properties.UnicastAddresses)
+                        {
+                            if (IsLanIp(unicast.Address.ToString()))
+                            {
+                                istherearesult = 1;
+                                PhysicalAddress address = adapter.GetPhysicalAddress();
+                                byte[] bytes = address.GetAddressBytes();
+                                for (int i = 0; i < bytes.Length; i++)
+                                {
+                                    // Display the physical address in hexadecimal.
+                                    Output += bytes[i].ToString("X2");
+                                    // Insert a hyphen after each byte, unless we are at the end of the 
+                                    // address.
+                                    if (i != bytes.Length)
+                                    {
+                                        Output += "-";
+                                    }
+                                }
+                                if (!All) break;
+                                Output += "|";
+                            }
                         }
                     }
+                };
+
+
+                if (istherearesult == 0)
+                {
+                    return "NULL";
                 }
-            };
-
-
-            if (istherearesult == 0)
-            {
-                return "NULL";
+                else
+                {
+                    Output = Output.Remove(Output.Length - 1, 1);
+                    return Output;
+                }
             }
-            else
-            {
-                Output = Output.Remove(Output.Length - 1, 1);
-                return Output;
-            }
+            catch { return ""; }
 
         }
         // Get Ip Address
@@ -903,12 +921,16 @@ namespace ComputerInfo
         /// <returns>The IP Address</returns>
         public string GetIpAddress ()
         {
-            string strHostName = Dns.GetHostName();
-            IPHostEntry ipEntry = Dns.GetHostEntry(strHostName);
-            IPAddress[] addr = ipEntry.AddressList;
-            string IpAddress = ""; 
-            IpAddress =  addr[0].ToString();
-            return IpAddress;
+            try
+            {
+                string strHostName = Dns.GetHostName();
+                IPHostEntry ipEntry = Dns.GetHostEntry(strHostName);
+                IPAddress[] addr = ipEntry.AddressList;
+                string IpAddress = "";
+                IpAddress = addr[0].ToString();
+                return IpAddress;
+            }
+            catch { return ""; }
         }
         #endregion
         #region Extra Functions (Doc)
