@@ -179,8 +179,6 @@ namespace Computer_Info
         {
             public int id;
             public string name;
-            public string Location_number;
-            public string organization;
         }
 
         public class LocationRootObject
@@ -212,8 +210,10 @@ namespace Computer_Info
             {
                 string Url =
                     Properties.Settings.Default.BaseUrl +
-                    "/options/location/?organization=" + CurrentOrganizationId + "&format=json&dev=true&token=" + GetToken();
+                    "/options/location/?organization=" + CurrentOrganizationId + "&format=json&fields=name,id&token=" + GetToken();
+                Log("Locations URL: " + Url);
                 WebClient Http = new WebClient();
+                Http.Headers.Add("user-agent: CI/Windows");
                 Http.DownloadStringAsync(new Uri(Url));
                 Http.DownloadStringCompleted += new DownloadStringCompletedEventHandler(GetLocationListResponse);
             }
@@ -244,7 +244,7 @@ namespace Computer_Info
             }
             catch (Exception)
             {
-                Log("Error getting Location list");
+                Log("Error getting Location list - afterwards");
             }
         }
         #endregion
@@ -282,9 +282,10 @@ namespace Computer_Info
             {
                 string Url =
                     Properties.Settings.Default.BaseUrl +
-                    "/user/me?format=json&dev=true&token=" + GetToken();
+                    "/user/me?format=json&token=" + GetToken();
                 Log(Url);
                 WebClient Http = new WebClient();
+                Http.Headers.Add("user-agent: CI/Windows");
                 Http.DownloadStringAsync(new Uri(Url));
                 Http.DownloadStringCompleted += new DownloadStringCompletedEventHandler(GetOrganizationListResponse);
             }

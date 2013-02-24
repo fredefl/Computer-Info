@@ -893,8 +893,10 @@ namespace ComputerInfo
         /// <returns>Success, true og false</returns>
         public bool SendWithTokens(string Token)
         {
+            string Url = Computer_Info.Properties.Settings.Default.BaseUrl + "/client/computer?format=json&token=" + Token;
             HttpWebRequest Request = (HttpWebRequest)
-            WebRequest.Create(Computer_Info.Properties.Settings.Default.BaseUrl + "/client/computer?format=json&token=" + Token);
+            WebRequest.Create(Url);
+            File.WriteAllText("Request.url.log", Url);
             Request.KeepAlive = false;
             Request.ProtocolVersion = HttpVersion.Version10;
             Request.Method = "POST";
