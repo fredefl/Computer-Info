@@ -519,14 +519,17 @@ namespace ComputerInfo
             List<PrinterObject> Printers = new List<PrinterObject>();
             ManagementObjectSearcher Query = new ManagementObjectSearcher("SELECT * FROM Win32_Printer");
             ManagementObjectCollection Collection = Query.Get();
-            foreach (ManagementObject MO in Collection)
+            try
             {
-                PrinterObject Printer = new PrinterObject();
-                Printer.name = MO["Name"].ToString();
-                Printer.identifier = MO["Name"].ToString();
+                foreach (ManagementObject MO in Collection)
+                {
+                    PrinterObject Printer = new PrinterObject();
+                    Printer.name = MO["Name"].ToString();
+                    Printer.identifier = MO["Name"].ToString();
 
-                Printers.Add(Printer);
-            }
+                    Printers.Add(Printer);
+                }
+            } catch {}
             return Printers;
         }
         // Get processors
