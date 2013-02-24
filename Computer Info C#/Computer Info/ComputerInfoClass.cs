@@ -164,6 +164,26 @@ namespace ComputerInfo
         {
             public string name;
             public string identifier;
+            public PrinterLocationObject location = new PrinterLocationObject();
+            public PrinterModelObject model = new PrinterModelObject();
+            public string local;
+            public List<PrinterCapabilitiesObject> capabilities = new List<PrinterCapabilitiesObject>();
+        }
+
+        public class PrinterCapabilitiesObject
+        {
+            public string detection_string;
+        }
+
+        public class PrinterModelObject
+        {
+            public string detection_string;
+
+        }
+
+        public class PrinterLocationObject
+        {
+            public string name;
         }
         #endregion
         #region Computer Model
@@ -202,6 +222,7 @@ namespace ComputerInfo
         public class OperatingSystemEditionObject
         {
             public string detection_string;
+            public OperatingSystemManufacturerObject manufacturer = new OperatingSystemManufacturerObject();
         }
         public class OperatingSystemManufacturerObject
         {
@@ -438,6 +459,7 @@ namespace ComputerInfo
                 OperatingSystem.core.manufacturer.detection_string = MO["Manufacturer"].ToString();
                 OperatingSystem.core.detection_string = OSVersionInfo.Name;
                 OperatingSystem.edition.detection_string = OSVersionInfo.Edition;
+                OperatingSystem.edition.manufacturer.detection_string = MO["Manufacturer"].ToString();
                 OperatingSystem.architecture = OSVersionInfo.OSBits;
                 OperatingSystem.computer_name = MO["CSName"].ToString();
                 TimeSpan ts = (ManagementDateTimeConverter.ToDateTime(MO["InstallDate"].ToString()).ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0));
@@ -526,6 +548,17 @@ namespace ComputerInfo
                     PrinterObject Printer = new PrinterObject();
                     Printer.name = MO["Name"].ToString();
                     Printer.identifier = MO["Name"].ToString();
+                    Printer.model.detection_string = MO["DriverName"].ToString();
+                    Printer.location.name = MO["Location"].ToString();
+                    Printer.local = MO["Local"].ToString();
+                    string capabilitiesString = MO["Capabilities"].ToString();
+                    string[] capabilities = capabilitiesString.Split(' ');
+
+                    foreach ( string capability in capabilities ) {
+                        PrinterCapabilitiesObject PrinterCapability = new PrinterCapabilitiesObject();
+                        PrinterCapability.detection_string = capability;
+                        Printer.capabilities.Add(PrinterCapability);
+                    }
 
                     Printers.Add(Printer);
                 }
