@@ -705,7 +705,7 @@ namespace ComputerInfo
                 Try(() =>
                     PhysicalDrive.model.detection_string = MO["Model"].ToString());
                 Try(() =>
-                    PhysicalDrive.disk_size = MO["Size"].ToString());
+                    PhysicalDrive.disk_size = (Convert.ToInt64((MO["Size"].ToString())) / 1073741824).ToString());
                 Try(() =>
                     PhysicalDrive.device_identifier = MO["DeviceID"].ToString());
                 Try(() =>
@@ -732,9 +732,9 @@ namespace ComputerInfo
                 Try(() =>
                     LogicalDrive.drive_type.detection_string = MO["DriveType"].ToString());
                 Try(() =>
-                    LogicalDrive.free_space = MO["FreeSpace"].ToString());
+                    LogicalDrive.free_space = (Convert.ToInt64((MO["FreeSpace"].ToString())) / 1073741824).ToString());
                 Try(() =>
-                    LogicalDrive.disk_size = MO["Size"].ToString());
+                    LogicalDrive.disk_size = (Convert.ToInt64((MO["Size"].ToString())) / 1073741824).ToString());
                 Try(() =>
                     LogicalDrive.volume_name = MO["VolumeName"].ToString());
                 Try(() =>

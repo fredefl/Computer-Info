@@ -84,14 +84,14 @@ namespace Computer_Info
             // Create Computer Info Instance
             ComputerInfoInstance = new ComputerInfoClass();
             // REMOVE THIS LINE IN A PRODUCTION ENVIROMENT
-            Log(JsonConvert.SerializeObject(ComputerInfoInstance.CreateCompleteComputerInfoObject(), Formatting.Indented));
+            //Log(JsonConvert.SerializeObject(ComputerInfoInstance.CreateCompleteComputerInfoObject(), Formatting.Indented));
             
             // Get and set LAN MAC
             string MacAddress = ComputerInfoInstance.GetLanMacAddress(false);
             MacAddressBox.Text = MacAddress;
             
             // Check if a LAN MAC address is available, if not color the form red otherwise green
-            if (JCS.OSVersionInfo.Name != "Windows 8" || true)
+            if (JCS.OSVersionInfo.Name != "Windows 8")
             {
                 if (MacAddress.Length == 17)
                 {
