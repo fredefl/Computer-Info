@@ -317,6 +317,14 @@ namespace ComputerInfo
         #endregion
         #region Functions (Doc)
         #region Helper Functions (Doc)
+        public static void Try(Action a)
+        {
+            try
+            {
+                a();
+            }
+            catch { }
+        }
         public string FormatMacAddress (PhysicalAddress Input) {
             string Output = "";
             byte[] bytes = Input.GetAddressBytes();
@@ -612,6 +620,7 @@ namespace ComputerInfo
             }
             return Processors;
         }
+
         // Get Graphics Cards
         /// <summary>
         /// Gets a list of graphics cards
@@ -624,40 +633,40 @@ namespace ComputerInfo
             ManagementObjectCollection Collection = Query.Get();
             foreach (ManagementObject MO in Collection)
             {
+                // Create the card object
                 GraphicsCardObject GraphicsCard = new GraphicsCardObject();
-                try
-                {   
-                    GraphicsCard.driver_version = MO["DriverVersion"].ToString();
-                    GraphicsCard.device_identifier = MO["DeviceID"].ToString();
-                    GraphicsCard.driver_date = this.ConvertToTimestamp(Convert.ToDateTime(MO["DriverDate"].ToString()));
-                    GraphicsCard.ram_size = Math.Round(Convert.ToDouble(MO["AdapterRAM"]) / 1048576).ToString();
-                    GraphicsCard.video_architecture.detection_string = MO["VideoArchitecture"].ToString();
-                }
-                catch { }
 
-                try
-                {
-                    GraphicsCard.model.caption = MO["Caption"].ToString();
-                    GraphicsCard.model.name = MO["Name"].ToString();
-                    GraphicsCard.model.description = MO["Description"].ToString();
-                    GraphicsCard.model.video_processor = MO["VideoProcessor"].ToString();
-                    GraphicsCard.model.detection_string = MO["Name"].ToString();
-                    GraphicsCard.model.memory_type.detection_string = MO["VideoMemoryType"].ToString();
-                }
-                catch { }
+                // Collect information, one by one
+                Try(() =>
+                    GraphicsCard.driver_version = MO["DriverVersion"].ToString());
+                Try(() =>
+                    GraphicsCard.device_identifier = MO["DeviceID"].ToString());
+                Try(() =>
+                    GraphicsCard.driver_date = this.ConvertToTimestamp(Convert.ToDateTime(MO["DriverDate"].ToString())));
+                Try(() =>
+                    GraphicsCard.ram_size = Math.Round(Convert.ToDouble(MO["AdapterRAM"]) / 1048576).ToString());
+                Try(() =>
+                     GraphicsCard.video_architecture.detection_string = MO["VideoArchitecture"].ToString());
+                Try(() =>
+                     GraphicsCard.driver_date = this.ConvertToTimestamp(Convert.ToDateTime(MO["DriverDate"].ToString())));
+                Try(() =>
+                    GraphicsCard.model.caption = MO["Caption"].ToString());
+                Try(() =>
+                    GraphicsCard.model.name = MO["Name"].ToString());
+                Try(() =>
+                    GraphicsCard.model.description = MO["Description"].ToString());
+                Try(() =>
+                    GraphicsCard.model.video_processor = MO["VideoProcessor"].ToString());
+                Try(() =>
+                    GraphicsCard.model.detection_string = MO["Name"].ToString());
+                Try(() =>
+                    GraphicsCard.model.memory_type.detection_string = MO["VideoMemoryType"].ToString());
+                Try(() =>
+                    GraphicsCard.model.manufacturer.detection_string = MO["Name"].ToString());
+                Try(() =>
+                    GraphicsCard.screen_size.detection_string = MO["CurrentHorizontalResolution"].ToString() + "x" + MO["CurrentVerticalResolution"].ToString());
 
-                try
-                {
-                    GraphicsCard.model.manufacturer.detection_string = MO["Name"].ToString();
-                }
-                catch { }
-
-                try
-                {
-                    GraphicsCard.screen_size.detection_string = MO["CurrentHorizontalResolution"].ToString() + "x" + MO["CurrentVerticalResolution"].ToString();
-                }
-                catch { }
-
+                // Add the card to the array
                 GraphicsCards.Add(GraphicsCard);
             }
             return GraphicsCards;
@@ -669,12 +678,19 @@ namespace ComputerInfo
             ManagementObjectCollection Collection = Query.Get();
             foreach (ManagementObject MO in Collection)
             {
+                // Create the drive object
                 PhysicalDriveObject PhysicalDrive = new PhysicalDriveObject();
-                PhysicalDrive.model.detection_string = MO["Model"].ToString();
-                PhysicalDrive.disk_size = MO["Size"].ToString();
-                PhysicalDrive.device_identifier = MO["DeviceID"].ToString();
-                PhysicalDrive.serial_number = MO["SerialNumber"].ToString();
+                
+                Try(() =>
+                    PhysicalDrive.model.detection_string = MO["Model"].ToString());
+                Try(() =>
+                    PhysicalDrive.disk_size = MO["Size"].ToString());
+                Try(() =>
+                    PhysicalDrive.device_identifier = MO["DeviceID"].ToString());
+                Try(() =>
+                    PhysicalDrive.serial_number = MO["SerialNumber"].ToString());
 
+                // Add the drive to the array
                 PhysicalDrives.Add(PhysicalDrive);
             }
             return PhysicalDrives;
@@ -687,21 +703,28 @@ namespace ComputerInfo
             ManagementObjectCollection Collection = Query.Get();
             foreach (ManagementObject MO in Collection)
             {
-                try
-                {
-                    LogicalDriveObject LogicalDrive = new LogicalDriveObject();
-                    LogicalDrive.device_identifier = MO["DeviceID"].ToString();
-                    LogicalDrive.drive_type.detection_string = MO["DriveType"].ToString();
-                    LogicalDrive.free_space = MO["FreeSpace"].ToString();
-                    LogicalDrive.disk_size = MO["Size"].ToString();
-                    LogicalDrive.volume_name = MO["VolumeName"].ToString();
-                    LogicalDrive.volume_serial_number = MO["VolumeSerialNumber"].ToString();
-                    LogicalDrive.file_system = MO["FileSystem"].ToString();
-                    LogicalDrive.name = MO["Name"].ToString();
+                // Create the drive object
+                LogicalDriveObject LogicalDrive = new LogicalDriveObject();
+                
+                Try(() =>
+                    LogicalDrive.device_identifier = MO["DeviceID"].ToString());
+                Try(() =>
+                    LogicalDrive.drive_type.detection_string = MO["DriveType"].ToString());
+                Try(() =>
+                    LogicalDrive.free_space = MO["FreeSpace"].ToString());
+                Try(() =>
+                    LogicalDrive.disk_size = MO["Size"].ToString());
+                Try(() =>
+                    LogicalDrive.volume_name = MO["VolumeName"].ToString());
+                Try(() =>
+                    LogicalDrive.volume_serial_number = MO["VolumeSerialNumber"].ToString());
+                Try(() =>
+                    LogicalDrive.file_system = MO["FileSystem"].ToString());
+                Try(() =>
+                    LogicalDrive.name = MO["Name"].ToString());
 
-                    LogicalDrives.Add(LogicalDrive);
-                }
-                catch { }
+                // Add the drive to the array
+                LogicalDrives.Add(LogicalDrive);
             }
             return LogicalDrives;
         }
