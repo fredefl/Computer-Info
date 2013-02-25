@@ -536,7 +536,7 @@ namespace ComputerInfo
                         if (MemorySlot.device_identifier == Identifier)
                         {
                             Try(() =>
-                                MemorySlot.part_number = MO["PartNumber"].ToString());
+                                MemorySlot.part_number = MO["PartNumber"].ToString().Trim());
                             Try(() =>
                                 MemorySlot.serial = MO["Serial"].ToString());
                             Try(() =>
@@ -586,13 +586,12 @@ namespace ComputerInfo
                     Printer.local = MO["Local"].ToString());
                 try
                 {
-                    string CapabilitiesString = MO["Capabilities"].ToString();
-                    string[] Capabilities = CapabilitiesString.Split(' ');
+                    UInt16[] Capabilities = (UInt16[]) MO["Capabilities"];
 
-                    foreach (string Capability in Capabilities)
+                    foreach (UInt16 Capability in Capabilities)
                     {
                         PrinterCapabilitiesObject PrinterCapability = new PrinterCapabilitiesObject();
-                        PrinterCapability.detection_string = Capability;
+                        PrinterCapability.detection_string = Capability.ToString();
                         Printer.capabilities.Add(PrinterCapability);
                     }
                 }

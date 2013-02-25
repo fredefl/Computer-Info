@@ -84,7 +84,7 @@ namespace Computer_Info
             // Create Computer Info Instance
             ComputerInfoInstance = new ComputerInfoClass();
             // REMOVE THIS LINE IN A PRODUCTION ENVIROMENT
-            //Log(JsonConvert.SerializeObject(ComputerInfoInstance.CreateCompleteComputerInfoObject(), Formatting.Indented));
+            Log(JsonConvert.SerializeObject(ComputerInfoInstance.CreateCompleteComputerInfoObject(), Formatting.Indented));
             
             // Get and set LAN MAC
             string MacAddress = ComputerInfoInstance.GetLanMacAddress(false);
