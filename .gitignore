@@ -10,3 +10,11 @@
 /Computer Info C#/Computer Info/bin/Release/Log.log
 /Computer Info C#/Computer Info/bin/Release/*.pdb
 /Computer Info C#/Computer Info/bin/Release/Request.log
+
+/Computer Info C#/Computer Info/bin/Release/ComputerInfoUnmerged.exe
+/Computer Info C#/Computer Info/bin/Release/ComputerInfoUnmerged.exe.config
+/Computer Info C#/Computer Info/bin/Release/Newtonsoft.Json.dll
+/Computer Info C#/Computer Info/bin/Release/Request.url.log
+/Computer Info C#/Computer Info/bin/Release/Response.log
+/Computer Info C#/Computer Info/bin/Release/da/ComputerInfoUnmerged.resources.dll
+/Computer Info C#/Computer Info/bin/Release/en-GB/ComputerInfoUnmerged.resources.dll
