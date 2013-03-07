@@ -183,7 +183,7 @@ namespace Computer_Info
 
         public class LocationRootObject
         {
-            public List<LocationObject> Locations;
+            public List<LocationObject> result;
             public int count;
             public object error_message;
             public object error_code;
@@ -237,7 +237,7 @@ namespace Computer_Info
             {
                 string Response = (string)e.Result;
                 LocationRootObject Object = JsonConvert.DeserializeObject<LocationRootObject>(Response);
-                foreach (LocationObject Location in Object.Locations)
+                foreach (LocationObject Location in Object.result)
                 {
                     LocationBox.Items.Add(Location.name);
                 }
@@ -268,7 +268,7 @@ namespace Computer_Info
 
         public class OrganizationRootObject
         {
-            public OrganizationUserObject User;
+            public OrganizationUserObject result;
             public int count;
             public string error_message;
             public string error_code;
@@ -308,7 +308,7 @@ namespace Computer_Info
             {
                 string Response = (string)e.Result;
                 OrganizationRootObject Object = JsonConvert.DeserializeObject<OrganizationRootObject>(Response);
-                foreach (OrganizationObject Organization in Object.User.organizations)
+                foreach (OrganizationObject Organization in Object.result.organizations)
                 {
                     Organizations.Add(Organization.name, Organization.id);
                     OrganizationBox.Items.Add(Organization.name);

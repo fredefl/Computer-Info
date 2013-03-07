@@ -66,7 +66,7 @@ namespace ComputerInfo
         #endregion
         #region Objects
         #region Computer Info
-        public class ComputerInfoComputerObject
+        public class ComputerInfoObject
         {
             public string identifier;
             public string location;
@@ -83,10 +83,6 @@ namespace ComputerInfo
             public List<PhysicalDriveObject> physical_drives;
             public List<NetworkCardObject> network_cards;
             public ScreenSizeObject screen_size;
-        }
-        public class ComputerInfoObject 
-        {
-            public ComputerInfoComputerObject computer;
         }
         #endregion
         #region GraphicsCard
@@ -1018,14 +1014,14 @@ namespace ComputerInfo
             ExecutionTimeMeasurer.Start();
             
             ComputerInfoObject Object = CreateComputerInfoObject();
-            Object.computer.model.type = (_ComputerType != "" ? _ComputerType : "7");
-            Object.computer.organization = _OrganizationId;
-            Object.computer.identifier = _Identifier;
-            Object.computer.location = _Location;
-            Object.computer.serial = GetComputerSerialNumber();
+            Object.model.type = (_ComputerType != "" ? _ComputerType : "7");
+            Object.organization = _OrganizationId;
+            Object.identifier = _Identifier;
+            Object.location = _Location;
+            Object.serial = GetComputerSerialNumber();
 
             ExecutionTimeMeasurer.Stop();
-            Object.computer.execution_time = ExecutionTimeMeasurer.Elapsed.Milliseconds;
+            Object.execution_time = ExecutionTimeMeasurer.Elapsed.Milliseconds;
             return Object;
         }
 
@@ -1033,17 +1029,17 @@ namespace ComputerInfo
         {
             ComputerInfoObject BaseObject = new ComputerInfoObject();
             // Collect data from machine
-            BaseObject.computer = new ComputerInfoComputerObject();
-            BaseObject.computer.graphics_cards = GetGraphicsCards();
-            BaseObject.computer.processors = GetProcessors();
-            BaseObject.computer.model = GetComputerModel();
-            BaseObject.computer.printers = GetPrinters();
-            BaseObject.computer.memory = GetMemory();
-            BaseObject.computer.operating_system = GetOperatingSystem();
-            BaseObject.computer.network_cards = GetNetworkCards();
-            BaseObject.computer.screen_size = GetScreenSize();
-            BaseObject.computer.logical_drives = GetLogicalDrives();
-            BaseObject.computer.physical_drives = GetPhysicalDrives();
+            BaseObject = new ComputerInfoObject();
+            BaseObject.graphics_cards = GetGraphicsCards();
+            BaseObject.processors = GetProcessors();
+            BaseObject.model = GetComputerModel();
+            BaseObject.printers = GetPrinters();
+            BaseObject.memory = GetMemory();
+            BaseObject.operating_system = GetOperatingSystem();
+            BaseObject.network_cards = GetNetworkCards();
+            BaseObject.screen_size = GetScreenSize();
+            BaseObject.logical_drives = GetLogicalDrives();
+            BaseObject.physical_drives = GetPhysicalDrives();
             return BaseObject;
         }
         #endregion
