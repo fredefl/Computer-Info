@@ -210,7 +210,7 @@ namespace Computer_Info
             {
                 string Url =
                     Properties.Settings.Default.BaseUrl +
-                    "/options/location/?organization=" + CurrentOrganizationId + "&format=json&fields=name,id&token=" + GetToken();
+                    "/locations/" + CurrentOrganizationId + "?format=json&fields=name,id&token=" + GetToken();
                 Log("Locations URL: " + Url);
                 WebClient Http = new WebClient();
                 Http.Headers.Add("user-agent: CI/Windows");

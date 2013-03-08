@@ -969,7 +969,7 @@ namespace ComputerInfo
         /// <returns>Success, true og false</returns>
         public bool SendWithTokens(string Token)
         {
-            string Url = Computer_Info.Properties.Settings.Default.BaseUrl + "/client/computer?format=json&token=" + Token;
+            string Url = Computer_Info.Properties.Settings.Default.BaseUrl + "/computer?format=json&token=" + Token;
             HttpWebRequest Request = (HttpWebRequest)
             WebRequest.Create(Url);
             File.WriteAllText("Request.url.log", Url);
@@ -980,7 +980,7 @@ namespace ComputerInfo
             byte[] PostBytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(CreateCompleteComputerInfoObject()));
             File.WriteAllBytes("Request.log", PostBytes);
 
-            Request.ContentType = "text/json";
+            Request.ContentType = "application/json";
             Request.ContentLength = PostBytes.Length;
             Stream RequestStream = Request.GetRequestStream();
 
@@ -1001,9 +1001,9 @@ namespace ComputerInfo
 
                 return true;
             }
-            catch (Exception)
+            catch (WebException e)
             {
-                MessageBox.Show("Could not connect to server, please try again");
+                MessageBox.Show(e.ToString());
                 return false;
             }
         }
