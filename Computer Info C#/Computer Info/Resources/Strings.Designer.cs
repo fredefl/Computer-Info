@@ -88,7 +88,7 @@ namespace Computer_Info.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 247.
+        ///   Looks up a localized string similar to 303.
         /// </summary>
         internal static string AboutGithubLeft {
             get {

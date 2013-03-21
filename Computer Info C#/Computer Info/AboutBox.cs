@@ -3,9 +3,12 @@ using System.Reflection;
 using System.Windows.Forms;
 using Computer_Info.Resources;
 
+using MetroFramework.Forms;
+using MetroFramework;
+
 namespace Computer_Info
 {
-    partial class AboutBox : Form
+    partial class AboutBox : MetroForm
     {
         /*
          *  VersionStatusImage.Image = Computer_Info.Properties.Resources.Error;
@@ -46,14 +49,14 @@ namespace Computer_Info
             CloseForm();
         }
 
-        private void GitHubLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://github.com/fredefl/Computer-Info");
-        }
-
-        private void WebsiteLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void WebsiteLinkLabel_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://illution.dk");
+        }
+
+        private void GitHubLinkLabel_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/fredefl/Computer-Info");
         }
     }
 }
