@@ -13,9 +13,12 @@ using System.Globalization;
 using Computer_Info.Resources;
 using System.ComponentModel;
 
+using MetroFramework.Forms;
+using MetroFramework;
+
 namespace Computer_Info
 {
-    public partial class Main : Form
+    public partial class Main : MetroForm
     {
 
         IniFile Settings;
@@ -26,6 +29,8 @@ namespace Computer_Info
 
         public Main()
         {
+            //metroStyleManager.Theme = MetroThemeStyle.Light;
+
             // Force language setting with this line
             // Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-GB");
             
@@ -41,13 +46,13 @@ namespace Computer_Info
             LaptopSelector.Text = Strings.Laptop;
             BoardSelector.Text = Strings.Board;
             SaveButton.Text = Strings.Save;
-            AboutMenuItem.Text = Strings.About;
+            //AboutMenuItem.Text = Strings.About;
 
             // Menu Localization
-            SignOutMenuItem.Text = Strings.SignOut;
-            UpdateMenuItem.Text = Strings.Update;
-            UpdateProgramMenuItem.Text = Strings.Program;
-            UpdateCacheMenuItem.Text = Strings.Cache;
+            //SignOutMenuItem.Text = Strings.SignOut;
+            //UpdateMenuItem.Text = Strings.Update;
+            //UpdateProgramMenuItem.Text = Strings.Program;
+            //UpdateCacheMenuItem.Text = Strings.Cache;
 
             // Check if a Settings.ini file is present, if not create a new one
             if (!File.Exists(WorkingDirectory + "Settings.ini"))
@@ -91,7 +96,7 @@ namespace Computer_Info
             MacAddressBox.Text = MacAddress;
             
             // Check if a LAN MAC address is available, if not color the form red otherwise green
-            if (JCS.OSVersionInfo.Name != "Windows 8")
+            /*if (JCS.OSVersionInfo.Name != "Windows 8")
             {
                 if (MacAddress.Length == 17)
                 {
@@ -103,7 +108,7 @@ namespace Computer_Info
                     MainMenu.BackgroundImage = Computer_Info.Properties.Resources.RedBar;
                     this.BackgroundImage = Computer_Info.Properties.Resources.RedBar;
                 }
-            }
+            }*/
 
             // Get Tokens
             string Token = "";
@@ -150,10 +155,10 @@ namespace Computer_Info
                 return;
 
             string Response = (string)e.Result;
-            if (Response == Assembly.GetExecutingAssembly().GetName().Version.ToString())
-                UpdateMenuItem.Visible = false;
-            else
-                UpdateMenuItem.Visible = true;
+            //if (Response == Assembly.GetExecutingAssembly().GetName().Version.ToString())
+                //UpdateMenuItem.Visible = false;
+            //else
+                //UpdateMenuItem.Visible = true;
         }
         // Update the application
         public void UpdateFromServer()
