@@ -82,11 +82,11 @@
             // 
             // IdentifierBox
             // 
-            resources.ApplyResources(this.IdentifierBox, "IdentifierBox");
             this.IdentifierBox.CustomBackground = false;
             this.IdentifierBox.CustomForeColor = false;
             this.IdentifierBox.FontSize = MetroFramework.MetroTextBoxSize.Small;
             this.IdentifierBox.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
+            resources.ApplyResources(this.IdentifierBox, "IdentifierBox");
             this.IdentifierBox.Multiline = false;
             this.IdentifierBox.Name = "IdentifierBox";
             this.IdentifierBox.SelectedText = "";
@@ -181,8 +181,8 @@
             // 
             // SaveButton
             // 
-            resources.ApplyResources(this.SaveButton, "SaveButton");
             this.SaveButton.Highlight = false;
+            resources.ApplyResources(this.SaveButton, "SaveButton");
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.SaveButton.StyleManager = null;
@@ -191,11 +191,11 @@
             // 
             // MacAddressBox
             // 
-            resources.ApplyResources(this.MacAddressBox, "MacAddressBox");
             this.MacAddressBox.CustomBackground = false;
             this.MacAddressBox.CustomForeColor = false;
             this.MacAddressBox.FontSize = MetroFramework.MetroTextBoxSize.Small;
             this.MacAddressBox.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
+            resources.ApplyResources(this.MacAddressBox, "MacAddressBox");
             this.MacAddressBox.Multiline = false;
             this.MacAddressBox.Name = "MacAddressBox";
             this.MacAddressBox.SelectedText = "";
@@ -206,13 +206,13 @@
             // 
             // LocationBox
             // 
-            resources.ApplyResources(this.LocationBox, "LocationBox");
             this.LocationBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.LocationBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.LocationBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LocationBox.FontSize = MetroFramework.MetroLinkSize.Medium;
             this.LocationBox.FontWeight = MetroFramework.MetroLinkWeight.Regular;
             this.LocationBox.FormattingEnabled = true;
+            resources.ApplyResources(this.LocationBox, "LocationBox");
             this.LocationBox.Name = "LocationBox";
             this.LocationBox.Sorted = true;
             this.LocationBox.Style = MetroFramework.MetroColorStyle.Blue;
@@ -222,12 +222,12 @@
             // 
             // OrganizationBox
             // 
-            resources.ApplyResources(this.OrganizationBox, "OrganizationBox");
             this.OrganizationBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.OrganizationBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.OrganizationBox.FontSize = MetroFramework.MetroLinkSize.Medium;
             this.OrganizationBox.FontWeight = MetroFramework.MetroLinkWeight.Regular;
             this.OrganizationBox.FormattingEnabled = true;
+            resources.ApplyResources(this.OrganizationBox, "OrganizationBox");
             this.OrganizationBox.Name = "OrganizationBox";
             this.OrganizationBox.Style = MetroFramework.MetroColorStyle.Blue;
             this.OrganizationBox.StyleManager = null;
@@ -279,12 +279,12 @@
             // 
             // AddLocationBox
             // 
-            resources.ApplyResources(this.AddLocationBox, "AddLocationBox");
             this.AddLocationBox.BackColor = System.Drawing.Color.White;
             this.AddLocationBox.CustomBackground = true;
             this.AddLocationBox.CustomForeColor = false;
             this.AddLocationBox.FontSize = MetroFramework.MetroTextBoxSize.Small;
             this.AddLocationBox.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
+            resources.ApplyResources(this.AddLocationBox, "AddLocationBox");
             this.AddLocationBox.Multiline = false;
             this.AddLocationBox.Name = "AddLocationBox";
             this.AddLocationBox.SelectedText = "";
@@ -316,7 +316,7 @@
             this.Controls.Add(this.metroLink1);
             this.MaximizeBox = false;
             this.Name = "Main";
-            this.Resizable = false;
+            //this.Resizable = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.ResumeLayout(false);
