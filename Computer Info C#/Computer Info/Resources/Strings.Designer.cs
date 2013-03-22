@@ -79,7 +79,7 @@ namespace Computer_Info.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We are responsible for any damage caused by this application..
+        ///   Looks up a localized string similar to We are not responsible for any damage caused by this application..
         /// </summary>
         internal static string AboutDisclaimer {
             get {

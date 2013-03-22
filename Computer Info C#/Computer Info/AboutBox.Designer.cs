@@ -17,7 +17,7 @@ namespace Computer_Info
             {
                 components.Dispose();
             }
-            base.Dispose(disposing);
+            //base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
@@ -119,11 +119,11 @@ namespace Computer_Info
             this.DisclaimerLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.DisclaimerLabel.Location = new System.Drawing.Point(23, 54);
             this.DisclaimerLabel.Name = "DisclaimerLabel";
-            this.DisclaimerLabel.Size = new System.Drawing.Size(433, 19);
+            this.DisclaimerLabel.Size = new System.Drawing.Size(385, 19);
             this.DisclaimerLabel.Style = MetroFramework.MetroColorStyle.Blue;
             this.DisclaimerLabel.StyleManager = null;
             this.DisclaimerLabel.TabIndex = 9;
-            this.DisclaimerLabel.Text = "Vi er på ingen på ansvarlige for skader dette program måtte forvolde.";
+            this.DisclaimerLabel.Text = "Vi er ikke ansvarlige for skader dette program måtte forvolde.";
             this.DisclaimerLabel.Theme = MetroFramework.MetroThemeStyle.Light;
             this.DisclaimerLabel.UseStyleColors = false;
             // 

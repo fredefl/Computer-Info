@@ -136,7 +136,7 @@
     <EmbeddedResource Include="LoginBox.resx">
       <DependentUpon>LoginBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.en-GB.resx">
+    <EmbeddedResource Include="Main.da.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">

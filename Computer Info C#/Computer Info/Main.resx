@@ -112,12 +112,121 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BoardSelector.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="BoardSelector.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 271</value>
+  </data>
+  <data name="SignOutLink.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 371</value>
+  </data>
+  <data name="LocationBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 29</value>
+  </data>
+  <data name="IdentifierLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;AboutLink.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="LocationLabel.Text" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="metroLink1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 103</value>
+  </data>
+  <data name="&gt;&gt;BoardSelector.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="ComputerTypeLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 206</value>
+  </data>
+  <data name="&gt;&gt;AddLocationBox.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="IdentifierLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;MacAddressBox.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;ComputerTypeLabel.Name" xml:space="preserve">
+    <value>ComputerTypeLabel</value>
+  </data>
+  <data name="AboutLink.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="&gt;&gt;IdentifierBox.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;DesktopSelector.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="SaveButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 42</value>
+  </data>
+  <data name="&gt;&gt;OrganizationBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Computer Info</value>
+  </data>
+  <data name="&gt;&gt;AboutLink.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLink, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;DesktopSelector.Name" xml:space="preserve">
+    <value>DesktopSelector</value>
+  </data>
+  <data name="ComputerTypeLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;BoardSelector.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="DesktopSelector.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="BoardSelector.Text" xml:space="preserve">
+    <value>Smartboard / Activeboard</value>
+  </data>
+  <data name="MacAddressBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 20</value>
+  </data>
+  <data name="LaptopSelector.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="AddLocationBox.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="AboutLink.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="OrganizationLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 55</value>
+  </data>
+  <data name="SignOutLink.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 23</value>
+  </data>
+  <data name="DesktopSelector.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 15</value>
+  </data>
+  <data name="&gt;&gt;DesktopSelector.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAEBAAAAAAIABoBAAAZgAAACAgAAAAACAAqBAAAM4EAAAwMAAAAAAgAKglAAB2FQAAQEAAAAAA
@@ -6290,4 +6399,344 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 </value>
   </data>
+  <data name="&gt;&gt;IdentifierLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="ComputerTypeLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ComputerTypeLabel.Text" xml:space="preserve">
+    <value>Computer Type</value>
+  </data>
+  <data name="IdentifierBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 183</value>
+  </data>
+  <data name="AboutLink.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 23</value>
+  </data>
+  <data name="SaveButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 297</value>
+  </data>
+  <data name="AddLocationBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 20</value>
+  </data>
+  <data name="&gt;&gt;IdentifierBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="DesktopSelector.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 229</value>
+  </data>
+  <data name="&gt;&gt;metroLink1.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="IdentifierBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 20</value>
+  </data>
+  <data name="metroLink1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DesktopSelector.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt, style=Bold</value>
+  </data>
+  <data name="metroLink1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 23</value>
+  </data>
+  <data name="&gt;&gt;SaveButton.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;OrganizationBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DesktopSelector.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;LocationLabel.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;MacAddressBox.Name" xml:space="preserve">
+    <value>MacAddressBox</value>
+  </data>
+  <data name="&gt;&gt;LocationBox.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Main</value>
+  </data>
+  <data name="&gt;&gt;LocationBox.Name" xml:space="preserve">
+    <value>LocationBox</value>
+  </data>
+  <data name="LocationBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 130</value>
+  </data>
+  <data name="MacAddressBox.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="SignOutLink.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="LaptopSelector.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;metroLink1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="OrganizationLabel.Text" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+  <data name="OrganizationLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;LaptopSelector.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="OrganizationBox.ItemHeight" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;IdentifierLabel.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="DesktopSelector.Text" xml:space="preserve">
+    <value>Desktop</value>
+  </data>
+  <data name="OrganizationBox.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="SaveButton.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;IdentifierBox.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;AddLocationBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;IdentifierLabel.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;SignOutLink.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLink, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;IdentifierBox.Name" xml:space="preserve">
+    <value>IdentifierBox</value>
+  </data>
+  <data name="LaptopSelector.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 250</value>
+  </data>
+  <data name="LocationLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LocationLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;LocationBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;metroLink1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLink, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;LocationBox.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroComboBox, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="AboutLink.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="IdentifierLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 162</value>
+  </data>
+  <data name="&gt;&gt;MacAddressBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;OrganizationLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SignOutLink.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;BoardSelector.Name" xml:space="preserve">
+    <value>BoardSelector</value>
+  </data>
+  <data name="&gt;&gt;LaptopSelector.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="AboutLink.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 371</value>
+  </data>
+  <data name="DesktopSelector.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="IdentifierLabel.Text" xml:space="preserve">
+    <value>Identifier</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="AddLocationBox.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;OrganizationBox.Name" xml:space="preserve">
+    <value>OrganizationBox</value>
+  </data>
+  <data name="LaptopSelector.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 15</value>
+  </data>
+  <data name="LocationBox.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;metroLink1.Name" xml:space="preserve">
+    <value>metroLink1</value>
+  </data>
+  <data name="&gt;&gt;LaptopSelector.Name" xml:space="preserve">
+    <value>LaptopSelector</value>
+  </data>
+  <data name="BoardSelector.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt, style=Bold</value>
+  </data>
+  <data name="IdentifierLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 19</value>
+  </data>
+  <data name="&gt;&gt;SaveButton.Name" xml:space="preserve">
+    <value>SaveButton</value>
+  </data>
+  <data name="LaptopSelector.Text" xml:space="preserve">
+    <value>Laptop</value>
+  </data>
+  <data name="ComputerTypeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 19</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>MetroFramework.Forms.MetroForm, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="LocationLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 107</value>
+  </data>
+  <data name="&gt;&gt;AboutLink.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="AddLocationBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>73, 108</value>
+  </data>
+  <data name="SaveButton.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="LocationLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 19</value>
+  </data>
+  <data name="&gt;&gt;SignOutLink.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;OrganizationLabel.Name" xml:space="preserve">
+    <value>OrganizationLabel</value>
+  </data>
+  <data name="IdentifierBox.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="OrganizationLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 19</value>
+  </data>
+  <data name="BoardSelector.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;BoardSelector.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="OrganizationBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 29</value>
+  </data>
+  <data name="metroLink1.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;LaptopSelector.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="metroLink1.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="&gt;&gt;LocationLabel.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="SignOutLink.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;LocationLabel.Name" xml:space="preserve">
+    <value>LocationLabel</value>
+  </data>
+  <data name="&gt;&gt;MacAddressBox.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;OrganizationLabel.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="OrganizationBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 76</value>
+  </data>
+  <data name="&gt;&gt;SignOutLink.Name" xml:space="preserve">
+    <value>SignOutLink</value>
+  </data>
+  <data name="$this.AccessibleDescription" xml:space="preserve">
+    <value>Computer Info</value>
+  </data>
+  <data name="LaptopSelector.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt, style=Bold</value>
+  </data>
+  <data name="&gt;&gt;IdentifierLabel.Name" xml:space="preserve">
+    <value>IdentifierLabel</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>211, 405</value>
+  </data>
+  <data name="&gt;&gt;OrganizationLabel.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ComputerTypeLabel.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="LocationBox.ItemHeight" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;AddLocationBox.Name" xml:space="preserve">
+    <value>AddLocationBox</value>
+  </data>
+  <data name="&gt;&gt;SaveButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="SignOutLink.Text" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="&gt;&gt;LocationLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;AddLocationBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="BoardSelector.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 15</value>
+  </data>
+  <data name="&gt;&gt;SaveButton.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;ComputerTypeLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;AboutLink.Name" xml:space="preserve">
+    <value>AboutLink</value>
+  </data>
+  <data name="$this.AccessibleName" xml:space="preserve">
+    <value>Computer Info</value>
+  </data>
+  <data name="MacAddressBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 345</value>
+  </data>
+  <data name="&gt;&gt;ComputerTypeLabel.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="OrganizationLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;OrganizationBox.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroComboBox, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

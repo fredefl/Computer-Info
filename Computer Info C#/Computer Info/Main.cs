@@ -26,17 +26,19 @@ namespace Computer_Info
         string WorkingDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Replace("file:///", "")) + @"\";
         string LogString = "Logging Started\r\n";
         Dictionary<string, int> Organizations = new Dictionary<string, int>();
+        int LocationBoxItemCount = 0;
 
         public Main()
         {
             //metroStyleManager.Theme = MetroThemeStyle.Light;
 
             // Force language setting with this line
-            // Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-GB");
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("da-DK");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("da-DK");
             
             // Initialize
             InitializeComponent();
-            
+
             // Form Localization
             OrganizationLabel.Text = Strings.Organization;
             LocationLabel.Text = Strings.Location;
@@ -46,10 +48,10 @@ namespace Computer_Info
             LaptopSelector.Text = Strings.Laptop;
             BoardSelector.Text = Strings.Board;
             SaveButton.Text = Strings.Save;
-            //AboutMenuItem.Text = Strings.About;
+            AboutLink.Text = Strings.About;
 
             // Menu Localization
-            //SignOutMenuItem.Text = Strings.SignOut;
+            SignOutLink.Text = Strings.SignOut;
             //UpdateMenuItem.Text = Strings.Update;
             //UpdateProgramMenuItem.Text = Strings.Program;
             //UpdateCacheMenuItem.Text = Strings.Cache;
@@ -199,6 +201,7 @@ namespace Computer_Info
         public void GetLocationList()
         {
             string CurrentOrganizationId = "";
+            LocationBox.Items.Clear();
             try
             {
                 if (OrganizationBox.Text != "")
@@ -246,6 +249,7 @@ namespace Computer_Info
                 {
                     LocationBox.Items.Add(Location.name);
                 }
+                LocationBoxItemCount = LocationBox.Items.Count;
             }
             catch (Exception)
             {
@@ -425,20 +429,6 @@ namespace Computer_Info
             System.IO.File.WriteAllText("Log.log", LogString);
         }
 
-        // When the about menu item is clicked, open the about form
-        private void AboutMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (Form CurrentForm in Application.OpenForms)
-            {
-                if (CurrentForm is AboutBox)
-                {
-                    CurrentForm.BringToFront();
-                    return;
-                }
-            }
-            AboutBox AboutboxForm = new AboutBox();
-            AboutboxForm.Show();
-        }
         // When the form is closeing (not hidden), terminate the application
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -487,10 +477,49 @@ namespace Computer_Info
             Settings.IniWriteValue("Settings", "Location", LocationBox.Text);
         }
 
-        private void SignOutMenuItem_Click(object sender, EventArgs e)
+        // When the about link is clicked, open the about form
+        private void AboutLink_Click(object sender, EventArgs e)
+        {
+            foreach (Form CurrentForm in Application.OpenForms)
+            {
+                if (CurrentForm is AboutBox)
+                {
+                    CurrentForm.BringToFront();
+                    return;
+                }
+            }
+            AboutBox AboutboxForm = new AboutBox();
+            AboutboxForm.Show();
+        }
+
+        // Sign the user out if they click the sign out button
+        private void SignOutLink_Click(object sender, EventArgs e)
         {
             Settings.IniWriteValue("Settings", "Token", "");
             System.Windows.Forms.Application.Restart();
+        }
+
+        private void metroLink1_Click(object sender, EventArgs e)
+        {
+            AddLocationBox.Visible = !AddLocationBox.Visible;
+            if (AddLocationBox.Visible)
+            {
+                
+            }
+            AddLocationBox.Focus();
+        }
+
+        private void AddLocationBox_TextChanged(object sender, EventArgs e)
+        {
+            if (LocationBox.Items.Count > LocationBoxItemCount)
+            {
+                LocationBox.Items[0] = AddLocationBox.Text;
+            }
+            else
+            {
+                LocationBox.Items.Add(AddLocationBox.Text);
+            }
+            LocationBox.SelectedIndex = 0;
         }
     
     }

@@ -30,11 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginBox));
             this.SignInBrowser = new System.Windows.Forms.WebBrowser();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.ForwardButton = new System.Windows.Forms.Button();
-            this.BackButton = new System.Windows.Forms.Button();
-            this.AddressBox = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
+            this.AddressBox = new MetroFramework.Controls.MetroTextBox();
             this.SuspendLayout();
             // 
             // SignInBrowser
@@ -46,48 +42,32 @@
             this.SignInBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.LoginBrowser_DocumentCompleted);
             this.SignInBrowser.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.LoginBrowser_Navigating);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.ForwardButton);
-            this.panel1.Controls.Add(this.BackButton);
-            this.panel1.Controls.Add(this.AddressBox);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
-            // 
-            // ForwardButton
-            // 
-            resources.ApplyResources(this.ForwardButton, "ForwardButton");
-            this.ForwardButton.Name = "ForwardButton";
-            this.ForwardButton.UseVisualStyleBackColor = true;
-            this.ForwardButton.Click += new System.EventHandler(this.ForwardButton_Click);
-            // 
-            // BackButton
-            // 
-            resources.ApplyResources(this.BackButton, "BackButton");
-            this.BackButton.Name = "BackButton";
-            this.BackButton.UseVisualStyleBackColor = true;
-            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
-            // 
             // AddressBox
             // 
-            this.AddressBox.BackColor = System.Drawing.SystemColors.Control;
-            this.AddressBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.AddressBox, "AddressBox");
+            this.AddressBox.BackColor = System.Drawing.SystemColors.Control;
+            this.AddressBox.CustomBackground = false;
+            this.AddressBox.CustomForeColor = false;
+            this.AddressBox.FontSize = MetroFramework.MetroTextBoxSize.Small;
+            this.AddressBox.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
+            this.AddressBox.Multiline = false;
             this.AddressBox.Name = "AddressBox";
+            this.AddressBox.SelectedText = "";
+            this.AddressBox.Style = MetroFramework.MetroColorStyle.Blue;
+            this.AddressBox.StyleManager = null;
+            this.AddressBox.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.AddressBox.UseStyleColors = false;
             this.AddressBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AddressBox_KeyPress);
             // 
             // LoginBox
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.SignInBrowser);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Controls.Add(this.AddressBox);
             this.Name = "LoginBox";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginBox_FormClosing);
             this.Shown += new System.EventHandler(this.LoginBox_Shown);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -95,9 +75,6 @@
         #endregion
 
         private System.Windows.Forms.WebBrowser SignInBrowser;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button ForwardButton;
-        private System.Windows.Forms.Button BackButton;
-        private System.Windows.Forms.TextBox AddressBox;
+        private MetroFramework.Controls.MetroTextBox AddressBox;
     }
 }

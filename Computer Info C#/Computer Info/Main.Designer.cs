@@ -17,7 +17,7 @@
             {
                 components.Dispose();
             }
-            base.Dispose(disposing);
+            //base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
@@ -41,11 +41,15 @@
             this.MacAddressBox = new MetroFramework.Controls.MetroTextBox();
             this.LocationBox = new MetroFramework.Controls.MetroComboBox();
             this.OrganizationBox = new MetroFramework.Controls.MetroComboBox();
+            this.AboutLink = new MetroFramework.Controls.MetroLink();
+            this.SignOutLink = new MetroFramework.Controls.MetroLink();
+            this.metroLink1 = new MetroFramework.Controls.MetroLink();
+            this.AddLocationBox = new MetroFramework.Controls.MetroTextBox();
             this.SuspendLayout();
             // 
             // OrganizationLabel
             // 
-            this.OrganizationLabel.AutoSize = true;
+            resources.ApplyResources(this.OrganizationLabel, "OrganizationLabel");
             this.OrganizationLabel.BackColor = System.Drawing.Color.Transparent;
             this.OrganizationLabel.CustomBackground = false;
             this.OrganizationLabel.CustomForeColor = false;
@@ -53,20 +57,16 @@
             this.OrganizationLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
             this.OrganizationLabel.ForeColor = System.Drawing.Color.Black;
             this.OrganizationLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.OrganizationLabel.Location = new System.Drawing.Point(8, 56);
             this.OrganizationLabel.Name = "OrganizationLabel";
-            this.OrganizationLabel.Size = new System.Drawing.Size(85, 19);
             this.OrganizationLabel.Style = MetroFramework.MetroColorStyle.Blue;
             this.OrganizationLabel.StyleManager = null;
-            this.OrganizationLabel.TabIndex = 4;
-            this.OrganizationLabel.Text = "Organization";
             this.OrganizationLabel.Theme = MetroFramework.MetroThemeStyle.Light;
             this.OrganizationLabel.UseMnemonic = false;
             this.OrganizationLabel.UseStyleColors = false;
             // 
             // LocationLabel
             // 
-            this.LocationLabel.AutoSize = true;
+            resources.ApplyResources(this.LocationLabel, "LocationLabel");
             this.LocationLabel.BackColor = System.Drawing.Color.Transparent;
             this.LocationLabel.CustomBackground = false;
             this.LocationLabel.CustomForeColor = false;
@@ -74,36 +74,30 @@
             this.LocationLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
             this.LocationLabel.ForeColor = System.Drawing.Color.Black;
             this.LocationLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.LocationLabel.Location = new System.Drawing.Point(10, 108);
             this.LocationLabel.Name = "LocationLabel";
-            this.LocationLabel.Size = new System.Drawing.Size(58, 19);
             this.LocationLabel.Style = MetroFramework.MetroColorStyle.Blue;
             this.LocationLabel.StyleManager = null;
-            this.LocationLabel.TabIndex = 5;
-            this.LocationLabel.Text = "Location";
             this.LocationLabel.Theme = MetroFramework.MetroThemeStyle.Light;
             this.LocationLabel.UseStyleColors = false;
             // 
             // IdentifierBox
             // 
+            resources.ApplyResources(this.IdentifierBox, "IdentifierBox");
             this.IdentifierBox.CustomBackground = false;
             this.IdentifierBox.CustomForeColor = false;
             this.IdentifierBox.FontSize = MetroFramework.MetroTextBoxSize.Small;
             this.IdentifierBox.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.IdentifierBox.Location = new System.Drawing.Point(11, 184);
             this.IdentifierBox.Multiline = false;
             this.IdentifierBox.Name = "IdentifierBox";
             this.IdentifierBox.SelectedText = "";
-            this.IdentifierBox.Size = new System.Drawing.Size(190, 20);
             this.IdentifierBox.Style = MetroFramework.MetroColorStyle.Blue;
             this.IdentifierBox.StyleManager = null;
-            this.IdentifierBox.TabIndex = 8;
             this.IdentifierBox.Theme = MetroFramework.MetroThemeStyle.Light;
             this.IdentifierBox.UseStyleColors = false;
             // 
             // IdentifierLabel
             // 
-            this.IdentifierLabel.AutoSize = true;
+            resources.ApplyResources(this.IdentifierLabel, "IdentifierLabel");
             this.IdentifierLabel.BackColor = System.Drawing.Color.Transparent;
             this.IdentifierLabel.CustomBackground = false;
             this.IdentifierLabel.CustomForeColor = false;
@@ -111,34 +105,25 @@
             this.IdentifierLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
             this.IdentifierLabel.ForeColor = System.Drawing.Color.Black;
             this.IdentifierLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.IdentifierLabel.Location = new System.Drawing.Point(10, 162);
             this.IdentifierLabel.Name = "IdentifierLabel";
-            this.IdentifierLabel.Size = new System.Drawing.Size(60, 19);
             this.IdentifierLabel.Style = MetroFramework.MetroColorStyle.Blue;
             this.IdentifierLabel.StyleManager = null;
-            this.IdentifierLabel.TabIndex = 9;
-            this.IdentifierLabel.Text = "Identifier";
             this.IdentifierLabel.Theme = MetroFramework.MetroThemeStyle.Light;
             this.IdentifierLabel.UseStyleColors = false;
             // 
             // DesktopSelector
             // 
-            this.DesktopSelector.AutoSize = true;
+            resources.ApplyResources(this.DesktopSelector, "DesktopSelector");
             this.DesktopSelector.BackColor = System.Drawing.Color.Transparent;
             this.DesktopSelector.CustomBackground = false;
             this.DesktopSelector.CustomForeColor = false;
-            this.DesktopSelector.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.DesktopSelector.FontSize = MetroFramework.MetroLinkSize.Small;
             this.DesktopSelector.FontWeight = MetroFramework.MetroLinkWeight.Regular;
             this.DesktopSelector.ForeColor = System.Drawing.Color.Black;
-            this.DesktopSelector.Location = new System.Drawing.Point(11, 229);
             this.DesktopSelector.Name = "DesktopSelector";
-            this.DesktopSelector.Size = new System.Drawing.Size(66, 15);
             this.DesktopSelector.Style = MetroFramework.MetroColorStyle.Blue;
             this.DesktopSelector.StyleManager = null;
-            this.DesktopSelector.TabIndex = 10;
             this.DesktopSelector.TabStop = true;
-            this.DesktopSelector.Text = "Desktop";
             this.DesktopSelector.Theme = MetroFramework.MetroThemeStyle.Light;
             this.DesktopSelector.UseStyleColors = false;
             this.DesktopSelector.UseVisualStyleBackColor = false;
@@ -146,22 +131,17 @@
             // 
             // LaptopSelector
             // 
-            this.LaptopSelector.AutoSize = true;
+            resources.ApplyResources(this.LaptopSelector, "LaptopSelector");
             this.LaptopSelector.BackColor = System.Drawing.Color.Transparent;
             this.LaptopSelector.CustomBackground = false;
             this.LaptopSelector.CustomForeColor = false;
-            this.LaptopSelector.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.LaptopSelector.FontSize = MetroFramework.MetroLinkSize.Small;
             this.LaptopSelector.FontWeight = MetroFramework.MetroLinkWeight.Regular;
             this.LaptopSelector.ForeColor = System.Drawing.Color.Black;
-            this.LaptopSelector.Location = new System.Drawing.Point(11, 250);
             this.LaptopSelector.Name = "LaptopSelector";
-            this.LaptopSelector.Size = new System.Drawing.Size(60, 15);
             this.LaptopSelector.Style = MetroFramework.MetroColorStyle.Blue;
             this.LaptopSelector.StyleManager = null;
-            this.LaptopSelector.TabIndex = 11;
             this.LaptopSelector.TabStop = true;
-            this.LaptopSelector.Text = "Laptop";
             this.LaptopSelector.Theme = MetroFramework.MetroThemeStyle.Light;
             this.LaptopSelector.UseStyleColors = false;
             this.LaptopSelector.UseVisualStyleBackColor = false;
@@ -169,7 +149,7 @@
             // 
             // ComputerTypeLabel
             // 
-            this.ComputerTypeLabel.AutoSize = true;
+            resources.ApplyResources(this.ComputerTypeLabel, "ComputerTypeLabel");
             this.ComputerTypeLabel.BackColor = System.Drawing.Color.Transparent;
             this.ComputerTypeLabel.CustomBackground = false;
             this.ComputerTypeLabel.CustomForeColor = false;
@@ -177,111 +157,150 @@
             this.ComputerTypeLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
             this.ComputerTypeLabel.ForeColor = System.Drawing.Color.Black;
             this.ComputerTypeLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.ComputerTypeLabel.Location = new System.Drawing.Point(8, 207);
             this.ComputerTypeLabel.Name = "ComputerTypeLabel";
-            this.ComputerTypeLabel.Size = new System.Drawing.Size(101, 19);
             this.ComputerTypeLabel.Style = MetroFramework.MetroColorStyle.Blue;
             this.ComputerTypeLabel.StyleManager = null;
-            this.ComputerTypeLabel.TabIndex = 12;
-            this.ComputerTypeLabel.Text = "Computer Type";
             this.ComputerTypeLabel.Theme = MetroFramework.MetroThemeStyle.Light;
             this.ComputerTypeLabel.UseStyleColors = false;
             // 
             // BoardSelector
             // 
-            this.BoardSelector.AutoSize = true;
+            resources.ApplyResources(this.BoardSelector, "BoardSelector");
             this.BoardSelector.BackColor = System.Drawing.Color.Transparent;
             this.BoardSelector.CustomBackground = false;
             this.BoardSelector.CustomForeColor = false;
-            this.BoardSelector.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.BoardSelector.FontSize = MetroFramework.MetroLinkSize.Small;
             this.BoardSelector.FontWeight = MetroFramework.MetroLinkWeight.Regular;
             this.BoardSelector.ForeColor = System.Drawing.Color.Black;
-            this.BoardSelector.Location = new System.Drawing.Point(11, 271);
             this.BoardSelector.Name = "BoardSelector";
-            this.BoardSelector.Size = new System.Drawing.Size(160, 15);
             this.BoardSelector.Style = MetroFramework.MetroColorStyle.Blue;
             this.BoardSelector.StyleManager = null;
-            this.BoardSelector.TabIndex = 12;
-            this.BoardSelector.Text = "Smartboard / Activeboard";
             this.BoardSelector.Theme = MetroFramework.MetroThemeStyle.Light;
             this.BoardSelector.UseStyleColors = false;
             this.BoardSelector.UseVisualStyleBackColor = false;
             // 
             // SaveButton
             // 
+            resources.ApplyResources(this.SaveButton, "SaveButton");
             this.SaveButton.Highlight = false;
-            this.SaveButton.Location = new System.Drawing.Point(11, 297);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(190, 42);
             this.SaveButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.SaveButton.StyleManager = null;
-            this.SaveButton.TabIndex = 13;
-            this.SaveButton.Text = "Save";
             this.SaveButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.SaveButton.Click += new System.EventHandler(this.Save_Click);
             // 
             // MacAddressBox
             // 
+            resources.ApplyResources(this.MacAddressBox, "MacAddressBox");
             this.MacAddressBox.CustomBackground = false;
             this.MacAddressBox.CustomForeColor = false;
             this.MacAddressBox.FontSize = MetroFramework.MetroTextBoxSize.Small;
             this.MacAddressBox.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.MacAddressBox.Location = new System.Drawing.Point(11, 345);
             this.MacAddressBox.Multiline = false;
             this.MacAddressBox.Name = "MacAddressBox";
             this.MacAddressBox.SelectedText = "";
-            this.MacAddressBox.Size = new System.Drawing.Size(190, 20);
             this.MacAddressBox.Style = MetroFramework.MetroColorStyle.Blue;
             this.MacAddressBox.StyleManager = null;
-            this.MacAddressBox.TabIndex = 14;
             this.MacAddressBox.Theme = MetroFramework.MetroThemeStyle.Light;
             this.MacAddressBox.UseStyleColors = false;
             // 
             // LocationBox
             // 
+            resources.ApplyResources(this.LocationBox, "LocationBox");
             this.LocationBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.LocationBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.LocationBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LocationBox.FontSize = MetroFramework.MetroLinkSize.Medium;
             this.LocationBox.FontWeight = MetroFramework.MetroLinkWeight.Regular;
             this.LocationBox.FormattingEnabled = true;
-            this.LocationBox.ItemHeight = 23;
-            this.LocationBox.Location = new System.Drawing.Point(11, 130);
             this.LocationBox.Name = "LocationBox";
-            this.LocationBox.Size = new System.Drawing.Size(190, 29);
             this.LocationBox.Sorted = true;
             this.LocationBox.Style = MetroFramework.MetroColorStyle.Blue;
             this.LocationBox.StyleManager = null;
-            this.LocationBox.TabIndex = 16;
             this.LocationBox.Theme = MetroFramework.MetroThemeStyle.Light;
             this.LocationBox.SelectedIndexChanged += new System.EventHandler(this.LocationBox_SelectedIndexChanged);
             // 
             // OrganizationBox
             // 
+            resources.ApplyResources(this.OrganizationBox, "OrganizationBox");
             this.OrganizationBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.OrganizationBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.OrganizationBox.FontSize = MetroFramework.MetroLinkSize.Medium;
             this.OrganizationBox.FontWeight = MetroFramework.MetroLinkWeight.Regular;
             this.OrganizationBox.FormattingEnabled = true;
-            this.OrganizationBox.ItemHeight = 23;
-            this.OrganizationBox.Location = new System.Drawing.Point(11, 76);
             this.OrganizationBox.Name = "OrganizationBox";
-            this.OrganizationBox.Size = new System.Drawing.Size(190, 29);
             this.OrganizationBox.Style = MetroFramework.MetroColorStyle.Blue;
             this.OrganizationBox.StyleManager = null;
-            this.OrganizationBox.TabIndex = 17;
             this.OrganizationBox.Theme = MetroFramework.MetroThemeStyle.Light;
             this.OrganizationBox.SelectedValueChanged += new System.EventHandler(this.OrganizationBox_SelectedValueChanged);
             // 
+            // AboutLink
+            // 
+            resources.ApplyResources(this.AboutLink, "AboutLink");
+            this.AboutLink.CustomBackground = false;
+            this.AboutLink.CustomForeColor = false;
+            this.AboutLink.FontSize = MetroFramework.MetroLinkSize.Medium;
+            this.AboutLink.FontWeight = MetroFramework.MetroLinkWeight.Regular;
+            this.AboutLink.Name = "AboutLink";
+            this.AboutLink.Style = MetroFramework.MetroColorStyle.Blue;
+            this.AboutLink.StyleManager = null;
+            this.AboutLink.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.AboutLink.UseStyleColors = false;
+            this.AboutLink.Click += new System.EventHandler(this.AboutLink_Click);
+            // 
+            // SignOutLink
+            // 
+            resources.ApplyResources(this.SignOutLink, "SignOutLink");
+            this.SignOutLink.CustomBackground = false;
+            this.SignOutLink.CustomForeColor = false;
+            this.SignOutLink.FontSize = MetroFramework.MetroLinkSize.Medium;
+            this.SignOutLink.FontWeight = MetroFramework.MetroLinkWeight.Regular;
+            this.SignOutLink.Name = "SignOutLink";
+            this.SignOutLink.Style = MetroFramework.MetroColorStyle.Blue;
+            this.SignOutLink.StyleManager = null;
+            this.SignOutLink.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.SignOutLink.UseStyleColors = false;
+            this.SignOutLink.Click += new System.EventHandler(this.SignOutLink_Click);
+            // 
+            // metroLink1
+            // 
+            resources.ApplyResources(this.metroLink1, "metroLink1");
+            this.metroLink1.BackColor = System.Drawing.Color.Transparent;
+            this.metroLink1.CustomBackground = false;
+            this.metroLink1.CustomForeColor = false;
+            this.metroLink1.FontSize = MetroFramework.MetroLinkSize.Tall;
+            this.metroLink1.FontWeight = MetroFramework.MetroLinkWeight.Bold;
+            this.metroLink1.Name = "metroLink1";
+            this.metroLink1.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroLink1.StyleManager = null;
+            this.metroLink1.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroLink1.UseStyleColors = false;
+            this.metroLink1.Click += new System.EventHandler(this.metroLink1_Click);
+            // 
+            // AddLocationBox
+            // 
+            resources.ApplyResources(this.AddLocationBox, "AddLocationBox");
+            this.AddLocationBox.BackColor = System.Drawing.Color.White;
+            this.AddLocationBox.CustomBackground = true;
+            this.AddLocationBox.CustomForeColor = false;
+            this.AddLocationBox.FontSize = MetroFramework.MetroTextBoxSize.Small;
+            this.AddLocationBox.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
+            this.AddLocationBox.Multiline = false;
+            this.AddLocationBox.Name = "AddLocationBox";
+            this.AddLocationBox.SelectedText = "";
+            this.AddLocationBox.Style = MetroFramework.MetroColorStyle.Blue;
+            this.AddLocationBox.StyleManager = null;
+            this.AddLocationBox.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.AddLocationBox.UseStyleColors = false;
+            this.AddLocationBox.TextChanged += new System.EventHandler(this.AddLocationBox_TextChanged);
+            // 
             // Main
             // 
-            this.AccessibleDescription = "Computer Info";
-            this.AccessibleName = "Computer Info";
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(211, 377);
+            this.Controls.Add(this.AddLocationBox);
+            this.Controls.Add(this.SignOutLink);
+            this.Controls.Add(this.AboutLink);
             this.Controls.Add(this.OrganizationBox);
             this.Controls.Add(this.LocationBox);
             this.Controls.Add(this.MacAddressBox);
@@ -294,11 +313,10 @@
             this.Controls.Add(this.IdentifierBox);
             this.Controls.Add(this.LocationLabel);
             this.Controls.Add(this.OrganizationLabel);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Location = new System.Drawing.Point(0, 0);
+            this.Controls.Add(this.metroLink1);
             this.MaximizeBox = false;
             this.Name = "Main";
-            this.Text = "Computer Info";
+            this.Resizable = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.ResumeLayout(false);
@@ -324,6 +342,10 @@
         private MetroFramework.Controls.MetroComboBox LocationBox;
         //private System.Windows.Forms.ToolStripMenuItem SignOutMenuItem;
         private MetroFramework.Controls.MetroComboBox OrganizationBox;
+        private MetroFramework.Controls.MetroLink AboutLink;
+        private MetroFramework.Controls.MetroLink SignOutLink;
+        private MetroFramework.Controls.MetroLink metroLink1;
+        private MetroFramework.Controls.MetroTextBox AddLocationBox;
         //private System.Windows.Forms.ToolStripMenuItem UpdateProgramMenuItem;
         //private System.Windows.Forms.ToolStripMenuItem UpdateCacheMenuItem;
 

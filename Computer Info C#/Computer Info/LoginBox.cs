@@ -4,18 +4,21 @@ using System.Text.RegularExpressions;
 using Computer_Info.Resources;
 using System.Drawing;
 
+using MetroFramework.Forms;
+using MetroFramework;
+
 namespace Computer_Info
 {
-    public partial class LoginBox : Form
+    public partial class LoginBox : MetroForm
     {
-        private Main ParentForm;
+        private Main ParentMaintForm;
         private bool SaveAfterwards;
         private bool TerminateApplicationOnClose;
 
-        public LoginBox(Main _ParentForm, bool _SaveAfterwards, bool _TerminateApplicationOnClose)
+        public LoginBox(Main _ParentMainForm, bool _SaveAfterwards, bool _TerminateApplicationOnClose)
         {
             InitializeComponent();
-            ParentForm = _ParentForm;
+            ParentMaintForm = _ParentMainForm;
             SaveAfterwards = _SaveAfterwards;
             TerminateApplicationOnClose = _TerminateApplicationOnClose;
         }
@@ -34,11 +37,11 @@ namespace Computer_Info
                 
                 if (CleanText != "")
                 {
-                    ParentForm.SetToken(CleanText);
+                    ParentMaintForm.SetToken(CleanText);
                     this.Hide();
                     if (SaveAfterwards)
                     {
-                        ParentForm.Save_Click(null, null);
+                        ParentMaintForm.Save_Click(null, null);
                     }
                 }
                 else
@@ -59,14 +62,6 @@ namespace Computer_Info
         private void LoginBrowser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
             AddressBox.Text = e.Url.ToString();
-            if (e.Url.Scheme.ToString() == "https")
-            {
-                AddressBox.BackColor = Color.GreenYellow;
-            }
-            else
-            {
-                AddressBox.BackColor = Color.OrangeRed;
-            }
         }
 
         private void ForwardButton_Click(object sender, EventArgs e)
