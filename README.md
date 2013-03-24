@@ -1,5 +1,6 @@
 # ComputerInfo #
 =============
+This is the Windows client for ComputerInfo.
 
 ## License ##
 =============
