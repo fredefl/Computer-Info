@@ -32,6 +32,11 @@ namespace Computer_Info
         private void LoginBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             SignInBrowser.Show();
+            if (SignInBrowser.Url.ToString().Contains("google"))
+            {
+                BackButton.Show();
+            }
+
             if (SignInBrowser.Url.ToString().Contains(Computer_Info.Properties.Settings.Default.BaseUrl + "/login/windows"))
             {
                 string CleanText = Regex.Replace(SignInBrowser.DocumentText, @"<[^>]*>", String.Empty).Trim();
@@ -62,17 +67,8 @@ namespace Computer_Info
 
         private void LoginBrowser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
+            SignInBrowser.Hide();
             AddressBox.Text = e.Url.ToString();
-        }
-
-        private void ForwardButton_Click(object sender, EventArgs e)
-        {
-            SignInBrowser.GoForward();
-        }
-
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            SignInBrowser.GoBack();
         }
 
         private void AddressBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -80,6 +76,17 @@ namespace Computer_Info
             if (e.KeyChar == (char)13) {
                 SignInBrowser.Navigate(AddressBox.Text);
             }
+        }
+
+        private void SignInBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
+        {
+            AddressBox.Text = e.Url.ToString();
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            LoginBox_Shown(null, null);
+            BackButton.Hide();
         }
     }
 }

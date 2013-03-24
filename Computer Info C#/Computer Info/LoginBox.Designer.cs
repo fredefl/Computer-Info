@@ -32,6 +32,7 @@
             this.SignInBrowser = new System.Windows.Forms.WebBrowser();
             this.AddressBox = new MetroFramework.Controls.MetroTextBox();
             this.SignInSpinner = new MetroFramework.Controls.MetroProgressSpinner();
+            this.BackButton = new MetroFramework.Controls.MetroLink();
             this.SuspendLayout();
             // 
             // SignInBrowser
@@ -71,6 +72,20 @@
             this.SignInSpinner.Theme = MetroFramework.MetroThemeStyle.Light;
             this.SignInSpinner.Value = 66;
             // 
+            // BackButton
+            // 
+            resources.ApplyResources(this.BackButton, "BackButton");
+            this.BackButton.CustomBackground = false;
+            this.BackButton.CustomForeColor = false;
+            this.BackButton.FontSize = MetroFramework.MetroLinkSize.Tall;
+            this.BackButton.FontWeight = MetroFramework.MetroLinkWeight.Regular;
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.BackButton.StyleManager = null;
+            this.BackButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.BackButton.UseStyleColors = false;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
+            // 
             // LoginBox
             // 
             resources.ApplyResources(this, "$this");
@@ -78,10 +93,12 @@
             this.Controls.Add(this.SignInBrowser);
             this.Controls.Add(this.AddressBox);
             this.Controls.Add(this.SignInSpinner);
+            this.Controls.Add(this.BackButton);
             this.Name = "LoginBox";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginBox_FormClosing);
             this.Shown += new System.EventHandler(this.LoginBox_Shown);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -90,5 +107,6 @@
         private System.Windows.Forms.WebBrowser SignInBrowser;
         private MetroFramework.Controls.MetroTextBox AddressBox;
         private MetroFramework.Controls.MetroProgressSpinner SignInSpinner;
+        private MetroFramework.Controls.MetroLink BackButton;
     }
 }
