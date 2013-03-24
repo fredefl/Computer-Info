@@ -31,6 +31,7 @@ namespace Computer_Info
 
         private void LoginBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
+            SignInBrowser.Show();
             if (SignInBrowser.Url.ToString().Contains(Computer_Info.Properties.Settings.Default.BaseUrl + "/login/windows"))
             {
                 string CleanText = Regex.Replace(SignInBrowser.DocumentText, @"<[^>]*>", String.Empty).Trim();

@@ -138,6 +138,9 @@
   <data name="SignInBrowser.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="SignInBrowser.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;SignInBrowser.Name" xml:space="preserve">
     <value>SignInBrowser</value>
   </data>
@@ -177,25 +180,25 @@
   <data name="&gt;&gt;AddressBox.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="VersionSpinner.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="SignInSpinner.Location" type="System.Drawing.Point, System.Drawing">
     <value>161, 154</value>
   </data>
-  <data name="VersionSpinner.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="SignInSpinner.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 185</value>
   </data>
-  <data name="VersionSpinner.TabIndex" type="System.Int32, mscorlib">
+  <data name="SignInSpinner.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
-  <data name="&gt;&gt;VersionSpinner.Name" xml:space="preserve">
-    <value>VersionSpinner</value>
+  <data name="&gt;&gt;SignInSpinner.Name" xml:space="preserve">
+    <value>SignInSpinner</value>
   </data>
-  <data name="&gt;&gt;VersionSpinner.Type" xml:space="preserve">
+  <data name="&gt;&gt;SignInSpinner.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroProgressSpinner, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;VersionSpinner.Parent" xml:space="preserve">
+  <data name="&gt;&gt;SignInSpinner.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;VersionSpinner.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;SignInSpinner.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

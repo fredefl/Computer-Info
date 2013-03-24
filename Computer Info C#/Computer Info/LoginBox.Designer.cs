@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginBox));
             this.SignInBrowser = new System.Windows.Forms.WebBrowser();
             this.AddressBox = new MetroFramework.Controls.MetroTextBox();
-            this.VersionSpinner = new MetroFramework.Controls.MetroProgressSpinner();
+            this.SignInSpinner = new MetroFramework.Controls.MetroProgressSpinner();
             this.SuspendLayout();
             // 
             // SignInBrowser
@@ -60,16 +60,16 @@
             this.AddressBox.UseStyleColors = false;
             this.AddressBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AddressBox_KeyPress);
             // 
-            // VersionSpinner
+            // SignInSpinner
             // 
-            this.VersionSpinner.CustomBackground = false;
-            resources.ApplyResources(this.VersionSpinner, "VersionSpinner");
-            this.VersionSpinner.Maximum = 100;
-            this.VersionSpinner.Name = "VersionSpinner";
-            this.VersionSpinner.Style = MetroFramework.MetroColorStyle.Blue;
-            this.VersionSpinner.StyleManager = null;
-            this.VersionSpinner.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.VersionSpinner.Value = 66;
+            this.SignInSpinner.CustomBackground = false;
+            resources.ApplyResources(this.SignInSpinner, "SignInSpinner");
+            this.SignInSpinner.Maximum = 100;
+            this.SignInSpinner.Name = "SignInSpinner";
+            this.SignInSpinner.Style = MetroFramework.MetroColorStyle.Blue;
+            this.SignInSpinner.StyleManager = null;
+            this.SignInSpinner.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.SignInSpinner.Value = 66;
             // 
             // LoginBox
             // 
@@ -77,7 +77,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.SignInBrowser);
             this.Controls.Add(this.AddressBox);
-            this.Controls.Add(this.VersionSpinner);
+            this.Controls.Add(this.SignInSpinner);
             this.Name = "LoginBox";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginBox_FormClosing);
             this.Shown += new System.EventHandler(this.LoginBox_Shown);
@@ -89,6 +89,6 @@
 
         private System.Windows.Forms.WebBrowser SignInBrowser;
         private MetroFramework.Controls.MetroTextBox AddressBox;
-        private MetroFramework.Controls.MetroProgressSpinner VersionSpinner;
+        private MetroFramework.Controls.MetroProgressSpinner SignInSpinner;
     }
 }
