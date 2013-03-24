@@ -213,7 +213,7 @@ namespace Computer_Info
             this.CopyrightLabel.Style = MetroFramework.MetroColorStyle.Blue;
             this.CopyrightLabel.StyleManager = null;
             this.CopyrightLabel.TabIndex = 3;
-            this.CopyrightLabel.Text = "Copyright © 2012";
+            this.CopyrightLabel.Text = "Copyright © 2013";
             this.CopyrightLabel.Theme = MetroFramework.MetroThemeStyle.Light;
             this.CopyrightLabel.UseStyleColors = false;
             // 

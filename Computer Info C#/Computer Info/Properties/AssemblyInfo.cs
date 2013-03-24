@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Illution")]
 [assembly: AssemblyProduct("Computer Info")]
-[assembly: AssemblyCopyright("Copyright © Illution 2011")]
+[assembly: AssemblyCopyright("Copyright © Illution 2013")]
 [assembly: AssemblyTrademark("Computer Info")]
 [assembly: AssemblyCulture("")]
 

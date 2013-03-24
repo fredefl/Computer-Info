@@ -70,7 +70,7 @@ namespace Computer_Info.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copyright © 2012.
+        ///   Looks up a localized string similar to Copyright © 2013.
         /// </summary>
         internal static string AboutCopyright {
             get {
