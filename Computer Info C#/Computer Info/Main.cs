@@ -31,11 +31,8 @@ namespace Computer_Info
 
         public Main()
         {
-            //metroStyleManager.Theme = MetroThemeStyle.Light;
-
             // Force language setting with this line
             //Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("da-DK");
-
 
             // Initialize
             InitializeComponent();
@@ -49,19 +46,17 @@ namespace Computer_Info
             LaptopSelector.Text = Strings.Laptop;
             BoardSelector.Text = Strings.Board;
             SaveButton.Text = Strings.Save;
-            AboutLink.Text = Strings.About;
-
-            // Menu Localization
+            
+            // Bottom menu Localization
             SignOutLink.Text = Strings.SignOut;
-            //UpdateMenuItem.Text = Strings.Update;
-            //UpdateProgramMenuItem.Text = Strings.Program;
-            //UpdateCacheMenuItem.Text = Strings.Cache;
+            AboutLink.Text = Strings.About;
 
             // Check if a Settings.ini file is present, if not create a new one
             if (!File.Exists(WorkingDirectory + "Settings.ini"))
             {
                 File.WriteAllText(WorkingDirectory + "Settings.ini", Computer_Info.Properties.Resources.Settings);
             }
+
             // Initialize settings from file
             Settings = new IniFile(WorkingDirectory + "Settings.ini");
             
@@ -115,17 +110,11 @@ namespace Computer_Info
 
             // Get Tokens
             string Token = "";
-            if (ComputerInfoInstance.StringToBool(Settings.IniReadValue("Settings", "UseTokens")))
-             {
-                Token = Settings.IniReadValue("Settings", "Token");
-             }
-            // Guess ComputerType (SBB)
-            /*
-            if(Token != "")
+            if (ComputerInfoInstance.StringToBool(Settings.IniReadValue("Settings", "UseTokens"))) 
             {
-                GetModelType(Token);
+                Token = Settings.IniReadValue("Settings", "Token");
             }
-            */
+
             // Check For Updates
             //UpdateChecker();
             // Delete Updater Application
