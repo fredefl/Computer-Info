@@ -34,7 +34,7 @@ namespace Computer_Info
             //metroStyleManager.Theme = MetroThemeStyle.Light;
 
             // Force language setting with this line
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("da-DK");
+            //Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("da-DK");
 
 
             // Initialize
@@ -390,8 +390,6 @@ namespace Computer_Info
 
         public void Save_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Strings.Organization);
-
             int ComputerType = 7;
             if (LaptopSelector.Checked)
             {
