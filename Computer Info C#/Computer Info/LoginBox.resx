@@ -177,6 +177,27 @@
   <data name="&gt;&gt;AddressBox.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="VersionSpinner.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 154</value>
+  </data>
+  <data name="VersionSpinner.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 185</value>
+  </data>
+  <data name="VersionSpinner.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;VersionSpinner.Name" xml:space="preserve">
+    <value>VersionSpinner</value>
+  </data>
+  <data name="&gt;&gt;VersionSpinner.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroProgressSpinner, MetroFramework, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;VersionSpinner.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;VersionSpinner.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
