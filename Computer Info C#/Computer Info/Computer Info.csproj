@@ -77,6 +77,9 @@
     <StartupObject>Computer_Info.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup />
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MetroFramework">
       <HintPath>..\packages\ModernUI.1.1.0.1\lib\net35\MetroFramework.dll</HintPath>
@@ -201,6 +204,17 @@
     <None Include="Resources\GreenBar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Release (
+"$(TargetDir)netz\netz.exe" -s -z "$(TargetDir)ComputerInfoUnmerged.exe" "$(TargetDir)da-DK\ComputerInfoUnmerged.resources.dll" "$(TargetDir)MetroFramework.dll" "$(TargetDir)Newtonsoft.Json.dll"
+move "$(TargetDir)ComputerInfoUnmerged.exe.netz\ComputerInfoUnmerged.exe" "$(TargetDir)ComputerInfo.exe"
+rd /s /q "$(TargetDir)ComputerInfoUnmerged.exe.netz"
+)</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
