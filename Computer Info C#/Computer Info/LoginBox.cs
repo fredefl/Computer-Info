@@ -21,11 +21,11 @@ namespace Computer_Info
             ParentMaintForm = _ParentMainForm;
             SaveAfterwards = _SaveAfterwards;
             TerminateApplicationOnClose = _TerminateApplicationOnClose;
+            this.Text = Strings.SignIn;
         }
 
         private void LoginBox_Shown(object sender, EventArgs e)
         {
-            this.Text = Strings.SignIn;
             SignInBrowser.Navigate(Computer_Info.Properties.Settings.Default.BaseUrl + "/windows/login?language=" + Strings.CurrentLanguage);
         }
 

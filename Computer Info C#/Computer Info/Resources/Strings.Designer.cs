@@ -187,7 +187,7 @@ namespace Computer_Info.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Organization ENGLISH.
+        ///   Looks up a localized string similar to Organization.
         /// </summary>
         internal static string Organization {
             get {

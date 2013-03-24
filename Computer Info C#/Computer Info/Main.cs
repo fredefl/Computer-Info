@@ -34,7 +34,7 @@ namespace Computer_Info
             //metroStyleManager.Theme = MetroThemeStyle.Light;
 
             // Force language setting with this line
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("da-DK");
+            //Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("da-DK");
 
 
             // Initialize
